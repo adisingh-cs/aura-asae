@@ -5,6 +5,7 @@ import { ProductsSection } from '@/components/sections/ProductsSection';
 import { TrustSection } from '@/components/sections/TrustSection';
 import { IngredientsSection } from '@/components/sections/IngredientsSection';
 import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
+import FAQSection from '@/components/sections/FAQSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/sections/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
@@ -34,6 +35,7 @@ const Index = () => {
         <TrustSection />
         <IngredientsSection />
         <TestimonialsSection />
+        <FAQSection />
         <ContactSection />
         <Footer />
         <WhatsAppButton />
