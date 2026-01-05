@@ -1,13 +1,8 @@
 import { ArrowDown } from 'lucide-react';
 import auraCover from '@/assets/aura-cover.png';
 import { AnimatedSection } from '@/components/AnimatedSection';
-
 export function HeroSection() {
-  return (
-    <section
-      id="hero"
-      className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero"
-    >
+  return <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-primary/10 blur-3xl animate-float" />
@@ -61,11 +56,7 @@ export function HeroSection() {
                 <div className="absolute -top-4 -right-4 w-8 h-8 text-primary/40 animate-butterfly-float" />
                 <div className="absolute top-1/4 -left-8 w-6 h-6 text-primary/30 animate-butterfly-float animation-delay-300" />
                 
-                <img
-                  src={auraCover}
-                  alt="Aura Cosmetics - Premium Organic Skincare"
-                  className="w-full max-w-lg lg:max-w-xl rounded-2xl shadow-2xl"
-                />
+                <img src={auraCover} alt="Aura Cosmetics - Premium Organic Skincare" className="w-full max-w-lg lg:max-w-xl rounded-2xl shadow-2xl" />
               </div>
             </AnimatedSection>
           </div>
@@ -73,16 +64,6 @@ export function HeroSection() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 animate-bounce">
-        <a
-          href="#about"
-          className="flex flex-col items-center gap-2 text-muted-foreground hover:text-primary transition-colors"
-          aria-label="Scroll to learn more"
-        >
-          <span className="text-xs uppercase tracking-wider">Scroll</span>
-          <ArrowDown className="w-4 h-4" />
-        </a>
-      </div>
-    </section>
-  );
+      
+    </section>;
 }
