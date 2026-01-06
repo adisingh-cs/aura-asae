@@ -119,11 +119,11 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
               </div>
             </div>
 
-            {/* Key Ingredient */}
+            {/* Ingredients */}
             <div className="p-4 rounded-xl bg-muted/50 mb-6">
-              <p className="text-sm text-muted-foreground">
-                <span className="font-semibold text-foreground">Key Ingredient: </span>
-                {product.keyIngredient}
+              <h3 className="font-semibold text-foreground mb-2 text-sm">Full Ingredients</h3>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                {product.ingredients}
               </p>
             </div>
 
