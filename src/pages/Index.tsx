@@ -15,7 +15,7 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        <title>Aura Cosmetics | Premium Organic Skincare for Young India</title>
+        <title>Aura | Glow with the Flow ✨</title>
         <meta 
           name="description" 
           content="Discover Aura Cosmetics - handcrafted, 100% organic facewash collection. Vitamin C, Coffee, Rice & Milk, Beetroot & Niacinamide formulas for radiant, healthy skin. Paraben-free, made in India." 
