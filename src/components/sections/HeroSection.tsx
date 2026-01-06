@@ -56,7 +56,7 @@ export function HeroSection() {
                 <div className="absolute -top-4 -right-4 w-8 h-8 text-primary/40 animate-butterfly-float" />
                 <div className="absolute top-1/4 -left-8 w-6 h-6 text-primary/30 animate-butterfly-float animation-delay-300" />
                 
-                <img src={heroImage} alt="Aura Cosmetics - Premium Organic Skincare" className="w-full max-w-lg lg:max-w-xl" />
+                <img src={heroImage} alt="Aura Cosmetics - Premium Organic Skincare" className="w-full max-w-lg lg:max-w-xl animate-float-slow" />
               </div>
             </AnimatedSection>
           </div>
