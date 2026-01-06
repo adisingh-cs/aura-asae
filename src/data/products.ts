@@ -13,6 +13,7 @@ export interface Product {
   benefits: string[];
   suitableFor: string[];
   keyIngredient: string;
+  ingredients: string;
   price: number;
   size: string;
   image: string;
@@ -35,7 +36,8 @@ export const products: Product[] = [
     ],
     suitableFor: ["Dull Skin", "Oily Skin", "Combination Skin"],
     keyIngredient: "Lemon Extract",
-    price: 299,
+    ingredients: "Aqua (Water), Decyl Glucoside, Cocamidopropyl Betaine, Glycerin, Xanthan Gum, Ascorbic Acid (Vitamin C), Citric Acid, Preservative, Fragrance",
+    price: 349,
     size: "100ml",
     image: vitaminCImage,
     color: "hsl(48 85% 65%)",
@@ -55,7 +57,8 @@ export const products: Product[] = [
     ],
     suitableFor: ["All Skin Types", "Tired Skin", "Dull Complexion"],
     keyIngredient: "Coffee Beans",
-    price: 299,
+    ingredients: "Aqua (Water), Decyl Glucoside, Cocamidopropyl Betaine, Glycerin, Xanthan Gum, Coffea Arabica (Coffee) Seed Powder, Kwalinol, Citric Acid, Preservative, Fragrance",
+    price: 349,
     size: "100ml",
     image: coffeeImage,
     color: "hsl(25 35% 30%)",
@@ -75,7 +78,8 @@ export const products: Product[] = [
     ],
     suitableFor: ["Dry Skin", "Sensitive Skin", "Normal Skin"],
     keyIngredient: "Rice Water & Milk",
-    price: 299,
+    ingredients: "Aqua (Water), Decyl Glucoside, Cocamidopropyl Betaine, Glycerin, Xanthan Gum, Hydrolyzed Rice Protein, Hydrolyzed Milk Protein, Kwalinol, Preservative, Fragrance",
+    price: 349,
     size: "100ml",
     image: riceMilkImage,
     color: "hsl(45 30% 85%)",
@@ -95,7 +99,8 @@ export const products: Product[] = [
     ],
     suitableFor: ["Sensitive Skin", "Dry Skin", "Dehydrated Skin"],
     keyIngredient: "Beetroot Extract",
-    price: 299,
+    ingredients: "Aqua (Water), Decyl Glucoside, Cocamidopropyl Betaine, Glycerin, Xanthan Gum, Beta Vulgaris (Beet) Root Extract, Kwalinol, Preservative, Fragrance",
+    price: 349,
     size: "100ml",
     image: beetrootImage,
     color: "hsl(340 50% 45%)",
@@ -115,7 +120,8 @@ export const products: Product[] = [
     ],
     suitableFor: ["Acne-Prone Skin", "Oily Skin", "Combination Skin"],
     keyIngredient: "Niacinamide (Vitamin B3)",
-    price: 299,
+    ingredients: "Aqua (Water), Decyl Glucoside, Cocamidopropyl Betaine, Glycerin, Xanthan Gum, Niacinamide, Kwalinol, Citric Acid, Phenoxyethanol, Ethylhexylglycerin, Parfum (Fragrance)",
+    price: 349,
     size: "100ml",
     image: niacinamideImage,
     color: "hsl(270 35% 55%)",
