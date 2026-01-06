@@ -48,7 +48,7 @@ export function ProductsSection() {
         {/* Pricing Note */}
         <AnimatedSection animation="fade-in" delay={500}>
           <p className="text-center mt-8 text-muted-foreground">
-            All products: <span className="font-semibold text-primary">₹299</span> for 100ml
+            All products: <span className="font-semibold text-primary">₹349</span> for 100ml
           </p>
         </AnimatedSection>
       </div>
