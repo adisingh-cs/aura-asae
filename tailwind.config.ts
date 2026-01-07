@@ -130,6 +130,22 @@ export default {
           "50%": { transform: "translateY(-8px) translateX(-2px) rotate(-1deg)" },
           "75%": { transform: "translateY(-3px) translateX(4px) rotate(1deg)" },
         },
+        "wing-flap": {
+          "0%, 100%": { transform: "scaleY(1) rotateY(0deg)" },
+          "50%": { transform: "scaleY(0.5) rotateY(25deg)" },
+        },
+        "wing-flap-reverse": {
+          "0%, 100%": { transform: "scaleY(1) rotateY(0deg)" },
+          "50%": { transform: "scaleY(0.5) rotateY(-25deg)" },
+        },
+        "sparkle-fade": {
+          "0%": { opacity: "1", transform: "scale(1)" },
+          "100%": { opacity: "0", transform: "scale(0)" },
+        },
+        "firefly-glow": {
+          "0%, 100%": { opacity: "1", boxShadow: "0 0 10px 5px rgba(255, 232, 124, 0.8)" },
+          "50%": { opacity: "0.6", boxShadow: "0 0 20px 10px rgba(255, 232, 124, 0.4)" },
+        },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
@@ -144,6 +160,10 @@ export default {
         pulse: "pulse 2s ease-in-out infinite",
         "slide-up": "slide-up 0.7s ease-out forwards",
         "butterfly-float": "butterfly-float 4s ease-in-out infinite",
+        "wing-flap": "wing-flap 0.15s ease-in-out infinite",
+        "wing-flap-reverse": "wing-flap-reverse 0.15s ease-in-out infinite",
+        "sparkle-fade": "sparkle-fade 0.6s ease-out forwards",
+        "firefly-glow": "firefly-glow 2s ease-in-out infinite",
       },
     },
   },

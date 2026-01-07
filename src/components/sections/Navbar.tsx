@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import auraLogo from '@/assets/aura-logo.png';
 import { cn } from '@/lib/utils';
+import { ThemeToggle } from '@/components/ThemeToggle';
 
 const navLinks = [
   { href: '#about', label: 'About' },
@@ -55,6 +56,7 @@ export function Navbar() {
                 {link.label}
               </a>
             ))}
+            <ThemeToggle />
           </div>
 
           {/* Mobile Menu Button */}
