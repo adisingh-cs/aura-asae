@@ -142,14 +142,6 @@ export default {
           "0%": { opacity: "1", transform: "scale(1)" },
           "100%": { opacity: "0", transform: "scale(0)" },
         },
-        "wing-rest": {
-          "0%, 100%": { transform: "scaleY(1) rotateY(0deg)" },
-          "50%": { transform: "scaleY(0.95) rotateY(5deg)" },
-        },
-        "wing-rest-reverse": {
-          "0%, 100%": { transform: "scaleY(1) rotateY(0deg)" },
-          "50%": { transform: "scaleY(0.95) rotateY(-5deg)" },
-        },
         "firefly-glow": {
           "0%, 100%": { opacity: "1", boxShadow: "0 0 10px 5px rgba(255, 232, 124, 0.8)" },
           "50%": { opacity: "0.6", boxShadow: "0 0 20px 10px rgba(255, 232, 124, 0.4)" },

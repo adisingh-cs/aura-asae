@@ -1,4 +1,4 @@
-import { useEffect, useState, useRef, useCallback } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import { cn } from '@/lib/utils';
 
 interface ButterflyProps {
@@ -24,53 +24,13 @@ const sizeClasses = {
   lg: 'w-10 h-10',
 };
 
-// Landing spots - elements butterflies can land on
-const LANDING_SELECTORS = [
-  '[data-landing-spot]',
-  '.card-product',
-  '.trust-badge',
-  '#products h2',
-  '#about h2',
-];
-
 export function Butterfly({ id, color, size, initialX, initialY, cursorPosition }: ButterflyProps) {
   const [position, setPosition] = useState({ x: initialX, y: initialY });
   const [isEvading, setIsEvading] = useState(false);
-  const [isResting, setIsResting] = useState(false);
-  const [isLanding, setIsLanding] = useState(false);
+  const [isResting, setIsResting] = useState(Math.random() > 0.7);
   const velocityRef = useRef({ x: (Math.random() - 0.5) * 2, y: (Math.random() - 0.5) * 2 });
   const animationFrameRef = useRef<number>();
   const targetRef = useRef({ x: initialX, y: initialY });
-  const landingSpotRef = useRef<{ x: number; y: number } | null>(null);
-  const restingTimeoutRef = useRef<NodeJS.Timeout>();
-
-  // Find a random landing spot
-  const findLandingSpot = useCallback(() => {
-    const elements: Element[] = [];
-    LANDING_SELECTORS.forEach(selector => {
-      document.querySelectorAll(selector).forEach(el => elements.push(el));
-    });
-    
-    if (elements.length === 0) return null;
-    
-    const element = elements[Math.floor(Math.random() * elements.length)];
-    const rect = element.getBoundingClientRect();
-    
-    // Land on top edge of element
-    return {
-      x: rect.left + Math.random() * rect.width,
-      y: rect.top + Math.random() * 20,
-    };
-  }, []);
-
-  // Start landing on an element
-  const startLanding = useCallback(() => {
-    const spot = findLandingSpot();
-    if (spot) {
-      landingSpotRef.current = spot;
-      setIsLanding(true);
-    }
-  }, [findLandingSpot]);
 
   useEffect(() => {
     const animate = () => {
@@ -79,23 +39,8 @@ export function Butterfly({ id, color, size, initialX, initialY, cursorPosition 
         const dy = cursorPosition.y - prev.y;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        // If cursor gets close while resting, fly away
-        if ((isResting || isLanding) && distance < 120) {
-          setIsResting(false);
-          setIsLanding(false);
-          landingSpotRef.current = null;
-          if (restingTimeoutRef.current) {
-            clearTimeout(restingTimeoutRef.current);
-          }
-          const escapeX = -dx / distance * 10;
-          const escapeY = -dy / distance * 10;
-          velocityRef.current = { x: escapeX, y: escapeY };
-          setIsEvading(true);
-          return prev;
-        }
-
-        // Evade cursor if too close while flying
-        if (distance < 150 && !isResting && !isLanding) {
+        // Evade cursor if too close
+        if (distance < 150 && !isResting) {
           setIsEvading(true);
           const escapeX = -dx / distance * 8;
           const escapeY = -dy / distance * 8;
@@ -104,42 +49,8 @@ export function Butterfly({ id, color, size, initialX, initialY, cursorPosition 
           setIsEvading(false);
         }
 
-        // If landing, move toward landing spot
-        if (isLanding && landingSpotRef.current) {
-          const lx = landingSpotRef.current.x - prev.x;
-          const ly = landingSpotRef.current.y - prev.y;
-          const landDist = Math.sqrt(lx * lx + ly * ly);
-          
-          if (landDist < 5) {
-            // Arrived at landing spot, start resting
-            setIsLanding(false);
-            setIsResting(true);
-            velocityRef.current = { x: 0, y: 0 };
-            
-            // Rest for 3-6 seconds then fly away
-            restingTimeoutRef.current = setTimeout(() => {
-              setIsResting(false);
-              landingSpotRef.current = null;
-              velocityRef.current = { 
-                x: (Math.random() - 0.5) * 4, 
-                y: -Math.random() * 3 - 1 
-              };
-            }, 3000 + Math.random() * 3000);
-            
-            return { x: landingSpotRef.current.x, y: landingSpotRef.current.y };
-          }
-          
-          velocityRef.current.x = (lx / landDist) * 2;
-          velocityRef.current.y = (ly / landDist) * 2;
-        }
-
-        // Random target movement when not evading or landing
-        if (!isEvading && !isResting && !isLanding) {
-          // Random chance to start landing
-          if (Math.random() < 0.0008) {
-            startLanding();
-          }
-          
+        // Random target movement when not evading
+        if (!isEvading && !isResting) {
           if (Math.random() < 0.01) {
             targetRef.current = {
               x: Math.random() * (window.innerWidth - 100) + 50,
@@ -161,7 +72,14 @@ export function Butterfly({ id, color, size, initialX, initialY, cursorPosition 
         velocityRef.current.x *= 0.98;
         velocityRef.current.y *= 0.98;
 
+        // Random resting behavior
+        if (!isResting && Math.random() < 0.001) {
+          setIsResting(true);
+          setTimeout(() => setIsResting(false), 2000 + Math.random() * 3000);
+        }
+
         if (isResting) {
+          velocityRef.current = { x: 0, y: 0 };
           return prev;
         }
 
@@ -189,21 +107,17 @@ export function Butterfly({ id, color, size, initialX, initialY, cursorPosition 
       if (animationFrameRef.current) {
         cancelAnimationFrame(animationFrameRef.current);
       }
-      if (restingTimeoutRef.current) {
-        clearTimeout(restingTimeoutRef.current);
-      }
     };
-  }, [cursorPosition, id, isEvading, isResting, isLanding, startLanding]);
+  }, [cursorPosition, id, isEvading, isResting]);
 
   const rotation = isResting ? 0 : Math.atan2(velocityRef.current.y, velocityRef.current.x) * (180 / Math.PI);
 
   return (
     <div
       className={cn(
-        "absolute pointer-events-none transition-all duration-300",
+        "absolute transition-transform pointer-events-none",
         sizeClasses[size],
-        isEvading && "scale-110",
-        isResting && "scale-100"
+        isEvading && "scale-110"
       )}
       style={{
         left: position.x,
@@ -222,13 +136,8 @@ export function Butterfly({ id, color, size, initialX, initialY, cursorPosition 
           cy="40"
           rx="30"
           ry="35"
-          className="origin-center"
-          style={{ 
-            animationDelay: `${id * 100}ms`,
-            animation: isResting 
-              ? 'wing-rest 2s ease-in-out infinite' 
-              : 'wing-flap 0.15s ease-in-out infinite'
-          }}
+          className={cn("origin-center", !isResting && "animate-wing-flap")}
+          style={{ animationDelay: `${id * 100}ms` }}
         />
         {/* Right wing */}
         <ellipse
@@ -236,13 +145,8 @@ export function Butterfly({ id, color, size, initialX, initialY, cursorPosition 
           cy="40"
           rx="30"
           ry="35"
-          className="origin-center"
-          style={{ 
-            animationDelay: `${id * 100}ms`,
-            animation: isResting 
-              ? 'wing-rest-reverse 2s ease-in-out infinite' 
-              : 'wing-flap-reverse 0.15s ease-in-out infinite'
-          }}
+          className={cn("origin-center", !isResting && "animate-wing-flap-reverse")}
+          style={{ animationDelay: `${id * 100}ms` }}
         />
         {/* Lower wings */}
         <ellipse cx="35" cy="60" rx="20" ry="25" opacity="0.8" />
@@ -254,8 +158,8 @@ export function Butterfly({ id, color, size, initialX, initialY, cursorPosition 
         <path d="M53 22 Q55 10 60 5" stroke="currentColor" strokeWidth="2" fill="none" className="stroke-foreground/70" />
       </svg>
 
-      {/* Sparkle trail - only when flying */}
-      {!isResting && !isLanding && (
+      {/* Sparkle trail */}
+      {!isResting && (
         <div className="absolute inset-0 pointer-events-none">
           {[...Array(3)].map((_, i) => (
             <div
