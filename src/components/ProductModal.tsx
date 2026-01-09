@@ -64,7 +64,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
             "flex items-center justify-center p-8"
           )}>
             <img
-              src={product.image}
+              src={product.primaryImage}
               alt={product.name}
               className="max-w-full max-h-80 md:max-h-full object-contain"
             />
