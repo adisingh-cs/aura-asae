@@ -1,8 +1,13 @@
-import vitaminCImage from "@/assets/vitamin-c-facewash.png";
-import coffeeImage from "@/assets/coffee-facewash.png";
-import riceMilkImage from "@/assets/rice-milk-facewash.png";
-import beetrootImage from "@/assets/beetroot-facewash.png";
-import niacinamideImage from "@/assets/niacinamide-facewash.png";
+import vitaminCPrimary from "@/assets/vitamin-c-primary.png";
+import vitaminCThumb from "@/assets/vitamin-c-thumb.png";
+import coffeePrimary from "@/assets/coffee-primary.png";
+import coffeeThumb from "@/assets/coffee-thumb.png";
+import riceMilkPrimary from "@/assets/rice-milk-primary.png";
+import riceMilkThumb from "@/assets/rice-milk-thumb.png";
+import beetrootPrimary from "@/assets/beetroot-primary.png";
+import beetrootThumb from "@/assets/beetroot-thumb.png";
+import niacinamidePrimary from "@/assets/niacinamide-primary.png";
+import niacinamideThumb from "@/assets/niacinamide-thumb.png";
 
 export interface Product {
   id: string;
@@ -16,7 +21,8 @@ export interface Product {
   ingredients: string;
   price: number;
   size: string;
-  image: string;
+  primaryImage: string;
+  thumbnailImage: string;
   color: string;
   bgColor: string;
 }
@@ -39,7 +45,8 @@ export const products: Product[] = [
     ingredients: "Aqua (Water), Decyl Glucoside, Cocamidopropyl Betaine, Glycerin, Xanthan Gum, Ascorbic Acid (Vitamin C), Citric Acid, Preservative, Fragrance",
     price: 349,
     size: "100ml",
-    image: vitaminCImage,
+    primaryImage: vitaminCPrimary,
+    thumbnailImage: vitaminCThumb,
     color: "hsl(48 85% 65%)",
     bgColor: "bg-aura-lemon/20"
   },
@@ -60,7 +67,8 @@ export const products: Product[] = [
     ingredients: "Aqua (Water), Decyl Glucoside, Cocamidopropyl Betaine, Glycerin, Xanthan Gum, Coffea Arabica (Coffee) Seed Powder, Kwalinol, Citric Acid, Preservative, Fragrance",
     price: 349,
     size: "100ml",
-    image: coffeeImage,
+    primaryImage: coffeePrimary,
+    thumbnailImage: coffeeThumb,
     color: "hsl(25 35% 30%)",
     bgColor: "bg-aura-coffee/10"
   },
@@ -81,7 +89,8 @@ export const products: Product[] = [
     ingredients: "Aqua (Water), Decyl Glucoside, Cocamidopropyl Betaine, Glycerin, Xanthan Gum, Hydrolyzed Rice Protein, Hydrolyzed Milk Protein, Kwalinol, Preservative, Fragrance",
     price: 349,
     size: "100ml",
-    image: riceMilkImage,
+    primaryImage: riceMilkPrimary,
+    thumbnailImage: riceMilkThumb,
     color: "hsl(45 30% 85%)",
     bgColor: "bg-aura-rice/30"
   },
@@ -102,7 +111,8 @@ export const products: Product[] = [
     ingredients: "Aqua (Water), Decyl Glucoside, Cocamidopropyl Betaine, Glycerin, Xanthan Gum, Beta Vulgaris (Beet) Root Extract, Kwalinol, Preservative, Fragrance",
     price: 349,
     size: "100ml",
-    image: beetrootImage,
+    primaryImage: beetrootPrimary,
+    thumbnailImage: beetrootThumb,
     color: "hsl(340 50% 45%)",
     bgColor: "bg-aura-beetroot/10"
   },
@@ -123,7 +133,8 @@ export const products: Product[] = [
     ingredients: "Aqua (Water), Decyl Glucoside, Cocamidopropyl Betaine, Glycerin, Xanthan Gum, Niacinamide, Kwalinol, Citric Acid, Phenoxyethanol, Ethylhexylglycerin, Parfum (Fragrance)",
     price: 349,
     size: "100ml",
-    image: niacinamideImage,
+    primaryImage: niacinamidePrimary,
+    thumbnailImage: niacinamideThumb,
     color: "hsl(270 35% 55%)",
     bgColor: "bg-aura-lavender/10"
   }

@@ -141,10 +141,10 @@ export function LoadingScreen() {
           <img
             src={auraLogo}
             alt="Aura"
-            className="w-24 h-24 md:w-32 md:h-32 object-contain animate-pulse"
+            className="w-40 h-40 md:w-56 md:h-56 object-contain animate-pulse"
           />
           {/* Glow effect */}
-          <div className="absolute inset-0 bg-primary/20 rounded-full blur-2xl animate-pulse" />
+          <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl scale-150 animate-pulse" />
         </div>
 
         {/* Brand name */}
