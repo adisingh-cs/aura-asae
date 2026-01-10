@@ -9,6 +9,17 @@ import beetrootThumb from "@/assets/beetroot-thumb.webp";
 import niacinamidePrimary from "@/assets/niacinamide-primary.webp";
 import niacinamideThumb from "@/assets/niacinamide-thumb.webp";
 
+// Review images
+import reviewBeetroot from "@/assets/reviews/beetroot.webp";
+import reviewCoffeeVitaminC from "@/assets/reviews/coffee-vitaminc.webp";
+import reviewCoffee from "@/assets/reviews/coffee.webp";
+import reviewNiacinamide from "@/assets/reviews/niacinamide.webp";
+import reviewNiacinamideBeetroot from "@/assets/reviews/niacinamide-beetroot.webp";
+import reviewRiceMilk from "@/assets/reviews/ricemilk.webp";
+import reviewRiceMilk2 from "@/assets/reviews/ricemilk-2.webp";
+import reviewVitaminC from "@/assets/reviews/vitaminc.webp";
+import reviewVitaminC2 from "@/assets/reviews/vitaminc-2.webp";
+
 export interface Product {
   id: string;
   name: string;
@@ -196,38 +207,97 @@ export const ingredients = [
   }
 ];
 
-export const testimonials = [
+export interface Testimonial {
+  id: number;
+  name: string;
+  age: number;
+  product: string;
+  text: string;
+  rating: number;
+  image: string;
+}
+
+export const testimonials: Testimonial[] = [
   {
     id: 1,
-    name: "Priya S.",
-    age: 21,
+    name: "Kavya R.",
+    age: 23,
     product: "Vitamin C Facewash",
-    text: "My skin has never looked this radiant! The vitamin C facewash has become my morning essential. I've noticed my dark spots fading within weeks.",
-    rating: 5
+    text: "Honestly didn't expect much but wow! My skin looks so much brighter now. Using it every morning and the citrusy smell is just 💛 Been getting so many compliments lately!",
+    rating: 5,
+    image: reviewVitaminC
   },
   {
     id: 2,
-    name: "Aisha M.",
-    age: 19,
-    product: "Niacinamide Facewash",
-    text: "Finally found something that actually helps with my acne without drying out my skin. The niacinamide formula is a game changer!",
-    rating: 5
+    name: "Sneha M.",
+    age: 21,
+    product: "Vitamin C Facewash",
+    text: "Third bottle and still obsessed! My dark spots from last summer have faded so much. It's gentle but you can really feel it working. Total skincare staple for me now.",
+    rating: 5,
+    image: reviewVitaminC2
   },
   {
     id: 3,
-    name: "Rohan K.",
-    age: 22,
-    product: "Coffee Facewash",
-    text: "As a guy, I was skeptical about skincare. But this coffee facewash wakes me up and keeps my skin looking fresh all day. Highly recommend!",
-    rating: 5
+    name: "Priya T.",
+    age: 20,
+    product: "Rice & Milk Facewash",
+    text: "Finally something that doesn't irritate my super sensitive skin! Leaves my face feeling baby soft without that tight feeling. The packaging is so pretty too 🤍",
+    rating: 5,
+    image: reviewRiceMilk
   },
   {
     id: 4,
-    name: "Meera D.",
-    age: 20,
+    name: "Ananya S.",
+    age: 22,
     product: "Rice & Milk Facewash",
-    text: "My sensitive skin loves this! So gentle yet effective. My face feels soft and hydrated every time I use it.",
-    rating: 5
+    text: "My dry skin has never been happier! Was tired of facewashes that made me feel like I need moisturizer immediately. This one actually hydrates while cleansing. Love it!",
+    rating: 5,
+    image: reviewRiceMilk2
+  },
+  {
+    id: 5,
+    name: "Ritika J.",
+    age: 19,
+    product: "Niacinamide Facewash",
+    text: "Okay so I've struggled with acne for years and this has genuinely helped! My pores look smaller and breakouts have reduced so much. Wish I found this sooner tbh.",
+    rating: 5,
+    image: reviewNiacinamide
+  },
+  {
+    id: 6,
+    name: "Diya P.",
+    age: 24,
+    product: "Niacinamide & Beetroot Combo",
+    text: "Got both for my oily-but-dehydrated skin situation and it's the perfect combo! Niacinamide in the morning, Beetroot at night. Skin has never been more balanced 💜",
+    rating: 5,
+    image: reviewNiacinamideBeetroot
+  },
+  {
+    id: 7,
+    name: "Meera K.",
+    age: 20,
+    product: "Coffee Facewash",
+    text: "The morning pick-me-up my face needed! Smells amazing and really wakes up my skin. My boyfriend secretly uses it too now lol. Worth every rupee!",
+    rating: 5,
+    image: reviewCoffee
+  },
+  {
+    id: 8,
+    name: "Aisha L.",
+    age: 22,
+    product: "Coffee & Vitamin C Combo",
+    text: "Bought both to try and honestly can't pick a favorite! Coffee for those puffy morning days, Vitamin C when I need extra glow. Best skincare investment I've made 🧡",
+    rating: 5,
+    image: reviewCoffeeVitaminC
+  },
+  {
+    id: 9,
+    name: "Tanvi D.",
+    age: 21,
+    product: "Beetroot Facewash",
+    text: "Such a unique product! The pink color is so cute and it actually works. My skin feels super hydrated and healthy. Perfect for winters when my skin gets all dry.",
+    rating: 5,
+    image: reviewBeetroot
   }
 ];
 

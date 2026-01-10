@@ -28,7 +28,7 @@ export function TestimonialsSection() {
         </div>
 
         {/* Testimonials Grid */}
-        <div className="grid md:grid-cols-2 gap-6 md:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 md:gap-6">
           {testimonials.map((testimonial, index) => (
             <TestimonialCard
               key={testimonial.id}
@@ -37,6 +37,7 @@ export function TestimonialsSection() {
               product={testimonial.product}
               text={testimonial.text}
               rating={testimonial.rating}
+              image={testimonial.image}
               index={index}
             />
           ))}
