@@ -1,13 +1,13 @@
-import vitaminCPrimary from "@/assets/vitamin-c-primary.png";
-import vitaminCThumb from "@/assets/vitamin-c-thumb.png";
-import coffeePrimary from "@/assets/coffee-primary.png";
-import coffeeThumb from "@/assets/coffee-thumb.png";
-import riceMilkPrimary from "@/assets/rice-milk-primary.png";
-import riceMilkThumb from "@/assets/rice-milk-thumb.png";
-import beetrootPrimary from "@/assets/beetroot-primary.png";
-import beetrootThumb from "@/assets/beetroot-thumb.png";
-import niacinamidePrimary from "@/assets/niacinamide-primary.png";
-import niacinamideThumb from "@/assets/niacinamide-thumb.png";
+import vitaminCPrimary from "@/assets/vitamin-c-primary.webp";
+import vitaminCThumb from "@/assets/vitamin-c-thumb.webp";
+import coffeePrimary from "@/assets/coffee-primary.webp";
+import coffeeThumb from "@/assets/coffee-thumb.webp";
+import riceMilkPrimary from "@/assets/rice-milk-primary.webp";
+import riceMilkThumb from "@/assets/rice-milk-thumb.webp";
+import beetrootPrimary from "@/assets/beetroot-primary.webp";
+import beetrootThumb from "@/assets/beetroot-thumb.webp";
+import niacinamidePrimary from "@/assets/niacinamide-primary.webp";
+import niacinamideThumb from "@/assets/niacinamide-thumb.webp";
 
 export interface Product {
   id: string;
