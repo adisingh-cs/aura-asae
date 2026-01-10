@@ -18,6 +18,9 @@ export function AboutSection() {
                 src={auraLogo}
                 alt="Aura Cosmetics Logo"
                 className="relative w-64 md:w-80 lg:w-96 opacity-90"
+                width={384}
+                height={384}
+                loading="lazy"
               />
             </div>
           </AnimatedSection>

@@ -33,6 +33,8 @@ export function ProductCard({ product, index, onClick }: ProductCardProps) {
             alt={product.name}
             className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
+            width={224}
+            height={298}
           />
           {/* Hover Overlay */}
           <div className="absolute inset-0 bg-primary/0 group-hover:bg-primary/10 transition-colors duration-300" />
