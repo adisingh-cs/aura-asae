@@ -9,7 +9,6 @@ import FAQSection from '@/components/sections/FAQSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/sections/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
-import PromoBanner from '@/components/PromoBanner';
 import { Helmet } from 'react-helmet-async';
 
 const Index = () => {
@@ -29,7 +28,6 @@ const Index = () => {
       </Helmet>
 
       <main className="min-h-screen">
-        <PromoBanner />
         <Navbar />
         <HeroSection />
         <AboutSection />
