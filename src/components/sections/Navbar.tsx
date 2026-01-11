@@ -37,11 +37,13 @@ export function Navbar() {
         <div className="container mx-auto px-4">
           <div className="flex items-center justify-between h-16 md:h-20">
             {/* Logo */}
-            <a href="#" className="flex items-center gap-2">
+            <a href="#" className="flex items-center gap-2" aria-label="Aura Cosmetics - Home">
               <img
                 src={auraLogo}
-                alt="Aura Cosmetics"
+                alt="Aura Cosmetics - Organic Handcrafted Skincare Logo"
                 className="w-10 h-10 md:w-12 md:h-12 object-contain"
+                width={48}
+                height={48}
               />
               <span className="font-serif text-xl md:text-2xl font-bold text-foreground">
                 AURA
@@ -49,7 +51,7 @@ export function Navbar() {
             </a>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
               {navLinks.map((link) => (
                 <a
                   key={link.href}
@@ -59,29 +61,33 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
-            </div>
+            </nav>
 
             {/* Mobile Menu Button */}
             <button
               onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
               className="md:hidden p-2 text-foreground"
-              aria-label="Toggle menu"
+              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+              aria-expanded={isMobileMenuOpen}
+              aria-controls="mobile-menu"
             >
               {isMobileMenuOpen ? (
-                <X className="w-6 h-6" />
+                <X className="w-6 h-6" aria-hidden="true" />
               ) : (
-                <Menu className="w-6 h-6" />
+                <Menu className="w-6 h-6" aria-hidden="true" />
               )}
             </button>
           </div>
         </div>
 
         {/* Mobile Menu */}
-        <div
+        <nav
           className={cn(
             "md:hidden absolute top-full left-0 right-0 bg-background border-b border-border transition-all duration-300",
             isMobileMenuOpen ? "opacity-100 visible" : "opacity-0 invisible"
           )}
+          aria-label="Mobile navigation"
+          aria-hidden={!isMobileMenuOpen}
         >
           <div className="container mx-auto px-4 py-4">
             {navLinks.map((link) => (
@@ -95,7 +101,7 @@ export function Navbar() {
               </a>
             ))}
           </div>
-        </div>
+        </nav>
       </nav>
 
       {/* Promo Banner */}

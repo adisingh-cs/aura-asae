@@ -58,11 +58,12 @@ export function HeroSection() {
                 
                 <img 
                   src={heroImage} 
-                  alt="Aura Cosmetics - Premium Organic Skincare" 
+                  alt="Aura Cosmetics Premium Organic Skincare Collection - Handcrafted Facewash Products Made in India" 
                   className="w-full max-w-lg lg:max-w-xl animate-float-slow"
                   width={576}
                   height={686}
                   fetchPriority="high"
+                  decoding="async"
                 />
               </div>
             </AnimatedSection>
