@@ -16,11 +16,12 @@ export function AboutSection() {
               <div className="absolute -inset-4 bg-primary/10 rounded-full blur-2xl" />
               <img
                 src={auraLogo}
-                alt="Aura Cosmetics Logo"
+                alt="Aura Cosmetics Brand Logo - 100% Organic Handcrafted Skincare Since 2025"
                 className="relative w-64 md:w-80 lg:w-96 opacity-90"
                 width={384}
                 height={384}
                 loading="lazy"
+                decoding="async"
               />
             </div>
           </AnimatedSection>

@@ -95,8 +95,9 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                   >
                     <img
                       src={image}
-                      alt={`${product.name} - View ${index + 1}`}
+                      alt={`${product.name} - ${product.tagline} - View ${index + 1} of ${images.length}`}
                       className="max-w-full max-h-80 md:max-h-full object-contain"
+                      loading={index === 0 ? "eager" : "lazy"}
                     />
                   </div>
                 ))}

@@ -1,5 +1,5 @@
 import { Instagram, Mail, Phone, Heart, Leaf, Sparkles, Shield } from 'lucide-react';
-import auraLogo from '@/assets/aura-logo.png';
+import auraLogo from '@/assets/aura-logo.webp';
 import { contactInfo, products } from '@/data/products';
 import { AnimatedSection } from '@/components/AnimatedSection';
 
@@ -32,8 +32,11 @@ export function Footer() {
           <div className="flex items-center justify-center gap-3 mb-6">
             <img
               src={auraLogo}
-              alt="Aura Cosmetics"
+              alt="Aura Cosmetics - Organic Handcrafted Skincare Logo"
               className="w-14 h-14 object-contain invert opacity-90"
+              width={56}
+              height={56}
+              loading="lazy"
             />
             <span className="font-serif text-3xl font-bold tracking-wide">AURA</span>
           </div>

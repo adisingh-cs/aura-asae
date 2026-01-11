@@ -30,7 +30,7 @@ export function ProductCard({ product, index, onClick }: ProductCardProps) {
         )}>
           <img
             src={product.thumbnailImage}
-            alt={product.name}
+            alt={`${product.name} - ${product.tagline} - Organic facewash by Aura Cosmetics`}
             className="w-full h-full object-contain p-4 transition-transform duration-500 group-hover:scale-105"
             loading="lazy"
             width={224}
