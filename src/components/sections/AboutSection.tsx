@@ -1,4 +1,4 @@
-import auraLogo from '@/assets/aura-logo.png';
+import auraLogo from '@/assets/aura-logo.webp';
 import { AnimatedSection } from '@/components/AnimatedSection';
 
 export function AboutSection() {

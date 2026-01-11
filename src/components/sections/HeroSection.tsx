@@ -1,5 +1,5 @@
 import { ArrowDown } from 'lucide-react';
-import heroImage from '@/assets/hero-section.png';
+import heroImage from '@/assets/hero-section.webp';
 import { AnimatedSection } from '@/components/AnimatedSection';
 export function HeroSection() {
   return <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
