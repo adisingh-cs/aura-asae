@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
-import auraLogo from '@/assets/aura-logo.png';
+import auraLogo from '@/assets/aura-logo.webp';
 import { cn } from '@/lib/utils';
 
 const navLinks = [
