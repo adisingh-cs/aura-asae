@@ -1,8 +1,13 @@
 import { ArrowDown } from 'lucide-react';
 import heroImage from '@/assets/hero-section.webp';
 import { AnimatedSection } from '@/components/AnimatedSection';
+import { useLocale } from '@/lib/i18n/LocaleContext';
+
 export function HeroSection() {
-  return <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
+  const { t } = useLocale();
+
+  return (
+    <section id="hero" className="relative min-h-screen flex items-center justify-center overflow-hidden bg-gradient-hero">
       {/* Background Pattern */}
       <div className="absolute inset-0 opacity-30">
         <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-primary/10 blur-3xl animate-float" />
@@ -16,7 +21,7 @@ export function HeroSection() {
           <div className="text-center lg:text-left order-2 lg:order-1">
             <AnimatedSection animation="fade-in-left" delay={100}>
               <span className="inline-block px-4 py-2 text-sm font-medium rounded-full bg-primary/10 text-primary mb-6">
-                Organic • Handcrafted • Premium
+                {t.hero.badge}
               </span>
             </AnimatedSection>
 
@@ -30,19 +35,18 @@ export function HeroSection() {
 
             <AnimatedSection animation="fade-in-left" delay={300}>
               <p className="text-body-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
-                Discover skincare that truly cares. Our organic, handcrafted formulas are 
-                designed for young, conscious individuals who value purity and effectiveness.
+                {t.hero.tagline}
               </p>
             </AnimatedSection>
 
             <AnimatedSection animation="fade-in-left" delay={400}>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
                 <a href="#products" className="btn-hero">
-                  Explore Products
+                  {t.hero.cta}
                   <ArrowDown className="w-5 h-5 animate-bounce" />
                 </a>
                 <a href="#about" className="btn-secondary">
-                  Our Story
+                  {t.hero.secondary}
                 </a>
               </div>
             </AnimatedSection>
@@ -52,7 +56,6 @@ export function HeroSection() {
           <div className="order-1 lg:order-2 flex justify-center">
             <AnimatedSection animation="fade-in-right" delay={300}>
               <div className="relative">
-                {/* Floating butterflies effect */}
                 <div className="absolute -top-4 -right-4 w-8 h-8 text-primary/40 animate-butterfly-float" />
                 <div className="absolute top-1/4 -left-8 w-6 h-6 text-primary/30 animate-butterfly-float animation-delay-300" />
                 
@@ -70,8 +73,6 @@ export function HeroSection() {
           </div>
         </div>
       </div>
-
-      {/* Scroll Indicator */}
-      
-    </section>;
+    </section>
+  );
 }

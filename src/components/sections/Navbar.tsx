@@ -2,20 +2,21 @@ import { useState, useEffect } from 'react';
 import { Menu, X } from 'lucide-react';
 import auraLogo from '@/assets/aura-logo.webp';
 import { cn } from '@/lib/utils';
-
-const navLinks = [
-  { href: '#about', label: 'About' },
-  { href: '#products', label: 'Products' },
-  { href: '#ingredients', label: 'Ingredients' },
-  { href: '#testimonials', label: 'Reviews' },
-  { href: '#contact', label: 'Contact' }
-];
-
-const promoText = "🚚 FREE DELIVERY on orders above ₹500  •  🔥 LIMITED TIME: Get 2 Facewash for just ₹500!  •  ";
+import { useLocale } from '@/lib/i18n/LocaleContext';
+import { CountrySelector } from '@/components/CountrySelector';
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const { t, isIndia, currentLocale, formatPrice } = useLocale();
+
+  const navLinks = [
+    { href: '#about', label: t.nav.about },
+    { href: '#products', label: t.nav.products },
+    { href: '#ingredients', label: t.nav.ingredients },
+    { href: '#testimonials', label: t.nav.reviews },
+    { href: '#contact', label: t.nav.contact }
+  ];
 
   useEffect(() => {
     const handleScroll = () => {
@@ -61,22 +62,26 @@ export function Navbar() {
                   {link.label}
                 </a>
               ))}
+              <CountrySelector />
             </nav>
 
             {/* Mobile Menu Button */}
-            <button
-              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-              className="md:hidden p-2 text-foreground"
-              aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
-              aria-expanded={isMobileMenuOpen}
-              aria-controls="mobile-menu"
-            >
-              {isMobileMenuOpen ? (
-                <X className="w-6 h-6" aria-hidden="true" />
-              ) : (
-                <Menu className="w-6 h-6" aria-hidden="true" />
-              )}
-            </button>
+            <div className="md:hidden flex items-center gap-2">
+              <CountrySelector variant="navbar" />
+              <button
+                onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                className="p-2 text-foreground"
+                aria-label={isMobileMenuOpen ? "Close navigation menu" : "Open navigation menu"}
+                aria-expanded={isMobileMenuOpen}
+                aria-controls="mobile-menu"
+              >
+                {isMobileMenuOpen ? (
+                  <X className="w-6 h-6" aria-hidden="true" />
+                ) : (
+                  <Menu className="w-6 h-6" aria-hidden="true" />
+                )}
+              </button>
+            </div>
           </div>
         </div>
 
@@ -104,16 +109,22 @@ export function Navbar() {
         </nav>
       </nav>
 
-      {/* Promo Banner */}
-      <div className="bg-primary text-primary-foreground py-1.5 overflow-hidden">
-        <div className="flex animate-marquee whitespace-nowrap">
-          {[...Array(4)].map((_, i) => (
-            <span key={i} className="mx-4 text-xs sm:text-sm font-medium">
-              {promoText}
-            </span>
-          ))}
+      {/* Promo Banner - India Only */}
+      {isIndia ? (
+        <div className="bg-primary text-primary-foreground py-1.5 overflow-hidden">
+          <div className="flex animate-marquee whitespace-nowrap">
+            {[...Array(4)].map((_, i) => (
+              <span key={i} className="mx-4 text-xs sm:text-sm font-medium">
+                {t.promo.freeDelivery}  •  {t.promo.limitedOffer}  •  
+              </span>
+            ))}
+          </div>
         </div>
-      </div>
+      ) : (
+        <div className="bg-muted text-muted-foreground py-1.5 text-center text-xs sm:text-sm">
+          {t.international.shippingAvailable} • {t.international.shippingCost.replace('{price}', formatPrice(currentLocale.shippingCost))}
+        </div>
+      )}
     </header>
   );
 }

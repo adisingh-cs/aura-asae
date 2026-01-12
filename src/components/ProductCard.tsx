@@ -1,6 +1,7 @@
 import { Product } from '@/data/products';
 import { cn } from '@/lib/utils';
 import { AnimatedSection } from './AnimatedSection';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 
 interface ProductCardProps {
   product: Product;
@@ -9,6 +10,8 @@ interface ProductCardProps {
 }
 
 export function ProductCard({ product, index, onClick }: ProductCardProps) {
+  const { formatPrice, t } = useLocale();
+
   return (
     <AnimatedSection
       animation="scale-in"
@@ -50,10 +53,10 @@ export function ProductCard({ product, index, onClick }: ProductCardProps) {
           </p>
           <div className="flex items-center justify-between">
             <span className="text-lg font-semibold text-primary">
-              ₹{product.price}
+              {formatPrice()}
             </span>
             <span className="text-sm text-muted-foreground group-hover:text-primary transition-colors">
-              View Details →
+              {t.products.viewDetails}
             </span>
           </div>
         </div>
