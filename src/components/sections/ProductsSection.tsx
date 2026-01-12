@@ -3,10 +3,16 @@ import { products } from '@/data/products';
 import { ProductCard } from '@/components/ProductCard';
 import { ProductModal } from '@/components/ProductModal';
 import { AnimatedSection } from '@/components/AnimatedSection';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 import type { Product } from '@/data/products';
 
 export function ProductsSection() {
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(null);
+  const { t, formatPrice, isIndia, currentLocale } = useLocale();
+
+  const priceNote = isIndia 
+    ? t.products.priceNote.replace('{price}', formatPrice())
+    : `${t.products.priceNote.replace('{price}', formatPrice())} + ${t.international.shippingCost.replace('{price}', formatPrice(currentLocale.shippingCost))}`;
 
   return (
     <section id="products" className="section-padding bg-secondary/30">
@@ -15,20 +21,19 @@ export function ProductsSection() {
         <div className="text-center mb-12 md:mb-16">
           <AnimatedSection animation="fade-in">
             <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-4">
-              Our Products
+              {t.products.label}
             </span>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-in" delay={100}>
             <h2 className="heading-section text-foreground mb-4">
-              The Aura Lineup
+              {t.products.title}
             </h2>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-in" delay={200}>
             <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
-              Five handcrafted facewashes, each designed to address your unique skin needs. 
-              Find your perfect match.
+              {t.products.subtitle}
             </p>
           </AnimatedSection>
         </div>
@@ -48,7 +53,7 @@ export function ProductsSection() {
         {/* Pricing Note */}
         <AnimatedSection animation="fade-in" delay={500}>
           <p className="text-center mt-8 text-muted-foreground">
-            All products: <span className="font-semibold text-primary">₹349</span> for 100ml
+            {priceNote}
           </p>
         </AnimatedSection>
       </div>

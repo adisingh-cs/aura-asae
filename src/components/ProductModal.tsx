@@ -4,6 +4,7 @@ import { contactInfo } from '@/data/products';
 import { cn } from '@/lib/utils';
 import { useEffect, useState, useCallback } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 
 interface ProductModalProps {
   product: Product | null;
@@ -14,6 +15,7 @@ interface ProductModalProps {
 export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
   const [emblaRef, emblaApi] = useEmblaCarousel({ loop: true });
   const [selectedIndex, setSelectedIndex] = useState(0);
+  const { t, formatPrice, isIndia, currentLocale } = useLocale();
 
   const scrollPrev = useCallback(() => emblaApi?.scrollPrev(), [emblaApi]);
   const scrollNext = useCallback(() => emblaApi?.scrollNext(), [emblaApi]);
@@ -48,7 +50,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
   const images = [product.primaryImage, product.thumbnailImage];
 
   const whatsappMessage = encodeURIComponent(
-    `Hi! I'm interested in the ${product.name}. Can you tell me more?`
+    `Hi! I'm interested in the ${product.name} (${formatPrice()}). Can you tell me more?`
   );
 
   return (
@@ -141,7 +143,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
           {/* Content Section */}
           <div className="p-6 md:p-8">
             <span className="inline-block px-3 py-1 text-xs font-medium rounded-full bg-primary/10 text-primary mb-4">
-              {product.size} • ₹{product.price}
+              {product.size} • {formatPrice()}
             </span>
 
             <h2
@@ -159,9 +161,16 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
               {product.description}
             </p>
 
+            {/* Shipping Info for International */}
+            {!isIndia && (
+              <div className="mb-4 p-3 rounded-lg bg-muted/50 text-sm text-muted-foreground">
+                {t.productDetails.shippingInfo.replace('{price}', formatPrice(currentLocale.shippingCost))}
+              </div>
+            )}
+
             {/* Benefits */}
             <div className="mb-6">
-              <h3 className="font-semibold text-foreground mb-3">Benefits</h3>
+              <h3 className="font-semibold text-foreground mb-3">{t.productDetails.benefits}</h3>
               <ul className="space-y-2">
                 {product.benefits.map((benefit, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
@@ -174,7 +183,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
 
             {/* Suitable For */}
             <div className="mb-6">
-              <h3 className="font-semibold text-foreground mb-3">Suitable For</h3>
+              <h3 className="font-semibold text-foreground mb-3">{t.productDetails.suitableFor}</h3>
               <div className="flex flex-wrap gap-2">
                 {product.suitableFor.map((type, i) => (
                   <span
@@ -189,7 +198,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
 
             {/* Ingredients */}
             <div className="p-4 rounded-xl bg-muted/50 mb-6">
-              <h3 className="font-semibold text-foreground mb-2 text-sm">Full Ingredients</h3>
+              <h3 className="font-semibold text-foreground mb-2 text-sm">{t.productDetails.ingredients}</h3>
               <p className="text-xs text-muted-foreground leading-relaxed">
                 {product.ingredients}
               </p>
@@ -203,7 +212,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
               className="btn-hero w-full"
             >
               <MessageCircle className="w-5 h-5" />
-              Order on WhatsApp
+              {t.productDetails.orderNow}
             </a>
           </div>
         </div>
