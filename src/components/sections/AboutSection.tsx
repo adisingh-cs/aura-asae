@@ -1,7 +1,10 @@
 import auraLogo from '@/assets/aura-logo.webp';
 import { AnimatedSection } from '@/components/AnimatedSection';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 
 export function AboutSection() {
+  const { t } = useLocale();
+
   return (
     <section id="about" className="section-padding bg-background relative overflow-hidden">
       {/* Decorative Background */}
@@ -30,53 +33,34 @@ export function AboutSection() {
           <div>
             <AnimatedSection animation="fade-in-right">
               <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-4">
-                Our Story
+                {t.about.label}
               </span>
             </AnimatedSection>
 
             <AnimatedSection animation="fade-in-right" delay={100}>
               <h2 className="heading-section text-foreground mb-6">
-                Skincare That 
-                <span className="text-primary"> Understands </span>
+                {t.about.title}
+                <span className="text-primary"> {t.about.titleHighlight} </span>
                 You
               </h2>
             </AnimatedSection>
 
             <AnimatedSection animation="fade-in-right" delay={200}>
               <div className="space-y-4 text-muted-foreground leading-relaxed">
-                <p>
-                  Born in 2025, Aura Cosmetics emerged from a simple belief: your skin deserves 
-                  ingredients you can trust. We're a young brand created for young people who 
-                  refuse to compromise on what they put on their skin.
-                </p>
-                <p>
-                  Every Aura product is meticulously handcrafted using 100% organic ingredients, 
-                  carefully sourced and blended to deliver real results without harsh chemicals. 
-                  We believe in gentle yet effective skincare that works with your skin's natural 
-                  rhythm.
-                </p>
-                <p>
-                  From vitamin C brightening to niacinamide clarity, each formula is designed 
-                  to address real concerns faced by college students and young professionals — 
-                  because glowing skin shouldn't require a complicated routine or a hefty budget.
-                </p>
+                {t.about.paragraphs.map((paragraph, index) => (
+                  <p key={index}>{paragraph}</p>
+                ))}
               </div>
             </AnimatedSection>
 
             <AnimatedSection animation="fade-in-right" delay={300}>
               <div className="mt-8 flex flex-wrap gap-4">
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="text-sm font-medium text-secondary-foreground">Est. 2025</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="text-sm font-medium text-secondary-foreground">100% Organic</span>
-                </div>
-                <div className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary">
-                  <span className="w-2 h-2 rounded-full bg-primary" />
-                  <span className="text-sm font-medium text-secondary-foreground">Made with Love</span>
-                </div>
+                {t.about.badges.map((badge, index) => (
+                  <div key={index} className="flex items-center gap-2 px-4 py-2 rounded-full bg-secondary">
+                    <span className="w-2 h-2 rounded-full bg-primary" />
+                    <span className="text-sm font-medium text-secondary-foreground">{badge}</span>
+                  </div>
+                ))}
               </div>
             </AnimatedSection>
           </div>

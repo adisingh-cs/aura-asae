@@ -1,8 +1,11 @@
 import { ingredients } from '@/data/products';
 import { IngredientCard } from '@/components/IngredientCard';
 import { AnimatedSection } from '@/components/AnimatedSection';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 
 export function IngredientsSection() {
+  const { t } = useLocale();
+
   return (
     <section id="ingredients" className="section-padding bg-secondary/30 relative overflow-hidden">
       {/* Decorative Elements */}
@@ -14,20 +17,19 @@ export function IngredientsSection() {
         <div className="text-center mb-12 md:mb-16">
           <AnimatedSection animation="fade-in">
             <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-4">
-              Pure Ingredients
+              {t.ingredients.label}
             </span>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-in" delay={100}>
             <h2 className="heading-section text-foreground mb-4">
-              Nature's Best, <br className="md:hidden" />In Every Drop
+              {t.ingredients.title}
             </h2>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-in" delay={200}>
             <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
-              We source only the finest organic ingredients to create formulas that 
-              nourish, protect, and transform your skin naturally.
+              {t.ingredients.subtitle}
             </p>
           </AnimatedSection>
         </div>
@@ -37,8 +39,8 @@ export function IngredientsSection() {
           {ingredients.map((ingredient, index) => (
             <IngredientCard
               key={ingredient.name}
-              name={ingredient.name}
-              benefit={ingredient.benefit}
+              name={t.ingredients.items[index]?.name || ingredient.name}
+              benefit={t.ingredients.items[index]?.benefit || ingredient.benefit}
               icon={ingredient.icon}
               index={index}
             />
