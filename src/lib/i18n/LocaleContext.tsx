@@ -1,7 +1,8 @@
-import React, { createContext, useContext, useState, useEffect, useCallback, useMemo } from 'react';
+import React, { createContext, useContext, useState, useEffect, useCallback, useMemo, useRef } from 'react';
 import type { CountryCode, LocaleConfig, Translations } from './types';
 import { locales, defaultCountry, supportedCountries } from './locales';
 import { translations } from './translations';
+import { toast } from 'sonner';
 
 interface LocaleContextValue {
   currentLocale: LocaleConfig;
@@ -16,6 +17,7 @@ interface LocaleContextValue {
 const LocaleContext = createContext<LocaleContextValue | undefined>(undefined);
 
 const STORAGE_KEY = 'aura-country';
+const DETECTION_SHOWN_KEY = 'aura-detection-shown';
 
 // Map IP API country codes to our supported countries
 const mapCountryCode = (code: string): CountryCode => {
@@ -46,6 +48,7 @@ const getBrowserLanguage = (): CountryCode | null => {
 export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [countryCode, setCountryCode] = useState<CountryCode>(defaultCountry);
   const [isLoading, setIsLoading] = useState(true);
+  const hasShownToast = useRef(false);
 
   // Detect country on mount
   useEffect(() => {
@@ -58,6 +61,11 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
         return;
       }
 
+      // Check if we've already shown the detection toast
+      const detectionShown = localStorage.getItem(DETECTION_SHOWN_KEY);
+      let detectedCountry: CountryCode = defaultCountry;
+      let wasAutoDetected = false;
+
       // Try IP-based detection
       try {
         const response = await fetch('https://ipapi.co/json/', { 
@@ -65,19 +73,42 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
         });
         if (response.ok) {
           const data = await response.json();
-          const detected = mapCountryCode(data.country_code);
-          setCountryCode(detected);
-          localStorage.setItem(STORAGE_KEY, detected);
+          detectedCountry = mapCountryCode(data.country_code);
+          wasAutoDetected = detectedCountry !== defaultCountry;
         }
       } catch (error) {
         // Fallback to browser language
         const browserCountry = getBrowserLanguage();
         if (browserCountry) {
-          setCountryCode(browserCountry);
-          localStorage.setItem(STORAGE_KEY, browserCountry);
+          detectedCountry = browserCountry;
+          wasAutoDetected = true;
         }
-      } finally {
-        setIsLoading(false);
+      }
+
+      setCountryCode(detectedCountry);
+      localStorage.setItem(STORAGE_KEY, detectedCountry);
+      setIsLoading(false);
+
+      // Show toast notification for first-time auto-detection (non-default country)
+      if (wasAutoDetected && !detectionShown && !hasShownToast.current) {
+        hasShownToast.current = true;
+        localStorage.setItem(DETECTION_SHOWN_KEY, 'true');
+        
+        const locale = locales[detectedCountry];
+        // Delay toast to ensure app is rendered
+        setTimeout(() => {
+          toast.info(
+            `🌍 Showing content in ${locale.languageName}`,
+            {
+              description: `Prices in ${locale.currency} (${locale.symbol}). You can change this anytime using the flag selector.`,
+              duration: 6000,
+              action: {
+                label: 'Got it',
+                onClick: () => {},
+              },
+            }
+          );
+        }, 1500);
       }
     };
 
@@ -99,6 +130,15 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const setCountry = useCallback((code: CountryCode) => {
     setCountryCode(code);
     localStorage.setItem(STORAGE_KEY, code);
+    
+    const locale = locales[code];
+    toast.success(
+      `${locale.flag} Language changed to ${locale.languageName}`,
+      {
+        description: `Prices now shown in ${locale.currency} (${locale.symbol})`,
+        duration: 3000,
+      }
+    );
   }, []);
 
   const currentLocale = useMemo(() => locales[countryCode], [countryCode]);

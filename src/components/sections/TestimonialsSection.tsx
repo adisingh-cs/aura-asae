@@ -1,8 +1,11 @@
 import { testimonials } from '@/data/products';
 import { TestimonialCard } from '@/components/TestimonialCard';
 import { AnimatedSection } from '@/components/AnimatedSection';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 
 export function TestimonialsSection() {
+  const { t } = useLocale();
+
   return (
     <section id="testimonials" className="section-padding bg-background">
       <div className="container mx-auto">
@@ -10,19 +13,19 @@ export function TestimonialsSection() {
         <div className="text-center mb-12 md:mb-16">
           <AnimatedSection animation="fade-in">
             <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-4">
-              Customer Love
+              {t.testimonials.label}
             </span>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-in" delay={100}>
             <h2 className="heading-section text-foreground mb-4">
-              What Our Community Says
+              {t.testimonials.title}
             </h2>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-in" delay={200}>
             <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
-              Real reviews from real people who've experienced the Aura difference.
+              {t.testimonials.subtitle}
             </p>
           </AnimatedSection>
         </div>
@@ -46,7 +49,7 @@ export function TestimonialsSection() {
         {/* Disclaimer */}
         <AnimatedSection animation="fade-in" delay={600}>
           <p className="text-center mt-8 text-xs text-muted-foreground">
-            *These testimonials represent customer experiences. Individual results may vary.
+            {t.testimonials.disclaimer}
           </p>
         </AnimatedSection>
       </div>

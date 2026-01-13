@@ -1,8 +1,11 @@
 import { MessageCircle, Mail, Phone, Instagram } from 'lucide-react';
 import { contactInfo } from '@/data/products';
 import { AnimatedSection } from '@/components/AnimatedSection';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 
 export function ContactSection() {
+  const { t } = useLocale();
+  
   const whatsappMessage = encodeURIComponent(
     "Hi! I'd like to know more about Aura Cosmetics products."
   );
@@ -17,20 +20,19 @@ export function ContactSection() {
         <div className="text-center mb-12 md:mb-16">
           <AnimatedSection animation="fade-in">
             <span className="inline-block text-sm font-medium text-primary uppercase tracking-wider mb-4">
-              Get In Touch
+              {t.contact.label}
             </span>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-in" delay={100}>
             <h2 className="heading-section text-foreground mb-4">
-              Ready to Glow?
+              {t.contact.title}
             </h2>
           </AnimatedSection>
 
           <AnimatedSection animation="fade-in" delay={200}>
             <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
-              Have questions about our products or want to place an order? 
-              We're just a message away!
+              {t.contact.subtitle}
             </p>
           </AnimatedSection>
         </div>
@@ -46,7 +48,7 @@ export function ContactSection() {
               className="btn-hero w-full mb-8"
             >
               <MessageCircle className="w-6 h-6" />
-              Chat With Us on WhatsApp
+              {t.contact.whatsappCta}
             </a>
 
             {/* Contact Details */}
@@ -58,7 +60,7 @@ export function ContactSection() {
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Phone className="w-5 h-5 text-primary" />
                 </div>
-                <span className="text-sm text-muted-foreground">Phone</span>
+                <span className="text-sm text-muted-foreground">{t.contact.phone}</span>
                 <span className="text-sm font-medium text-foreground">
                   {contactInfo.phone}
                 </span>
@@ -71,7 +73,7 @@ export function ContactSection() {
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Mail className="w-5 h-5 text-primary" />
                 </div>
-                <span className="text-sm text-muted-foreground">Email</span>
+                <span className="text-sm text-muted-foreground">{t.contact.email}</span>
                 <span className="text-sm font-medium text-foreground break-all">
                   {contactInfo.email}
                 </span>
@@ -86,7 +88,7 @@ export function ContactSection() {
                 <div className="w-12 h-12 rounded-full bg-primary/10 flex items-center justify-center group-hover:bg-primary/20 transition-colors">
                   <Instagram className="w-5 h-5 text-primary" />
                 </div>
-                <span className="text-sm text-muted-foreground">Instagram</span>
+                <span className="text-sm text-muted-foreground">{t.contact.instagram}</span>
                 <span className="text-sm font-medium text-foreground">
                   {contactInfo.instagram}
                 </span>

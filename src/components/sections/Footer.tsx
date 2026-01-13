@@ -2,23 +2,23 @@ import { Instagram, Mail, Phone, Heart, Leaf, Sparkles, Shield } from 'lucide-re
 import auraLogo from '@/assets/aura-logo.webp';
 import { contactInfo, products } from '@/data/products';
 import { AnimatedSection } from '@/components/AnimatedSection';
+import { useLocale } from '@/lib/i18n/LocaleContext';
 
-const quickLinks = [
-  { href: '#about', label: 'About Us' },
-  { href: '#products', label: 'Products' },
-  { href: '#ingredients', label: 'Ingredients' },
-  { href: '#faq', label: 'FAQs' },
-  { href: '#contact', label: 'Contact' }
-];
-
-const brandPromises = [
-  { icon: Leaf, text: '100% Organic' },
-  { icon: Sparkles, text: 'Handcrafted' },
-  { icon: Shield, text: 'Paraben-Free' }
-];
+const brandPromiseIcons = [Leaf, Sparkles, Shield];
 
 export function Footer() {
+  const { t } = useLocale();
   const currentYear = new Date().getFullYear();
+
+  const quickLinks = [
+    { href: '#about', label: t.nav.about },
+    { href: '#products', label: t.nav.products },
+    { href: '#ingredients', label: t.nav.ingredients },
+    { href: '#faq', label: 'FAQs' },
+    { href: '#contact', label: t.nav.contact }
+  ];
+
+  const brandPromises = t.about.badges.slice(1, 4); // Get '100% Organic', 'Made with Love' etc.
 
   return (
     <footer className="bg-foreground text-background relative overflow-hidden">
@@ -41,18 +41,20 @@ export function Footer() {
             <span className="font-serif text-3xl font-bold tracking-wide">AURA</span>
           </div>
           <p className="text-background/70 max-w-md mx-auto leading-relaxed mb-8">
-            Organic, handcrafted skincare for the conscious generation. 
-            Let your natural glow shine through — with Aura.
+            {t.footer.tagline}
           </p>
           
           {/* Brand Promises */}
           <div className="flex flex-wrap justify-center gap-6">
-            {brandPromises.map((promise, i) => (
-              <div key={i} className="flex items-center gap-2 text-sm text-background/60">
-                <promise.icon className="w-4 h-4 text-primary" />
-                <span>{promise.text}</span>
-              </div>
-            ))}
+            {brandPromises.map((promise, i) => {
+              const Icon = brandPromiseIcons[i] || Leaf;
+              return (
+                <div key={i} className="flex items-center gap-2 text-sm text-background/60">
+                  <Icon className="w-4 h-4 text-primary" />
+                  <span>{promise}</span>
+                </div>
+              );
+            })}
           </div>
         </AnimatedSection>
 
@@ -60,7 +62,7 @@ export function Footer() {
         <div className="grid md:grid-cols-3 gap-12 md:gap-8 mb-16 border-t border-b border-background/10 py-12">
           {/* Products */}
           <AnimatedSection animation="fade-in" delay={100}>
-            <h4 className="font-semibold text-lg mb-5 text-center md:text-left">Our Products</h4>
+            <h4 className="font-semibold text-lg mb-5 text-center md:text-left">{t.footer.productsTitle}</h4>
             <div className="flex flex-wrap justify-center md:justify-start gap-2">
               {products.map((product) => (
                 <a
@@ -76,7 +78,7 @@ export function Footer() {
 
           {/* Quick Links */}
           <AnimatedSection animation="fade-in" delay={200} className="text-center">
-            <h4 className="font-semibold text-lg mb-5">Quick Links</h4>
+            <h4 className="font-semibold text-lg mb-5">{t.footer.linksTitle}</h4>
             <nav className="flex flex-wrap justify-center gap-x-6 gap-y-2">
               {quickLinks.map((link) => (
                 <a
@@ -92,7 +94,7 @@ export function Footer() {
 
           {/* Contact */}
           <AnimatedSection animation="fade-in" delay={300} className="text-center md:text-right">
-            <h4 className="font-semibold text-lg mb-5">Get in Touch</h4>
+            <h4 className="font-semibold text-lg mb-5">{t.footer.contactTitle}</h4>
             <div className="space-y-3">
               <a
                 href={contactInfo.whatsappLink}
@@ -126,10 +128,12 @@ export function Footer() {
         {/* Bottom Section */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-4">
           <p className="text-xs text-background/50 text-center md:text-left">
-            © {currentYear} Aura Cosmetics. All rights reserved.
+            {t.footer.copyright.replace('{year}', currentYear.toString())}
           </p>
           <p className="flex items-center gap-1.5 text-xs text-background/50">
-            Made with <Heart className="w-3 h-3 text-accent fill-accent" /> in India
+            {t.footer.madeIn.replace('❤️', '')}
+            <Heart className="w-3 h-3 text-accent fill-accent" />
+            {t.footer.madeIn.includes('India') ? '' : ''}
           </p>
         </div>
       </div>
