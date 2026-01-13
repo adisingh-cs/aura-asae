@@ -1,6 +1,12 @@
 import type { Translations } from '../types';
 
 export const en: Translations = {
+  seo: {
+    title: 'Aura Cosmetics | Organic Handcrafted Facewash',
+    description: "Shop Aura's 100% organic, handcrafted facewash collection. Vitamin C, Coffee, Rice Milk, Beetroot & Niacinamide formulas. Paraben-free skincare made in India.",
+    keywords: 'organic facewash, natural skincare, vitamin c facewash, niacinamide facewash, coffee facewash, rice milk facewash, beetroot facewash, handcrafted cosmetics, paraben free skincare, Aura Cosmetics',
+    ogLocale: 'en_US',
+  },
   nav: {
     about: 'About',
     products: 'Products',
@@ -31,6 +37,73 @@ export const en: Translations = {
     subtitle: 'Five handcrafted facewashes, each designed to address your unique skin needs. Find your perfect match.',
     priceNote: 'All products: {price} for 100ml',
     viewDetails: 'View Details →',
+    items: {
+      'vitamin-c': {
+        name: 'Vitamin C Facewash',
+        tagline: 'Radiant Glow Booster',
+        description: "Infused with pure lemon extracts and vitamin C, this brightening facewash gently cleanses while reviving your skin's natural radiance. Perfect for starting your day with a fresh, glowing complexion.",
+        benefits: [
+          'Brightens skin & fades dark spots',
+          'Rich in antioxidants from lemon extracts',
+          'Boosts collagen for firmer skin',
+          'Controls excess oil naturally',
+        ],
+        suitableFor: ['Dull Skin', 'Oily Skin', 'Combination Skin'],
+        keyIngredient: 'Lemon Extract',
+      },
+      'coffee': {
+        name: 'Coffee Facewash',
+        tagline: 'Energizing Deep Cleanse',
+        description: 'Wake up your skin with the invigorating power of coffee. This antioxidant-rich formula reduces puffiness, evens skin tone, and leaves you feeling refreshed and energized.',
+        benefits: [
+          'Reduces puffiness and soothes inflammation',
+          'Exfoliates for smoother texture',
+          'Brightens and evens skin tone',
+          'Ideal for all skin types',
+        ],
+        suitableFor: ['All Skin Types', 'Tired Skin', 'Dull Complexion'],
+        keyIngredient: 'Coffee Beans',
+      },
+      'rice-milk': {
+        name: 'Rice Water & Milk Facewash',
+        tagline: 'Silky Soft Nourishment',
+        description: 'Inspired by ancient beauty rituals, this gentle cleanser combines rice water and milk proteins to deeply nourish your skin, leaving it silky smooth and beautifully radiant.',
+        benefits: [
+          'Nourishes skin with rice and milk proteins',
+          'Improves skin texture and softness',
+          'Helps even out skin tone',
+          'Brightens complexion naturally',
+        ],
+        suitableFor: ['Dry Skin', 'Sensitive Skin', 'Normal Skin'],
+        keyIngredient: 'Rice Water & Milk',
+      },
+      'beetroot': {
+        name: 'Beetroot Facewash',
+        tagline: 'Natural Pink Glow',
+        description: "Harness the vibrant power of beetroot for deeply hydrated, healthy-looking skin. This gentle cleanser calms sensitive skin while supporting your skin's natural moisture barrier.",
+        benefits: [
+          'Gently cleanses without stripping skin',
+          'Hydrates and locks in moisture',
+          'Soothes and calms sensitive skin',
+          'Supports healthy, refreshed complexion',
+        ],
+        suitableFor: ['Sensitive Skin', 'Dry Skin', 'Dehydrated Skin'],
+        keyIngredient: 'Beetroot Extract',
+      },
+      'niacinamide': {
+        name: 'Niacinamide Facewash',
+        tagline: 'Clear Skin Formula',
+        description: 'Powered by Vitamin B3, this science-backed formula helps reduce acne, minimize pores, and even out skin tone. Perfect for those seeking clearer, more refined skin.',
+        benefits: [
+          'Gently cleanses without drying',
+          'Brightens and evens skin tone',
+          'Helps reduce acne and blemishes',
+          'Hydrates and soothes sensitive skin',
+        ],
+        suitableFor: ['Acne-Prone Skin', 'Oily Skin', 'Combination Skin'],
+        keyIngredient: 'Niacinamide (Vitamin B3)',
+      },
+    },
   },
   trust: {
     label: 'Why Choose Us',
@@ -61,6 +134,17 @@ export const en: Translations = {
     title: 'What Our Community Says',
     subtitle: "Real reviews from real people who've experienced the Aura difference.",
     disclaimer: '*These testimonials represent customer experiences. Individual results may vary.',
+    items: [
+      { text: "Honestly didn't expect much but wow! My skin looks so much brighter now. Using it every morning and the citrusy smell is amazing! Been getting so many compliments lately!" },
+      { text: "Third bottle and still obsessed! My dark spots from last summer have faded so much. It's gentle but you can really feel it working. Total skincare staple for me now." },
+      { text: "Finally something that doesn't irritate my super sensitive skin! Leaves my face feeling baby soft without that tight feeling. The packaging is so pretty too!" },
+      { text: "My dry skin has never been happier! Was tired of facewashes that made me feel like I need moisturizer immediately. This one actually hydrates while cleansing. Love it!" },
+      { text: "I've struggled with acne for years and this has genuinely helped! My pores look smaller and breakouts have reduced so much. Wish I found this sooner!" },
+      { text: "Got both for my oily-but-dehydrated skin situation and it's the perfect combo! Niacinamide in the morning, Beetroot at night. Skin has never been more balanced!" },
+      { text: "The morning pick-me-up my face needed! Smells amazing and really wakes up my skin. My boyfriend secretly uses it too now! Worth every penny!" },
+      { text: "Bought both to try and honestly can't pick a favorite! Coffee for those puffy morning days, Vitamin C when I need extra glow. Best skincare investment I've made!" },
+      { text: "Such a unique product! The pink color is so cute and it actually works. My skin feels super hydrated and healthy. Perfect for winters when my skin gets all dry." },
+    ],
   },
   faq: {
     label: 'Got Questions?',
@@ -89,11 +173,11 @@ export const en: Translations = {
       },
       {
         question: "What are Aura's payment options?",
-        answer: "All Aura orders are prepaid only. We accept UPI, debit cards, credit cards, and net banking. We do not offer Cash on Delivery (COD) at this time.",
+        answer: "We accept all major credit cards, debit cards, and digital payment methods. Payment is processed securely at checkout.",
       },
       {
-        question: "What is Aura's order and return policy?",
-        answer: "To maintain product integrity and hygiene, we do not accept cancellations after order confirmation, returns, or refunds. However, if you receive a damaged product, please contact us within 24 hours with photos.",
+        question: "What is Aura's shipping and return policy?",
+        answer: "We ship worldwide with tracking. If you receive a damaged product, please contact us within 24 hours with photos and we'll arrange a replacement.",
       },
       {
         question: 'Why should I trust Aura Cosmetics?',
@@ -101,7 +185,7 @@ export const en: Translations = {
       },
     ],
     promiseTitle: 'Our Promise to You',
-    promiseText: "At Aura, we're committed to honest skincare. Every product is organic, handmade with care, and crafted for young skin that deserves the best. Have more questions? We're just a WhatsApp message away.",
+    promiseText: "At Aura, we're committed to honest skincare. Every product is organic, handmade with care, and crafted for young skin that deserves the best. Have more questions? We're just a message away.",
   },
   contact: {
     label: 'Get In Touch',
@@ -126,6 +210,7 @@ export const en: Translations = {
     ingredients: 'Full Ingredients',
     orderNow: 'Order on WhatsApp',
     shippingInfo: 'Shipping: {price}',
+    size: 'Size',
   },
   promo: {
     freeDelivery: '🚚 FREE DELIVERY on orders above ₹500',
