@@ -1,6 +1,19 @@
 export type CountryCode = 'IN' | 'US' | 'GB' | 'CA' | 'AU' | 'DE' | 'AE' | 'SG' | 'FR' | 'ES';
 export type LanguageCode = 'en' | 'de' | 'ar' | 'fr' | 'es';
 
+export interface ProductTranslation {
+  name: string;
+  tagline: string;
+  description: string;
+  benefits: string[];
+  suitableFor: string[];
+  keyIngredient: string;
+}
+
+export interface TestimonialTranslation {
+  text: string;
+}
+
 export interface LocaleConfig {
   code: CountryCode;
   name: string;
@@ -17,7 +30,17 @@ export interface LocaleConfig {
   isRTL?: boolean;
 }
 
+export interface SEOMetadata {
+  title: string;
+  description: string;
+  keywords: string;
+  ogLocale: string;
+}
+
 export interface Translations {
+  // SEO
+  seo: SEOMetadata;
+  
   // Navigation
   nav: {
     about: string;
@@ -51,6 +74,7 @@ export interface Translations {
     subtitle: string;
     priceNote: string;
     viewDetails: string;
+    items: Record<string, ProductTranslation>;
   };
   
   // Trust Section
@@ -75,6 +99,7 @@ export interface Translations {
     title: string;
     subtitle: string;
     disclaimer: string;
+    items: TestimonialTranslation[];
   };
   
   // FAQ Section
@@ -115,6 +140,7 @@ export interface Translations {
     ingredients: string;
     orderNow: string;
     shippingInfo: string;
+    size: string;
   };
   
   // Promo Banner (India only)
