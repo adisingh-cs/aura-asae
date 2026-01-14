@@ -2,7 +2,7 @@ import { X, Check, MessageCircle, ChevronLeft, ChevronRight } from 'lucide-react
 import { Product } from '@/data/products';
 import { contactInfo } from '@/data/products';
 import { cn } from '@/lib/utils';
-import { useEffect, useState, useCallback } from 'react';
+import { useEffect, useState, useCallback, useMemo } from 'react';
 import useEmblaCarousel from 'embla-carousel-react';
 import { useLocale } from '@/lib/i18n/LocaleContext';
 
@@ -45,12 +45,40 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
     };
   }, [isOpen]);
 
-  if (!product || !isOpen) return null;
+  // Get translated product data
+  const translatedProduct = useMemo(() => {
+    if (!product) return null;
+    const productKey = product.shortName.toLowerCase().replace(/\s+/g, '-');
+    const translation = t.products.items[productKey];
+    
+    if (translation) {
+      return {
+        name: translation.name,
+        tagline: translation.tagline,
+        description: translation.description,
+        benefits: translation.benefits,
+        suitableFor: translation.suitableFor,
+        keyIngredient: translation.keyIngredient,
+      };
+    }
+    
+    // Fallback to original product data
+    return {
+      name: product.name,
+      tagline: product.tagline,
+      description: product.description,
+      benefits: product.benefits,
+      suitableFor: product.suitableFor,
+      keyIngredient: product.keyIngredient,
+    };
+  }, [product, t.products.items]);
+
+  if (!product || !isOpen || !translatedProduct) return null;
 
   const images = [product.primaryImage, product.thumbnailImage];
 
   const whatsappMessage = encodeURIComponent(
-    `Hi! I'm interested in the ${product.name} (${formatPrice()}). Can you tell me more?`
+    `Hi! I'm interested in the ${translatedProduct.name} (${formatPrice()}). Can you tell me more?`
   );
 
   return (
@@ -97,7 +125,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
                   >
                     <img
                       src={image}
-                      alt={`${product.name} - ${product.tagline} - View ${index + 1} of ${images.length}`}
+                      alt={`${translatedProduct.name} - ${translatedProduct.tagline} - View ${index + 1} of ${images.length}`}
                       className="max-w-full max-h-80 md:max-h-full object-contain"
                       loading={index === 0 ? "eager" : "lazy"}
                     />
@@ -150,15 +178,15 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
               id="product-modal-title"
               className="font-serif text-2xl md:text-3xl font-bold text-foreground mb-2"
             >
-              {product.name}
+              {translatedProduct.name}
             </h2>
 
             <p className="text-primary font-medium mb-4">
-              {product.tagline}
+              {translatedProduct.tagline}
             </p>
 
             <p className="text-muted-foreground leading-relaxed mb-6">
-              {product.description}
+              {translatedProduct.description}
             </p>
 
             {/* Shipping Info for International */}
@@ -172,7 +200,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
             <div className="mb-6">
               <h3 className="font-semibold text-foreground mb-3">{t.productDetails.benefits}</h3>
               <ul className="space-y-2">
-                {product.benefits.map((benefit, i) => (
+                {translatedProduct.benefits.map((benefit, i) => (
                   <li key={i} className="flex items-start gap-2 text-sm text-muted-foreground">
                     <Check className="w-4 h-4 text-primary shrink-0 mt-0.5" />
                     {benefit}
@@ -185,7 +213,7 @@ export function ProductModal({ product, isOpen, onClose }: ProductModalProps) {
             <div className="mb-6">
               <h3 className="font-semibold text-foreground mb-3">{t.productDetails.suitableFor}</h3>
               <div className="flex flex-wrap gap-2">
-                {product.suitableFor.map((type, i) => (
+                {translatedProduct.suitableFor.map((type, i) => (
                   <span
                     key={i}
                     className="px-3 py-1 text-xs rounded-full bg-secondary text-secondary-foreground"
