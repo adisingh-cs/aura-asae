@@ -1,6 +1,12 @@
 import type { Translations } from '../types';
 
 export const fr: Translations = {
+  seo: {
+    title: 'Aura Cosmetics | Nettoyant Visage Bio Artisanal',
+    description: 'Découvrez la collection de nettoyants visage 100% bio et artisanaux d\'Aura. Formules Vitamine C, Café, Lait de Riz, Betterave & Niacinamide. Soins sans paraben fabriqués en Inde.',
+    keywords: 'nettoyant visage bio, soins naturels, nettoyant vitamine c, nettoyant niacinamide, nettoyant café, nettoyant lait de riz, nettoyant betterave, cosmétiques artisanaux, soins sans paraben, Aura Cosmetics',
+    ogLocale: 'fr_FR',
+  },
   nav: {
     about: 'À propos',
     products: 'Produits',
@@ -31,6 +37,73 @@ export const fr: Translations = {
     subtitle: 'Cinq nettoyants visage artisanaux, chacun conçu pour répondre à vos besoins uniques de peau.',
     priceNote: 'Tous les produits : {price} pour 100ml',
     viewDetails: 'Voir les détails →',
+    items: {
+      'vitamin-c': {
+        name: 'Nettoyant Vitamine C',
+        tagline: 'Booster d\'Éclat Radieux',
+        description: 'Infusé avec des extraits de citron purs et de la vitamine C, ce nettoyant éclaircissant nettoie doucement tout en ravivant l\'éclat naturel de votre peau.',
+        benefits: [
+          'Illumine la peau et atténue les taches sombres',
+          'Riche en antioxydants des extraits de citron',
+          'Stimule le collagène pour une peau plus ferme',
+          'Contrôle l\'excès de sébum naturellement',
+        ],
+        suitableFor: ['Peau Terne', 'Peau Grasse', 'Peau Mixte'],
+        keyIngredient: 'Extrait de Citron',
+      },
+      'coffee': {
+        name: 'Nettoyant au Café',
+        tagline: 'Nettoyage Profond Énergisant',
+        description: 'Réveillez votre peau avec la puissance revigorante du café. Cette formule riche en antioxydants réduit les gonflements, uniformise le teint et vous laisse rafraîchi et énergisé.',
+        benefits: [
+          'Réduit les gonflements et apaise l\'inflammation',
+          'Exfolie pour une texture plus lisse',
+          'Illumine et uniformise le teint',
+          'Idéal pour tous les types de peau',
+        ],
+        suitableFor: ['Tous Types de Peau', 'Peau Fatiguée', 'Teint Terne'],
+        keyIngredient: 'Grains de Café',
+      },
+      'rice-milk': {
+        name: 'Nettoyant Eau de Riz & Lait',
+        tagline: 'Nutrition Soyeuse',
+        description: 'Inspiré des rituels de beauté anciens, ce nettoyant doux combine l\'eau de riz et les protéines de lait pour nourrir profondément votre peau, la laissant soyeuse et radieuse.',
+        benefits: [
+          'Nourrit la peau avec les protéines de riz et de lait',
+          'Améliore la texture et la douceur de la peau',
+          'Aide à uniformiser le teint',
+          'Illumine le teint naturellement',
+        ],
+        suitableFor: ['Peau Sèche', 'Peau Sensible', 'Peau Normale'],
+        keyIngredient: 'Eau de Riz & Lait',
+      },
+      'beetroot': {
+        name: 'Nettoyant à la Betterave',
+        tagline: 'Éclat Rose Naturel',
+        description: 'Exploitez le pouvoir vibrant de la betterave pour une peau profondément hydratée et saine. Ce nettoyant doux calme les peaux sensibles tout en soutenant la barrière naturelle d\'hydratation.',
+        benefits: [
+          'Nettoie doucement sans agresser la peau',
+          'Hydrate et retient l\'humidité',
+          'Apaise et calme les peaux sensibles',
+          'Favorise un teint sain et rafraîchi',
+        ],
+        suitableFor: ['Peau Sensible', 'Peau Sèche', 'Peau Déshydratée'],
+        keyIngredient: 'Extrait de Betterave',
+      },
+      'niacinamide': {
+        name: 'Nettoyant Niacinamide',
+        tagline: 'Formule Peau Nette',
+        description: 'Propulsé par la Vitamine B3, cette formule scientifiquement prouvée aide à réduire l\'acné, minimiser les pores et uniformiser le teint. Parfait pour ceux qui recherchent une peau plus nette et raffinée.',
+        benefits: [
+          'Nettoie doucement sans dessécher',
+          'Illumine et uniformise le teint',
+          'Aide à réduire l\'acné et les imperfections',
+          'Hydrate et apaise les peaux sensibles',
+        ],
+        suitableFor: ['Peau à Tendance Acnéique', 'Peau Grasse', 'Peau Mixte'],
+        keyIngredient: 'Niacinamide (Vitamine B3)',
+      },
+    },
   },
   trust: {
     label: 'Pourquoi nous choisir',
@@ -61,6 +134,17 @@ export const fr: Translations = {
     title: 'Ce que dit notre communauté',
     subtitle: 'De vrais avis de vraies personnes qui ont expérimenté la différence Aura.',
     disclaimer: '*Ces témoignages représentent les expériences des clients. Les résultats individuels peuvent varier.',
+    items: [
+      { text: 'Honnêtement, je n\'attendais pas grand-chose mais wow ! Ma peau a l\'air tellement plus lumineuse maintenant. Je l\'utilise chaque matin et l\'odeur d\'agrumes est incroyable ! Je reçois tellement de compliments dernièrement !' },
+      { text: 'Troisième flacon et toujours obsédée ! Mes taches sombres de l\'été dernier ont tellement diminué. C\'est doux mais on sent vraiment que ça fonctionne. C\'est devenu un incontournable pour moi !' },
+      { text: 'Enfin quelque chose qui n\'irrite pas ma peau super sensible ! Laisse mon visage doux comme celui d\'un bébé sans cette sensation de tiraillement. L\'emballage est trop joli aussi !' },
+      { text: 'Ma peau sèche n\'a jamais été aussi heureuse ! J\'en avais marre des nettoyants qui me donnaient l\'impression d\'avoir besoin d\'hydratant immédiatement. Celui-ci hydrate vraiment tout en nettoyant. J\'adore !' },
+      { text: 'J\'ai lutté contre l\'acné pendant des années et ça m\'a vraiment aidé ! Mes pores semblent plus petits et les boutons ont tellement diminué. J\'aurais aimé le trouver plus tôt !' },
+      { text: 'J\'ai pris les deux pour ma situation peau grasse-mais-déshydratée et c\'est la combo parfaite ! Niacinamide le matin, Betterave le soir. Ma peau n\'a jamais été aussi équilibrée !' },
+      { text: 'Le coup de boost matinal dont mon visage avait besoin ! Sent incroyablement bon et réveille vraiment ma peau. Mon copain l\'utilise en secret maintenant aussi ! Chaque centime en vaut la peine !' },
+      { text: 'J\'ai acheté les deux pour essayer et honnêtement je ne peux pas choisir mon préféré ! Café pour les matins gonflés, Vitamine C quand j\'ai besoin d\'extra éclat. Meilleur investissement skincare !' },
+      { text: 'Un produit tellement unique ! La couleur rose est trop mignonne et ça fonctionne vraiment. Ma peau est super hydratée et saine. Parfait pour l\'hiver quand ma peau devient toute sèche.' },
+    ],
   },
   faq: {
     label: 'Questions ?',
@@ -126,6 +210,7 @@ export const fr: Translations = {
     ingredients: 'Ingrédients complets',
     orderNow: 'Commander sur WhatsApp',
     shippingInfo: 'Livraison : {price}',
+    size: 'Taille',
   },
   promo: {
     freeDelivery: '🚚 LIVRAISON GRATUITE pour les commandes supérieures à ₹500',

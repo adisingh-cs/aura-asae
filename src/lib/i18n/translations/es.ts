@@ -1,6 +1,12 @@
 import type { Translations } from '../types';
 
 export const es: Translations = {
+  seo: {
+    title: 'Aura Cosmetics | Limpiador Facial Orgánico Artesanal',
+    description: 'Compra la colección de limpiadores faciales 100% orgánicos y artesanales de Aura. Fórmulas de Vitamina C, Café, Leche de Arroz, Remolacha y Niacinamida. Cuidado sin parabenos hecho en India.',
+    keywords: 'limpiador facial orgánico, cuidado natural de la piel, limpiador vitamina c, limpiador niacinamida, limpiador café, limpiador leche de arroz, limpiador remolacha, cosméticos artesanales, cuidado sin parabenos, Aura Cosmetics',
+    ogLocale: 'es_ES',
+  },
   nav: {
     about: 'Nosotros',
     products: 'Productos',
@@ -31,6 +37,73 @@ export const es: Translations = {
     subtitle: 'Cinco limpiadores faciales artesanales, cada uno diseñado para abordar tus necesidades únicas de piel.',
     priceNote: 'Todos los productos: {price} por 100ml',
     viewDetails: 'Ver detalles →',
+    items: {
+      'vitamin-c': {
+        name: 'Limpiador Vitamina C',
+        tagline: 'Potenciador de Brillo Radiante',
+        description: 'Infusionado con extractos puros de limón y vitamina C, este limpiador iluminador limpia suavemente mientras revive el brillo natural de tu piel.',
+        benefits: [
+          'Ilumina la piel y atenúa manchas oscuras',
+          'Rico en antioxidantes de extractos de limón',
+          'Estimula el colágeno para una piel más firme',
+          'Controla el exceso de grasa naturalmente',
+        ],
+        suitableFor: ['Piel Opaca', 'Piel Grasa', 'Piel Mixta'],
+        keyIngredient: 'Extracto de Limón',
+      },
+      'coffee': {
+        name: 'Limpiador de Café',
+        tagline: 'Limpieza Profunda Energizante',
+        description: 'Despierta tu piel con el poder vigorizante del café. Esta fórmula rica en antioxidantes reduce la hinchazón, unifica el tono de piel y te deja sintiéndote refrescado y energizado.',
+        benefits: [
+          'Reduce hinchazón y calma la inflamación',
+          'Exfolia para una textura más suave',
+          'Ilumina y unifica el tono de piel',
+          'Ideal para todos los tipos de piel',
+        ],
+        suitableFor: ['Todos los Tipos de Piel', 'Piel Cansada', 'Tez Apagada'],
+        keyIngredient: 'Granos de Café',
+      },
+      'rice-milk': {
+        name: 'Limpiador Agua de Arroz y Leche',
+        tagline: 'Nutrición Sedosa',
+        description: 'Inspirado en antiguos rituales de belleza, este limpiador suave combina agua de arroz y proteínas de leche para nutrir profundamente tu piel, dejándola sedosa y radiante.',
+        benefits: [
+          'Nutre la piel con proteínas de arroz y leche',
+          'Mejora la textura y suavidad de la piel',
+          'Ayuda a unificar el tono de piel',
+          'Ilumina la tez naturalmente',
+        ],
+        suitableFor: ['Piel Seca', 'Piel Sensible', 'Piel Normal'],
+        keyIngredient: 'Agua de Arroz y Leche',
+      },
+      'beetroot': {
+        name: 'Limpiador de Remolacha',
+        tagline: 'Brillo Rosa Natural',
+        description: 'Aprovecha el poder vibrante de la remolacha para una piel profundamente hidratada y saludable. Este limpiador suave calma la piel sensible mientras apoya la barrera de humedad natural.',
+        benefits: [
+          'Limpia suavemente sin resecar la piel',
+          'Hidrata y retiene la humedad',
+          'Calma y suaviza la piel sensible',
+          'Apoya una tez sana y refrescada',
+        ],
+        suitableFor: ['Piel Sensible', 'Piel Seca', 'Piel Deshidratada'],
+        keyIngredient: 'Extracto de Remolacha',
+      },
+      'niacinamide': {
+        name: 'Limpiador Niacinamida',
+        tagline: 'Fórmula Piel Clara',
+        description: 'Impulsado por Vitamina B3, esta fórmula respaldada por la ciencia ayuda a reducir el acné, minimizar los poros y unificar el tono de piel. Perfecto para quienes buscan una piel más clara y refinada.',
+        benefits: [
+          'Limpia suavemente sin resecar',
+          'Ilumina y unifica el tono de piel',
+          'Ayuda a reducir acné e imperfecciones',
+          'Hidrata y calma la piel sensible',
+        ],
+        suitableFor: ['Piel Propensa al Acné', 'Piel Grasa', 'Piel Mixta'],
+        keyIngredient: 'Niacinamida (Vitamina B3)',
+      },
+    },
   },
   trust: {
     label: 'Por qué elegirnos',
@@ -61,6 +134,17 @@ export const es: Translations = {
     title: 'Lo que dice nuestra comunidad',
     subtitle: 'Reseñas reales de personas reales que han experimentado la diferencia Aura.',
     disclaimer: '*Estos testimonios representan experiencias de clientes. Los resultados individuales pueden variar.',
+    items: [
+      { text: '¡Honestamente no esperaba mucho pero wow! Mi piel se ve mucho más brillante ahora. Lo uso cada mañana y el olor cítrico es increíble. ¡Últimamente recibo tantos cumplidos!' },
+      { text: '¡Tercera botella y sigo obsesionada! Mis manchas oscuras del verano pasado han disminuido muchísimo. Es suave pero realmente se siente que funciona. ¡Ahora es un básico total para mí!' },
+      { text: '¡Por fin algo que no irrita mi piel súper sensible! Deja mi cara suave como bebé sin esa sensación tirante. ¡El empaque también es muy bonito!' },
+      { text: '¡Mi piel seca nunca ha sido más feliz! Estaba cansada de limpiadores que me hacían sentir que necesitaba hidratante inmediatamente. Este realmente hidrata mientras limpia. ¡Me encanta!' },
+      { text: '¡He luchado con el acné por años y esto genuinamente ha ayudado! Mis poros se ven más pequeños y los brotes han disminuido mucho. ¡Ojalá lo hubiera encontrado antes!' },
+      { text: '¡Compré ambos para mi situación de piel grasa-pero-deshidratada y es la combinación perfecta! Niacinamida en la mañana, Remolacha en la noche. ¡Mi piel nunca ha estado más equilibrada!' },
+      { text: '¡El impulso matutino que mi cara necesitaba! Huele increíble y realmente despierta mi piel. ¡Mi novio secretamente lo usa ahora también! ¡Vale cada centavo!' },
+      { text: '¡Compré ambos para probar y honestamente no puedo elegir un favorito! Café para esos días de mañanas hinchadas, Vitamina C cuando necesito brillo extra. ¡La mejor inversión en skincare!' },
+      { text: '¡Un producto tan único! El color rosa es muy lindo y realmente funciona. Mi piel se siente súper hidratada y sana. Perfecto para invierno cuando mi piel se pone muy seca.' },
+    ],
   },
   faq: {
     label: '¿Preguntas?',
@@ -126,6 +210,7 @@ export const es: Translations = {
     ingredients: 'Ingredientes completos',
     orderNow: 'Pedir en WhatsApp',
     shippingInfo: 'Envío: {price}',
+    size: 'Tamaño',
   },
   promo: {
     freeDelivery: '🚚 ENVÍO GRATIS en pedidos superiores a ₹500',
