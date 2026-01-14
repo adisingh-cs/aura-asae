@@ -2,18 +2,21 @@ import { useEffect } from 'react';
 import { useParams, Navigate } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { useLocale } from '@/lib/i18n/LocaleContext';
-import { localeConfigs } from '@/lib/i18n/locales';
+import { locales } from '@/lib/i18n/locales';
 import type { CountryCode } from '@/lib/i18n/types';
 import Index from './Index';
 
 const countryRouteMap: Record<string, CountryCode> = {
   'us': 'US',
-  'uk': 'UK',
+  'uk': 'GB',
   'de': 'DE',
   'fr': 'FR',
   'es': 'ES',
   'ae': 'AE',
   'in': 'IN',
+  'au': 'AU',
+  'ca': 'CA',
+  'sg': 'SG',
 };
 
 const CountryLanding = () => {
@@ -32,7 +35,7 @@ const CountryLanding = () => {
     return <Navigate to="/" replace />;
   }
 
-  const config = localeConfigs[mappedCountry];
+  const config = locales[mappedCountry];
   const baseUrl = 'https://auracosmetics.in';
   const canonicalUrl = `${baseUrl}/${countryCode?.toLowerCase()}`;
 
@@ -51,12 +54,12 @@ const CountryLanding = () => {
         <link rel="alternate" hrefLang="x-default" href={baseUrl} />
         {allCountries.map((code) => {
           const countryKey = countryRouteMap[code];
-          const localeConfig = localeConfigs[countryKey];
+          const localeConfig = locales[countryKey];
           return (
             <link 
               key={code}
               rel="alternate" 
-              hrefLang={localeConfig.language} 
+              hrefLang={`${localeConfig.language}-${countryKey}`} 
               href={`${baseUrl}/${code}`} 
             />
           );
@@ -66,8 +69,12 @@ const CountryLanding = () => {
         <meta property="og:url" content={canonicalUrl} />
         <meta property="og:title" content={t.seo?.title || 'Aura Cosmetics'} />
         <meta property="og:description" content={t.seo?.description || ''} />
+        <meta property="og:type" content="website" />
+        <meta property="og:site_name" content="Aura Cosmetics" />
         
-        <html lang={config.language} dir={config.isRTL ? 'rtl' : 'ltr'} />
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta name="twitter:title" content={t.seo?.title || 'Aura Cosmetics'} />
+        <meta name="twitter:description" content={t.seo?.description || ''} />
       </Helmet>
       
       <Index />
