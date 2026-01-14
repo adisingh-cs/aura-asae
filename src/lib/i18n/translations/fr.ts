@@ -1,6 +1,12 @@
 import type { Translations } from '../types';
 
 export const fr: Translations = {
+  seo: {
+    title: 'Aura Cosmetics | Nettoyant Visage Bio Artisanal',
+    description: "Découvrez la collection de nettoyants visage 100% bio et artisanaux d'Aura. Formules Vitamine C, Café, Lait de Riz, Betterave & Niacinamide. Soins sans paraben fabriqués en Inde.",
+    keywords: 'nettoyant visage bio, soins naturels, nettoyant vitamine c, nettoyant niacinamide, cosmétiques artisanaux, soins sans paraben, Aura Cosmetics',
+    ogLocale: 'fr_FR',
+  },
   nav: {
     about: 'À propos',
     products: 'Produits',
@@ -10,7 +16,7 @@ export const fr: Translations = {
   },
   hero: {
     badge: 'Bio • Artisanal • Premium',
-    tagline: 'Découvrez des soins qui se soucient vraiment de vous. Nos formules biologiques et artisanales sont conçues pour les jeunes conscients qui valorisent la pureté et l\'efficacité.',
+    tagline: "Découvrez des soins qui se soucient vraiment de vous. Nos formules biologiques et artisanales sont conçues pour les jeunes conscients qui valorisent la pureté et l'efficacité.",
     cta: 'Découvrir les produits',
     secondary: 'Notre histoire',
   },
@@ -19,9 +25,9 @@ export const fr: Translations = {
     title: 'Des soins qui',
     titleHighlight: 'vous comprennent',
     paragraphs: [
-      'Née en 2025, Aura Cosmetics est issue d\'une conviction simple : votre peau mérite des ingrédients en lesquels vous pouvez avoir confiance. Nous sommes une jeune marque créée pour les jeunes qui refusent de faire des compromis.',
-      'Chaque produit Aura est méticuleusement fabriqué à la main avec des ingrédients 100% biologiques, soigneusement sourcés et mélangés pour offrir de vrais résultats sans produits chimiques agressifs.',
-      'De l\'éclaircissement à la vitamine C à la clarté du niacinamide, chaque formule est conçue pour répondre aux préoccupations réelles des étudiants et jeunes professionnels.',
+      "Née en 2025, Aura Cosmetics est issue d'une conviction simple : votre peau mérite des ingrédients en lesquels vous pouvez avoir confiance.",
+      "Chaque produit Aura est méticuleusement fabriqué à la main avec des ingrédients 100% biologiques, soigneusement sourcés et mélangés pour offrir de vrais résultats.",
+      "De l'éclaircissement à la vitamine C à la clarté du niacinamide, chaque formule est conçue pour répondre aux préoccupations réelles des étudiants et jeunes professionnels.",
     ],
     badges: ['Fondée en 2025', '100% Bio', 'Fait avec amour'],
   },
@@ -31,6 +37,73 @@ export const fr: Translations = {
     subtitle: 'Cinq nettoyants visage artisanaux, chacun conçu pour répondre à vos besoins uniques de peau.',
     priceNote: 'Tous les produits : {price} pour 100ml',
     viewDetails: 'Voir les détails →',
+    items: {
+      'vitamin-c': {
+        name: 'Nettoyant Vitamine C',
+        tagline: 'Boost Éclat Radieux',
+        description: "Infusé d'extraits de citron purs et de vitamine C, ce nettoyant illuminant nettoie doucement tout en ravivant l'éclat naturel de votre peau.",
+        benefits: [
+          'Illumine la peau et estompe les taches sombres',
+          "Riche en antioxydants d'extraits de citron",
+          'Booste le collagène pour une peau plus ferme',
+          "Contrôle l'excès de sébum naturellement",
+        ],
+        suitableFor: ['Peau Terne', 'Peau Grasse', 'Peau Mixte'],
+        keyIngredient: 'Extrait de Citron',
+      },
+      'coffee': {
+        name: 'Nettoyant Café',
+        tagline: 'Nettoyage Profond Énergisant',
+        description: 'Réveillez votre peau avec le pouvoir revigorant du café. Cette formule riche en antioxydants réduit les gonflements et unifie le teint.',
+        benefits: [
+          "Réduit les gonflements et apaise l'inflammation",
+          'Exfolie pour une texture plus lisse',
+          'Illumine et unifie le teint',
+          'Idéal pour tous types de peau',
+        ],
+        suitableFor: ['Tous Types de Peau', 'Peau Fatiguée', 'Teint Terne'],
+        keyIngredient: 'Grains de Café',
+      },
+      'rice-milk': {
+        name: 'Nettoyant Eau de Riz & Lait',
+        tagline: 'Nutrition Soyeuse',
+        description: "Inspiré d'anciens rituels de beauté, ce nettoyant doux combine l'eau de riz et les protéines de lait pour nourrir profondément votre peau.",
+        benefits: [
+          'Nourrit la peau avec protéines de riz et lait',
+          'Améliore la texture et la douceur de la peau',
+          'Aide à unifier le teint',
+          'Illumine naturellement le teint',
+        ],
+        suitableFor: ['Peau Sèche', 'Peau Sensible', 'Peau Normale'],
+        keyIngredient: 'Eau de Riz & Lait',
+      },
+      'beetroot': {
+        name: 'Nettoyant Betterave',
+        tagline: 'Éclat Rose Naturel',
+        description: 'Exploitez le pouvoir vibrant de la betterave pour une peau profondément hydratée et saine.',
+        benefits: [
+          'Nettoie doucement sans dessécher',
+          "Hydrate et retient l'humidité",
+          'Apaise et calme les peaux sensibles',
+          'Favorise un teint sain et rafraîchi',
+        ],
+        suitableFor: ['Peau Sensible', 'Peau Sèche', 'Peau Déshydratée'],
+        keyIngredient: 'Extrait de Betterave',
+      },
+      'niacinamide': {
+        name: 'Nettoyant Niacinamide',
+        tagline: 'Formule Peau Nette',
+        description: "Propulsé par la vitamine B3, cette formule scientifique aide à réduire l'acné et minimiser les pores.",
+        benefits: [
+          'Nettoie doucement sans dessécher',
+          'Illumine et unifie le teint',
+          "Aide à réduire l'acné et les imperfections",
+          'Hydrate et apaise les peaux sensibles',
+        ],
+        suitableFor: ["Peau à Tendance Acnéique", 'Peau Grasse', 'Peau Mixte'],
+        keyIngredient: 'Niacinamide (Vitamine B3)',
+      },
+    },
   },
   trust: {
     label: 'Pourquoi nous choisir',
@@ -46,7 +119,7 @@ export const fr: Translations = {
   ingredients: {
     label: 'Ingrédients Purs',
     title: 'Le meilleur de la nature, dans chaque goutte',
-    subtitle: 'Nous ne sourçons que les meilleurs ingrédients biologiques pour créer des formules qui nourrissent, protègent et transforment votre peau naturellement.',
+    subtitle: 'Nous ne sourçons que les meilleurs ingrédients biologiques pour créer des formules qui nourrissent, protègent et transforment votre peau.',
     items: [
       { name: 'Vitamine C', benefit: 'Éclaircissant' },
       { name: 'Café', benefit: 'Énergisant' },
@@ -61,11 +134,22 @@ export const fr: Translations = {
     title: 'Ce que dit notre communauté',
     subtitle: 'De vrais avis de vraies personnes qui ont expérimenté la différence Aura.',
     disclaimer: '*Ces témoignages représentent les expériences des clients. Les résultats individuels peuvent varier.',
+    items: [
+      { text: "Honnêtement je n'attendais pas grand chose mais wow ! Ma peau est tellement plus lumineuse. Je l'utilise chaque matin et l'odeur d'agrumes est incroyable !" },
+      { text: "Troisième flacon et toujours fan ! Mes taches sombres de l'été dernier ont tellement estompé. C'est doux mais on sent vraiment que ça fonctionne." },
+      { text: "Enfin quelque chose qui n'irrite pas ma peau super sensible ! Laisse mon visage doux comme de la soie sans cette sensation de tiraillement." },
+      { text: "Ma peau sèche n'a jamais été aussi heureuse ! J'en avais marre des nettoyants qui me donnaient envie d'hydrater immédiatement." },
+      { text: "Je lutte contre l'acné depuis des années et ça a vraiment aidé ! Mes pores paraissent plus petits et les boutons ont tellement diminué." },
+      { text: "J'ai acheté les deux pour ma situation peau grasse-mais-déshydratée et c'est la combo parfaite ! Niacinamide le matin, Betterave le soir." },
+      { text: "Le coup de boost matinal dont mon visage avait besoin ! Sent incroyablement bon et réveille vraiment ma peau. Mon copain l'utilise secrètement aussi !" },
+      { text: "J'ai acheté les deux pour essayer et honnêtement je ne peux pas choisir de favori ! Café pour les matins gonflés, Vitamine C quand j'ai besoin d'éclat." },
+      { text: "Un produit tellement unique ! La couleur rose est trop mignonne et ça fonctionne vraiment. Ma peau est super hydratée et saine." },
+    ],
   },
   faq: {
     label: 'Questions ?',
     title: 'Questions Fréquentes',
-    subtitle: 'Tout ce que vous devez savoir sur les produits Aura, les ingrédients et les politiques. Nous croyons en une transparence totale.',
+    subtitle: 'Tout ce que vous devez savoir sur les produits Aura, les ingrédients et les politiques.',
     questions: [
       {
         question: 'Quels ingrédients sont utilisés dans les produits Aura ?',
@@ -73,27 +157,27 @@ export const fr: Translations = {
       },
       {
         question: 'Les produits Aura sont-ils biologiques et faits main ?',
-        answer: 'Oui ! Chaque produit Aura est fabriqué à la main en petits lots pour garantir qualité et fraîcheur. Nous utilisons des ingrédients biologiques dans la mesure du possible.',
+        answer: "Oui ! Chaque produit Aura est fabriqué à la main en petits lots pour garantir qualité et fraîcheur.",
       },
       {
         question: 'Quel produit Aura convient à mon type de peau ?',
-        answer: 'Les nettoyants Vitamine C et Niacinamide sont parfaits pour les peaux grasses et mixtes. Riz et Lait est idéal pour les peaux sèches et sensibles. Café est parfait pour les peaux ternes.',
+        answer: 'Les nettoyants Vitamine C et Niacinamide sont parfaits pour les peaux grasses et mixtes. Riz et Lait est idéal pour les peaux sèches et sensibles.',
       },
       {
         question: 'Comment utiliser les nettoyants Aura pour de meilleurs résultats ?',
-        answer: 'Pour des résultats optimaux, utilisez votre nettoyant Aura deux fois par jour - matin et soir. Mouillez votre visage avec de l\'eau tiède et massez doucement.',
+        answer: "Pour des résultats optimaux, utilisez votre nettoyant Aura deux fois par jour - matin et soir. Mouillez votre visage avec de l'eau tiède.",
       },
       {
         question: 'Les produits Aura sont-ils sûrs pour un usage quotidien ?',
-        answer: 'Absolument. Tous les produits Aura sont formulés pour être assez doux pour un usage quotidien. Nous sommes sans paraben, sans sulfate.',
+        answer: 'Absolument. Tous les produits Aura sont formulés pour être assez doux pour un usage quotidien. Sans paraben, sans sulfate.',
       },
       {
-        question: 'Quelles sont les options de paiement d\'Aura ?',
+        question: "Quelles sont les options de paiement d'Aura ?",
         answer: 'Nous acceptons toutes les principales cartes de crédit, PayPal et les virements bancaires pour les commandes internationales.',
       },
       {
-        question: 'Quelle est la politique de commande et de retour d\'Aura ?',
-        answer: 'Pour maintenir l\'intégrité et l\'hygiène des produits, nous n\'acceptons pas les annulations après confirmation de commande, les retours ou les remboursements. Pour les produits endommagés, contactez-nous dans les 24 heures.',
+        question: "Quelle est la politique de commande et de retour d'Aura ?",
+        answer: "Pour maintenir l'intégrité et l'hygiène des produits, nous n'acceptons pas les annulations après confirmation de commande, les retours ou les remboursements.",
       },
       {
         question: 'Pourquoi devrais-je faire confiance à Aura Cosmetics ?',
@@ -101,12 +185,12 @@ export const fr: Translations = {
       },
     ],
     promiseTitle: 'Notre promesse',
-    promiseText: 'Chez Aura, nous nous engageons pour des soins honnêtes. Chaque produit est biologique, fait à la main avec amour, et conçu pour les jeunes peaux. D\'autres questions ? Nous sommes à un message WhatsApp.',
+    promiseText: 'Chez Aura, nous nous engageons pour des soins honnêtes. Chaque produit est biologique, fait à la main avec amour.',
   },
   contact: {
     label: 'Contact',
     title: 'Prêt à rayonner ?',
-    subtitle: 'Des questions sur nos produits ou vous voulez passer commande ? Nous ne sommes qu\'à un message !',
+    subtitle: "Des questions sur nos produits ou vous voulez passer commande ? Nous ne sommes qu'à un message !",
     whatsappCta: 'Discutez avec nous sur WhatsApp',
     phone: 'Téléphone',
     email: 'Email',
@@ -126,6 +210,7 @@ export const fr: Translations = {
     ingredients: 'Ingrédients complets',
     orderNow: 'Commander sur WhatsApp',
     shippingInfo: 'Livraison : {price}',
+    size: 'Taille',
   },
   promo: {
     freeDelivery: '🚚 LIVRAISON GRATUITE pour les commandes supérieures à ₹500',

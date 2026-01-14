@@ -1,6 +1,12 @@
 import type { Translations } from '../types';
 
 export const de: Translations = {
+  seo: {
+    title: 'Aura Cosmetics | Bio Handgefertigte Gesichtswäsche',
+    description: 'Entdecken Sie Auras 100% biologische, handgefertigte Gesichtswäsche-Kollektion. Vitamin C, Kaffee, Reismilch, Rote Bete & Niacinamid Formeln. Parabenfreie Hautpflege aus Indien.',
+    keywords: 'bio gesichtswäsche, natürliche hautpflege, vitamin c gesichtswäsche, niacinamid gesichtswäsche, kaffee gesichtswäsche, reismilch gesichtswäsche, handgefertigte kosmetik, parabenfreie hautpflege, Aura Cosmetics',
+    ogLocale: 'de_DE',
+  },
   nav: {
     about: 'Über uns',
     products: 'Produkte',
@@ -31,6 +37,73 @@ export const de: Translations = {
     subtitle: 'Fünf handgefertigte Gesichtswaschmittel, jedes entwickelt, um Ihre einzigartigen Hautbedürfnisse zu erfüllen.',
     priceNote: 'Alle Produkte: {price} für 100ml',
     viewDetails: 'Details ansehen →',
+    items: {
+      'vitamin-c': {
+        name: 'Vitamin C Gesichtswäsche',
+        tagline: 'Strahlender Glow Booster',
+        description: 'Mit reinen Zitronenextrakten und Vitamin C angereichert, reinigt diese aufhellende Gesichtswäsche sanft und belebt die natürliche Ausstrahlung Ihrer Haut.',
+        benefits: [
+          'Hellt die Haut auf & lässt dunkle Flecken verblassen',
+          'Reich an Antioxidantien aus Zitronenextrakten',
+          'Fördert Kollagen für straffere Haut',
+          'Kontrolliert überschüssiges Öl natürlich',
+        ],
+        suitableFor: ['Fahle Haut', 'Fettige Haut', 'Mischhaut'],
+        keyIngredient: 'Zitronenextrakt',
+      },
+      'coffee': {
+        name: 'Kaffee Gesichtswäsche',
+        tagline: 'Belebende Tiefenreinigung',
+        description: 'Wecken Sie Ihre Haut mit der belebenden Kraft des Kaffees. Diese antioxidantienreiche Formel reduziert Schwellungen und gleicht den Hautton aus.',
+        benefits: [
+          'Reduziert Schwellungen und beruhigt Entzündungen',
+          'Peelt für glattere Textur',
+          'Hellt auf und gleicht den Hautton aus',
+          'Ideal für alle Hauttypen',
+        ],
+        suitableFor: ['Alle Hauttypen', 'Müde Haut', 'Fahler Teint'],
+        keyIngredient: 'Kaffeebohnen',
+      },
+      'rice-milk': {
+        name: 'Reiswasser & Milch Gesichtswäsche',
+        tagline: 'Seidig weiche Pflege',
+        description: 'Inspiriert von alten Schönheitsritualen, kombiniert dieser sanfte Reiniger Reiswasser und Milchproteine für tiefe Hautpflege.',
+        benefits: [
+          'Nährt die Haut mit Reis- und Milchproteinen',
+          'Verbessert Hauttextur und Weichheit',
+          'Hilft, den Hautton auszugleichen',
+          'Hellt den Teint natürlich auf',
+        ],
+        suitableFor: ['Trockene Haut', 'Empfindliche Haut', 'Normale Haut'],
+        keyIngredient: 'Reiswasser & Milch',
+      },
+      'beetroot': {
+        name: 'Rote Bete Gesichtswäsche',
+        tagline: 'Natürlicher Rosa Glow',
+        description: 'Nutzen Sie die lebendige Kraft der Roten Bete für tief hydratisierte, gesund aussehende Haut.',
+        benefits: [
+          'Reinigt sanft ohne die Haut auszutrocknen',
+          'Hydratisiert und speichert Feuchtigkeit',
+          'Beruhigt empfindliche Haut',
+          'Unterstützt einen gesunden, erfrischten Teint',
+        ],
+        suitableFor: ['Empfindliche Haut', 'Trockene Haut', 'Dehydrierte Haut'],
+        keyIngredient: 'Rote Bete Extrakt',
+      },
+      'niacinamide': {
+        name: 'Niacinamid Gesichtswäsche',
+        tagline: 'Klare Haut Formel',
+        description: 'Angetrieben von Vitamin B3, hilft diese wissenschaftlich fundierte Formel Akne zu reduzieren und Poren zu minimieren.',
+        benefits: [
+          'Reinigt sanft ohne auszutrocknen',
+          'Hellt auf und gleicht den Hautton aus',
+          'Hilft Akne und Unreinheiten zu reduzieren',
+          'Hydratisiert und beruhigt empfindliche Haut',
+        ],
+        suitableFor: ['Zu Akne neigende Haut', 'Fettige Haut', 'Mischhaut'],
+        keyIngredient: 'Niacinamid (Vitamin B3)',
+      },
+    },
   },
   trust: {
     label: 'Warum wir',
@@ -61,6 +134,17 @@ export const de: Translations = {
     title: 'Was unsere Community sagt',
     subtitle: 'Echte Bewertungen von echten Menschen, die den Aura-Unterschied erlebt haben.',
     disclaimer: '*Diese Testimonials repräsentieren Kundenerfahrungen. Individuelle Ergebnisse können variieren.',
+    items: [
+      { text: 'Ehrlich gesagt habe ich nicht viel erwartet, aber wow! Meine Haut sieht jetzt so viel strahlender aus. Benutze es jeden Morgen und der zitrusartige Duft ist fantastisch!' },
+      { text: 'Dritte Flasche und immer noch begeistert! Meine dunklen Flecken vom letzten Sommer sind so viel verblasst. Es ist sanft, aber man kann wirklich fühlen, wie es wirkt.' },
+      { text: 'Endlich etwas, das meine super empfindliche Haut nicht reizt! Hinterlässt mein Gesicht babyzart ohne das straffe Gefühl.' },
+      { text: 'Meine trockene Haut war noch nie glücklicher! War müde von Gesichtswaschmitteln, die mich sofort nach Feuchtigkeitscreme verlangen ließen.' },
+      { text: 'Ich kämpfe seit Jahren mit Akne und das hat wirklich geholfen! Meine Poren sehen kleiner aus und Ausbrüche haben sich so sehr reduziert.' },
+      { text: 'Habe beide für meine fettige-aber-dehydrierte Haut-Situation gekauft und es ist die perfekte Kombination! Niacinamid morgens, Rote Bete abends.' },
+      { text: 'Der Morgen-Weckruf, den mein Gesicht brauchte! Riecht fantastisch und weckt wirklich meine Haut auf. Mein Freund benutzt es jetzt auch heimlich!' },
+      { text: 'Habe beide zum Ausprobieren gekauft und kann ehrlich keinen Favoriten wählen! Kaffee für die aufgedunsenen Morgentage, Vitamin C wenn ich extra Glow brauche.' },
+      { text: 'So ein einzigartiges Produkt! Die rosa Farbe ist so süß und es funktioniert tatsächlich. Meine Haut fühlt sich super hydratisiert und gesund an.' },
+    ],
   },
   faq: {
     label: 'Fragen?',
@@ -77,15 +161,15 @@ export const de: Translations = {
       },
       {
         question: 'Welches Aura-Produkt ist das richtige für meinen Hauttyp?',
-        answer: 'Vitamin C & Niacinamid-Gesichtswaschmittel eignen sich hervorragend für fettige und Mischhaut. Reis & Milch ist perfekt für trockene und empfindliche Haut. Kaffee ist ideal für müde, glanzlose Haut.',
+        answer: 'Vitamin C & Niacinamid-Gesichtswaschmittel eignen sich hervorragend für fettige und Mischhaut. Reis & Milch ist perfekt für trockene und empfindliche Haut.',
       },
       {
         question: 'Wie sollte ich Aura-Gesichtswaschmittel für beste Ergebnisse verwenden?',
-        answer: 'Für optimale Ergebnisse verwenden Sie Ihr Aura-Gesichtswaschmittel zweimal täglich – morgens und abends. Befeuchten Sie Ihr Gesicht mit lauwarmem Wasser und massieren Sie sanft.',
+        answer: 'Für optimale Ergebnisse verwenden Sie Ihr Aura-Gesichtswaschmittel zweimal täglich – morgens und abends. Befeuchten Sie Ihr Gesicht mit lauwarmem Wasser.',
       },
       {
         question: 'Sind Aura-Produkte für den täglichen Gebrauch sicher?',
-        answer: 'Absolut. Alle Aura-Produkte sind sanft genug für den täglichen Gebrauch formuliert. Wir sind parabenfrei, sulfatfrei und vermeiden aggressive Chemikalien.',
+        answer: 'Absolut. Alle Aura-Produkte sind sanft genug für den täglichen Gebrauch formuliert. Wir sind parabenfrei, sulfatfrei.',
       },
       {
         question: 'Welche Zahlungsoptionen bietet Aura?',
@@ -93,7 +177,7 @@ export const de: Translations = {
       },
       {
         question: 'Was ist die Bestell- und Rückgaberichtlinie von Aura?',
-        answer: 'Um die Produktintegrität und Hygiene zu wahren, akzeptieren wir keine Stornierungen nach Auftragsbestätigung, Rücksendungen oder Rückerstattungen. Bei beschädigten Produkten kontaktieren Sie uns bitte innerhalb von 24 Stunden.',
+        answer: 'Um die Produktintegrität und Hygiene zu wahren, akzeptieren wir keine Stornierungen nach Auftragsbestätigung, Rücksendungen oder Rückerstattungen.',
       },
       {
         question: 'Warum sollte ich Aura Cosmetics vertrauen?',
@@ -101,7 +185,7 @@ export const de: Translations = {
       },
     ],
     promiseTitle: 'Unser Versprechen an Sie',
-    promiseText: 'Bei Aura verpflichten wir uns zu ehrlicher Hautpflege. Jedes Produkt ist biologisch, mit Liebe handgefertigt und für junge Haut konzipiert. Haben Sie weitere Fragen? Wir sind nur eine WhatsApp-Nachricht entfernt.',
+    promiseText: 'Bei Aura verpflichten wir uns zu ehrlicher Hautpflege. Jedes Produkt ist biologisch, mit Liebe handgefertigt.',
   },
   contact: {
     label: 'Kontakt',
@@ -126,6 +210,7 @@ export const de: Translations = {
     ingredients: 'Vollständige Inhaltsstoffe',
     orderNow: 'Auf WhatsApp bestellen',
     shippingInfo: 'Versand: {price}',
+    size: 'Größe',
   },
   promo: {
     freeDelivery: '🚚 KOSTENLOSE LIEFERUNG bei Bestellungen über ₹500',
