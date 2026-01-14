@@ -8,6 +8,7 @@ import { LoadingScreen } from "./components/LoadingScreen";
 import { MagicalCreaturesCanvas } from "./components/magical-creatures/MagicalCreaturesCanvas";
 import { LocaleProvider } from "./lib/i18n/LocaleContext";
 import Index from "./pages/Index";
+import CountryLanding from "./pages/CountryLanding";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();

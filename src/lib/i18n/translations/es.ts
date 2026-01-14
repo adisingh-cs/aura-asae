@@ -1,6 +1,12 @@
 import type { Translations } from '../types';
 
 export const es: Translations = {
+  seo: {
+    title: 'Aura Cosmetics | Limpiador Facial Orgánico Artesanal',
+    description: 'Descubre la colección de limpiadores faciales 100% orgánicos y artesanales de Aura. Fórmulas de Vitamina C, Café, Leche de Arroz, Remolacha y Niacinamida. Cuidado sin parabenos hecho en India.',
+    keywords: 'limpiador facial orgánico, cuidado natural de la piel, limpiador vitamina c, limpiador niacinamida, cosméticos artesanales, cuidado sin parabenos, Aura Cosmetics',
+    ogLocale: 'es_ES',
+  },
   nav: {
     about: 'Nosotros',
     products: 'Productos',
@@ -19,9 +25,9 @@ export const es: Translations = {
     title: 'Cuidado de la piel que',
     titleHighlight: 'te entiende',
     paragraphs: [
-      'Nacida en 2025, Aura Cosmetics surgió de una creencia simple: tu piel merece ingredientes en los que puedas confiar. Somos una marca joven creada para jóvenes que se niegan a comprometer lo que ponen en su piel.',
-      'Cada producto Aura está meticulosamente elaborado a mano con ingredientes 100% orgánicos, cuidadosamente obtenidos y mezclados para ofrecer resultados reales sin químicos agresivos.',
-      'Desde el brillo de la vitamina C hasta la claridad del niacinamida, cada fórmula está diseñada para abordar las preocupaciones reales que enfrentan los estudiantes universitarios y jóvenes profesionales.',
+      'Nacida en 2025, Aura Cosmetics surgió de una creencia simple: tu piel merece ingredientes en los que puedas confiar.',
+      'Cada producto Aura está meticulosamente elaborado a mano con ingredientes 100% orgánicos, cuidadosamente obtenidos y mezclados para ofrecer resultados reales.',
+      'Desde el brillo de la vitamina C hasta la claridad del niacinamida, cada fórmula está diseñada para abordar las preocupaciones reales de estudiantes y jóvenes profesionales.',
     ],
     badges: ['Fundada 2025', '100% Orgánico', 'Hecho con amor'],
   },
@@ -31,6 +37,73 @@ export const es: Translations = {
     subtitle: 'Cinco limpiadores faciales artesanales, cada uno diseñado para abordar tus necesidades únicas de piel.',
     priceNote: 'Todos los productos: {price} por 100ml',
     viewDetails: 'Ver detalles →',
+    items: {
+      'vitamin-c': {
+        name: 'Limpiador Vitamina C',
+        tagline: 'Potenciador de Brillo Radiante',
+        description: 'Infundido con extractos puros de limón y vitamina C, este limpiador iluminador limpia suavemente mientras revive el brillo natural de tu piel.',
+        benefits: [
+          'Ilumina la piel y desvanece manchas oscuras',
+          'Rico en antioxidantes de extractos de limón',
+          'Aumenta el colágeno para piel más firme',
+          'Controla el exceso de grasa naturalmente',
+        ],
+        suitableFor: ['Piel Opaca', 'Piel Grasa', 'Piel Mixta'],
+        keyIngredient: 'Extracto de Limón',
+      },
+      'coffee': {
+        name: 'Limpiador de Café',
+        tagline: 'Limpieza Profunda Energizante',
+        description: 'Despierta tu piel con el poder revitalizante del café. Esta fórmula rica en antioxidantes reduce la hinchazón y unifica el tono.',
+        benefits: [
+          'Reduce hinchazón y calma la inflamación',
+          'Exfolia para una textura más suave',
+          'Ilumina y unifica el tono de piel',
+          'Ideal para todo tipo de piel',
+        ],
+        suitableFor: ['Todo Tipo de Piel', 'Piel Cansada', 'Tez Opaca'],
+        keyIngredient: 'Granos de Café',
+      },
+      'rice-milk': {
+        name: 'Limpiador Agua de Arroz y Leche',
+        tagline: 'Nutrición Sedosa',
+        description: 'Inspirado en antiguos rituales de belleza, este limpiador suave combina agua de arroz y proteínas de leche para nutrir profundamente tu piel.',
+        benefits: [
+          'Nutre la piel con proteínas de arroz y leche',
+          'Mejora la textura y suavidad de la piel',
+          'Ayuda a unificar el tono de piel',
+          'Ilumina la tez naturalmente',
+        ],
+        suitableFor: ['Piel Seca', 'Piel Sensible', 'Piel Normal'],
+        keyIngredient: 'Agua de Arroz y Leche',
+      },
+      'beetroot': {
+        name: 'Limpiador de Remolacha',
+        tagline: 'Brillo Rosa Natural',
+        description: 'Aprovecha el poder vibrante de la remolacha para una piel profundamente hidratada y saludable.',
+        benefits: [
+          'Limpia suavemente sin resecar',
+          'Hidrata y retiene la humedad',
+          'Calma y suaviza pieles sensibles',
+          'Favorece una tez sana y fresca',
+        ],
+        suitableFor: ['Piel Sensible', 'Piel Seca', 'Piel Deshidratada'],
+        keyIngredient: 'Extracto de Remolacha',
+      },
+      'niacinamide': {
+        name: 'Limpiador Niacinamida',
+        tagline: 'Fórmula Piel Clara',
+        description: 'Potenciado con Vitamina B3, esta fórmula científica ayuda a reducir el acné y minimizar los poros.',
+        benefits: [
+          'Limpia suavemente sin resecar',
+          'Ilumina y unifica el tono de piel',
+          'Ayuda a reducir acné e imperfecciones',
+          'Hidrata y calma pieles sensibles',
+        ],
+        suitableFor: ['Piel con Tendencia al Acné', 'Piel Grasa', 'Piel Mixta'],
+        keyIngredient: 'Niacinamida (Vitamina B3)',
+      },
+    },
   },
   trust: {
     label: 'Por qué elegirnos',
@@ -46,7 +119,7 @@ export const es: Translations = {
   ingredients: {
     label: 'Ingredientes Puros',
     title: 'Lo mejor de la naturaleza, en cada gota',
-    subtitle: 'Solo obtenemos los mejores ingredientes orgánicos para crear fórmulas que nutren, protegen y transforman tu piel naturalmente.',
+    subtitle: 'Solo obtenemos los mejores ingredientes orgánicos para crear fórmulas que nutren, protegen y transforman tu piel.',
     items: [
       { name: 'Vitamina C', benefit: 'Iluminador' },
       { name: 'Café', benefit: 'Energizante' },
@@ -61,11 +134,22 @@ export const es: Translations = {
     title: 'Lo que dice nuestra comunidad',
     subtitle: 'Reseñas reales de personas reales que han experimentado la diferencia Aura.',
     disclaimer: '*Estos testimonios representan experiencias de clientes. Los resultados individuales pueden variar.',
+    items: [
+      { text: '¡Honestamente no esperaba mucho pero wow! Mi piel se ve mucho más brillante ahora. Lo uso cada mañana y el aroma cítrico es increíble.' },
+      { text: '¡Tercer frasco y sigo obsesionada! Mis manchas oscuras del verano pasado han desaparecido mucho. Es suave pero realmente se siente que funciona.' },
+      { text: '¡Por fin algo que no irrita mi piel super sensible! Deja mi cara suave como de bebé sin esa sensación tirante.' },
+      { text: '¡Mi piel seca nunca ha estado más feliz! Estaba cansada de limpiadores que me hacían necesitar hidratante inmediatamente.' },
+      { text: '¡He luchado con el acné durante años y esto realmente ha ayudado! Mis poros se ven más pequeños y los brotes han disminuido mucho.' },
+      { text: '¡Compré ambos para mi situación de piel grasa-pero-deshidratada y es la combinación perfecta! Niacinamida en la mañana, Remolacha en la noche.' },
+      { text: '¡El despertar matutino que mi cara necesitaba! Huele increíble y realmente despierta mi piel. ¡Mi novio también la usa secretamente!' },
+      { text: '¡Compré ambos para probar y honestamente no puedo elegir favorito! Café para esos días hinchados, Vitamina C cuando necesito brillo extra.' },
+      { text: '¡Un producto tan único! El color rosa es muy lindo y realmente funciona. Mi piel se siente super hidratada y saludable.' },
+    ],
   },
   faq: {
     label: '¿Preguntas?',
     title: 'Preguntas Frecuentes',
-    subtitle: 'Todo lo que necesitas saber sobre los productos Aura, ingredientes y políticas. Creemos en la transparencia total.',
+    subtitle: 'Todo lo que necesitas saber sobre los productos Aura, ingredientes y políticas.',
     questions: [
       {
         question: '¿Qué ingredientes se usan en los productos Aura?',
@@ -73,19 +157,19 @@ export const es: Translations = {
       },
       {
         question: '¿Los productos Aura son orgánicos y hechos a mano?',
-        answer: '¡Sí! Cada producto Aura está elaborado a mano en pequeños lotes para garantizar calidad y frescura. Usamos ingredientes orgánicos siempre que es posible.',
+        answer: '¡Sí! Cada producto Aura está elaborado a mano en pequeños lotes para garantizar calidad y frescura.',
       },
       {
         question: '¿Qué producto Aura es adecuado para mi tipo de piel?',
-        answer: 'Los limpiadores de vitamina C y niacinamida funcionan muy bien para pieles grasas y mixtas. Arroz y leche es perfecto para pieles secas y sensibles. Café es ideal para pieles apagadas.',
+        answer: 'Los limpiadores de vitamina C y niacinamida funcionan muy bien para pieles grasas y mixtas. Arroz y leche es perfecto para pieles secas y sensibles.',
       },
       {
         question: '¿Cómo debo usar los limpiadores Aura para mejores resultados?',
-        answer: 'Para resultados óptimos, usa tu limpiador Aura dos veces al día - mañana y noche. Moja tu cara con agua tibia y masajea suavemente.',
+        answer: 'Para resultados óptimos, usa tu limpiador Aura dos veces al día - mañana y noche. Moja tu cara con agua tibia.',
       },
       {
         question: '¿Los productos Aura son seguros para uso diario?',
-        answer: 'Absolutamente. Todos los productos Aura están formulados para ser lo suficientemente suaves para uso diario. Somos libres de parabenos y sulfatos.',
+        answer: 'Absolutamente. Todos los productos Aura están formulados para ser lo suficientemente suaves para uso diario. Sin parabenos y sulfatos.',
       },
       {
         question: '¿Cuáles son las opciones de pago de Aura?',
@@ -93,7 +177,7 @@ export const es: Translations = {
       },
       {
         question: '¿Cuál es la política de pedidos y devoluciones de Aura?',
-        answer: 'Para mantener la integridad e higiene del producto, no aceptamos cancelaciones después de la confirmación del pedido, devoluciones o reembolsos. Para productos dañados, contáctanos dentro de 24 horas.',
+        answer: 'Para mantener la integridad e higiene del producto, no aceptamos cancelaciones después de la confirmación del pedido, devoluciones o reembolsos.',
       },
       {
         question: '¿Por qué debería confiar en Aura Cosmetics?',
@@ -101,7 +185,7 @@ export const es: Translations = {
       },
     ],
     promiseTitle: 'Nuestra promesa',
-    promiseText: 'En Aura, estamos comprometidos con el cuidado honesto de la piel. Cada producto es orgánico, hecho a mano con amor, y diseñado para pieles jóvenes. ¿Más preguntas? Estamos a un mensaje de WhatsApp.',
+    promiseText: 'En Aura, estamos comprometidos con el cuidado honesto de la piel. Cada producto es orgánico, hecho a mano con amor.',
   },
   contact: {
     label: 'Contacto',
@@ -126,6 +210,7 @@ export const es: Translations = {
     ingredients: 'Ingredientes completos',
     orderNow: 'Pedir en WhatsApp',
     shippingInfo: 'Envío: {price}',
+    size: 'Tamaño',
   },
   promo: {
     freeDelivery: '🚚 ENVÍO GRATIS en pedidos superiores a ₹500',
