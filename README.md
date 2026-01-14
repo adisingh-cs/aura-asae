@@ -1,53 +1,73 @@
-# 🌿 Aura Cosmetics 
+# Welcome to your Lovable project
 
-This repository contains the source code for the **Aura Cosmetics** official website — a premium, organic skincare brand website built to showcase products, brand story, and trust for a college-age audience.
+## Project info
 
-The website is designed as a **mobile-first, animated, static frontend experience**, focused on clean visuals, illustrations, and smooth interactions.
+**URL**: https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID
 
----
+## How can I edit this code?
 
-## ✨ About Aura Cosmetics
+There are several ways of editing your application.
 
-**Aura Cosmetics** is an organic skincare brand crafted with care for young, conscious skin.  
-Made with gentle, natural ingredients, Aura blends purity, simplicity, and elegance for everyday self-care.
+**Use Lovable**
 
-This website serves as:
-- A **brand presence platform**
-- A **product showcase**
-- A **trust-building experience** for first-time users
+Simply visit the [Lovable Project](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and start prompting.
 
----
+Changes made via Lovable will be committed automatically to this repo.
 
-## 🛠️ Tech Stack
+**Use your preferred IDE**
 
-This project is built using modern frontend tools:
+If you want to work locally using your own IDE, you can clone this repo and push changes. Pushed changes will also be reflected in Lovable.
 
-- ⚡ Vite  
-- ⚛️ React  
-- 🟦 TypeScript  
-- 🎨 Tailwind CSS  
-- 🧩 shadcn/ui  
-- 🎬 Motion-based UI animations  
+The only requirement is having Node.js & npm installed - [install with nvm](https://github.com/nvm-sh/nvm#installing-and-updating)
 
-The project is **frontend-only** and intentionally kept static for performance and simplicity.
+Follow these steps:
 
----
+```sh
+# Step 1: Clone the repository using the project's Git URL.
+git clone <YOUR_GIT_URL>
 
-## 🎯 Key Features
+# Step 2: Navigate to the project directory.
+cd <YOUR_PROJECT_NAME>
 
-- Mobile-first responsive design  
-- Scroll-driven animations and micro-interactions  
-- Illustrated, organic visual style (no generic stock imagery)  
-- Product showcase with detail sections  
-- Ingredients & benefits breakdown  
-- “Trusted by Students” micro-section  
-- FAQ accordion for skincare clarity & policies  
-- Clear contact & WhatsApp call-to-actions  
-- Future-ready structure for e-commerce integration  
+# Step 3: Install the necessary dependencies.
+npm i
 
+# Step 4: Start the development server with auto-reloading and an instant preview.
+npm run dev
+```
 
-## 📞 Contact & Brand Links
- - 📧 Email: eternals.hub@gmail.com
- - 📱 WhatsApp / Phone: +91 9173400522
- - 📸 Instagram: @aura.asae
- 
+**Edit a file directly in GitHub**
+
+- Navigate to the desired file(s).
+- Click the "Edit" button (pencil icon) at the top right of the file view.
+- Make your changes and commit the changes.
+
+**Use GitHub Codespaces**
+
+- Navigate to the main page of your repository.
+- Click on the "Code" button (green button) near the top right.
+- Select the "Codespaces" tab.
+- Click on "New codespace" to launch a new Codespace environment.
+- Edit files directly within the Codespace and commit and push your changes once you're done.
+
+## What technologies are used for this project?
+
+This project is built with:
+
+- Vite
+- TypeScript
+- React
+- shadcn-ui
+- Tailwind CSS
+
+## How can I deploy this project?
+
+Simply open [Lovable](https://lovable.dev/projects/REPLACE_WITH_PROJECT_ID) and click on Share -> Publish.
+
+## Can I connect a custom domain to my Lovable project?
+
+Yes, you can!
+
+To connect a domain, navigate to Project > Settings > Domains and click Connect Domain.
+
+Read more here: [Setting up a custom domain](https://docs.lovable.dev/features/custom-domain#custom-domain)
