@@ -1,7 +1,7 @@
+import { memo, useMemo, useState, lazy, Suspense } from 'react';
 import { Star, ZoomIn } from 'lucide-react';
 import { AnimatedSection } from './AnimatedSection';
 import { cn } from '@/lib/utils';
-import { useState } from 'react';
 import {
   Dialog,
   DialogContent,
@@ -18,7 +18,21 @@ interface TestimonialCardProps {
   index: number;
 }
 
-export function TestimonialCard({
+// Memoized star component for performance
+const RatingStars = memo(function RatingStars({ rating, size = 'sm' }: { rating: number; size?: 'sm' | 'md' }) {
+  const stars = useMemo(() => Array.from({ length: rating }), [rating]);
+  const sizeClass = size === 'sm' ? 'w-3.5 h-3.5' : 'w-4 h-4';
+  
+  return (
+    <div className="flex gap-1">
+      {stars.map((_, i) => (
+        <Star key={i} className={cn(sizeClass, "fill-aura-lemon text-aura-lemon")} />
+      ))}
+    </div>
+  );
+});
+
+export const TestimonialCard = memo(function TestimonialCard({
   name,
   age,
   product,
@@ -27,27 +41,39 @@ export function TestimonialCard({
   image,
   index
 }: TestimonialCardProps) {
+  const [isOpen, setIsOpen] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
+
+  const altText = useMemo(() => `${name}'s review of ${product}`, [name, product]);
+
   return (
-    <AnimatedSection
-      animation="slide-up"
-      delay={index * 100}
-    >
+    <AnimatedSection animation="slide-up" delay={index * 100}>
       <div className={cn(
         "rounded-2xl overflow-hidden h-full flex flex-col",
         "bg-card border border-border/50",
         "transition-all duration-300 hover:shadow-lg hover:-translate-y-1"
       )}>
         {/* Clickable Image Thumbnail */}
-        <Dialog>
+        <Dialog open={isOpen} onOpenChange={setIsOpen}>
           <DialogTrigger asChild>
             <button className="relative aspect-square overflow-hidden group cursor-pointer">
+              {/* Placeholder skeleton */}
+              {!imageLoaded && (
+                <div className="absolute inset-0 bg-muted animate-pulse" />
+              )}
               <img
                 src={image}
-                alt={`${name}'s review of ${product}`}
-                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                alt={altText}
+                className={cn(
+                  "w-full h-full object-cover transition-all duration-500",
+                  "group-hover:scale-105",
+                  imageLoaded ? "opacity-100" : "opacity-0"
+                )}
                 loading="lazy"
+                decoding="async"
                 width={400}
                 height={400}
+                onLoad={() => setImageLoaded(true)}
               />
               {/* Hover overlay */}
               <div className="absolute inset-0 bg-background/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
@@ -61,18 +87,14 @@ export function TestimonialCard({
             <div className="relative">
               <img
                 src={image}
-                alt={`${name}'s review of ${product}`}
+                alt={altText}
                 className="w-full h-auto max-h-[80vh] object-contain rounded-lg"
+                loading="eager"
               />
               {/* Review info overlay */}
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-background via-background/80 to-transparent p-4 md:p-6 rounded-b-lg">
-                <div className="flex gap-1 mb-2">
-                  {Array.from({ length: rating }).map((_, i) => (
-                    <Star
-                      key={i}
-                      className="w-4 h-4 fill-aura-lemon text-aura-lemon"
-                    />
-                  ))}
+                <div className="mb-2">
+                  <RatingStars rating={rating} size="md" />
                 </div>
                 <p className="text-foreground text-sm md:text-base mb-2">"{text}"</p>
                 <p className="text-sm font-medium text-primary">{name}, {age} • {product}</p>
@@ -84,13 +106,8 @@ export function TestimonialCard({
         {/* Review Content */}
         <div className="p-4 flex-1 flex flex-col">
           {/* Rating Stars */}
-          <div className="flex gap-1 mb-2">
-            {Array.from({ length: rating }).map((_, i) => (
-              <Star
-                key={i}
-                className="w-3.5 h-3.5 fill-aura-lemon text-aura-lemon"
-              />
-            ))}
+          <div className="mb-2">
+            <RatingStars rating={rating} />
           </div>
 
           {/* Quote */}
@@ -118,4 +135,4 @@ export function TestimonialCard({
       </div>
     </AnimatedSection>
   );
-}
+});

@@ -22,6 +22,16 @@
     <meta name="geo.region" content="IN" />
     <meta name="geo.placename" content="India" />
     
+    <!-- International SEO - hreflang tags -->
+    <link rel="alternate" hreflang="en-IN" href="https://auracosmetics.in/" />
+    <link rel="alternate" hreflang="en-US" href="https://auracosmetics.in/us" />
+    <link rel="alternate" hreflang="en-GB" href="https://auracosmetics.in/uk" />
+    <link rel="alternate" hreflang="de-DE" href="https://auracosmetics.in/de" />
+    <link rel="alternate" hreflang="fr-FR" href="https://auracosmetics.in/fr" />
+    <link rel="alternate" hreflang="es-ES" href="https://auracosmetics.in/es" />
+    <link rel="alternate" hreflang="ar-AE" href="https://auracosmetics.in/ae" />
+    <link rel="alternate" hreflang="x-default" href="https://auracosmetics.in/" />
+    
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />
     <meta property="og:url" content="https://auracosmetics.in/" />
@@ -33,12 +43,18 @@
     <meta property="og:image:height" content="630" />
     <meta property="og:image:alt" content="Aura Cosmetics - Organic Handcrafted Facewash Collection" />
     <meta property="og:locale" content="en_IN" />
+    <meta property="og:locale:alternate" content="en_US" />
+    <meta property="og:locale:alternate" content="en_GB" />
+    <meta property="og:locale:alternate" content="de_DE" />
+    <meta property="og:locale:alternate" content="fr_FR" />
+    <meta property="og:locale:alternate" content="es_ES" />
+    <meta property="og:locale:alternate" content="ar_AE" />
 
     <!-- Twitter -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:url" content="https://auracosmetics.in/" />
-    <meta name="twitter:title" content="Aura Cosmetics | Organic Handcrafted Facewash - India" />
-    <meta name="twitter:description" content="Shop Aura's 100% organic, handcrafted facewash collection. Vitamin C, Coffee, Rice Milk, Beetroot & Niacinamide formulas. Paraben-free skincare made in India." />
+    <meta name="twitter:title" content="Aura Cosmetics | Organic Handcrafted Facewash" />
+    <meta name="twitter:description" content="100% organic, handcrafted facewash collection. Vitamin C, Coffee, Rice Milk, Beetroot & Niacinamide. Made in India." />
     <meta name="twitter:image" content="https://auracosmetics.in/og-image.jpg" />
     <meta name="twitter:image:alt" content="Aura Cosmetics - Organic Handcrafted Facewash Collection" />
     
@@ -62,6 +78,16 @@
     <!-- DNS Prefetch -->
     <link rel="dns-prefetch" href="https://wa.me" />
     <link rel="dns-prefetch" href="https://instagram.com" />
+    
+    <!-- Resource Hints for Critical Assets -->
+    <link rel="preload" as="image" href="/src/assets/hero-section.webp" fetchpriority="high" />
+    
+    <!-- Cache Control Headers via Meta (for browsers) -->
+    <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable" />
+    <meta http-equiv="Pragma" content="cache" />
+    
+    <!-- Performance Hints -->
+    <meta name="mobile-web-app-capable" content="yes" />
   </head>
 
   <body>

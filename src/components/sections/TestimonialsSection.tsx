@@ -1,10 +1,29 @@
+import { memo, useMemo } from 'react';
 import { testimonials } from '@/data/products';
 import { TestimonialCard } from '@/components/TestimonialCard';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { useLocale } from '@/lib/i18n/LocaleContext';
 
-export function TestimonialsSection() {
+export const TestimonialsSection = memo(function TestimonialsSection() {
   const { t } = useLocale();
+
+  // Map testimonial IDs to translation keys
+  const testimonialKeys = useMemo(() => [
+    'kavya', 'sneha', 'priya', 'ananya', 'ritika', 'diya', 'meera', 'aisha', 'tanvi'
+  ], []);
+
+  // Merge static testimonial data with translated text
+  const translatedTestimonials = useMemo(() => {
+    return testimonials.map((testimonial, index) => {
+      const key = testimonialKeys[index];
+      const translation = t.testimonials.items[key];
+      return {
+        ...testimonial,
+        product: translation?.product || testimonial.product,
+        text: translation?.text || testimonial.text
+      };
+    });
+  }, [t.testimonials.items, testimonialKeys]);
 
   return (
     <section id="testimonials" className="section-padding bg-background">
@@ -32,7 +51,7 @@ export function TestimonialsSection() {
 
         {/* Testimonials Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
-          {testimonials.map((testimonial, index) => (
+          {translatedTestimonials.map((testimonial, index) => (
             <TestimonialCard
               key={testimonial.id}
               name={testimonial.name}
@@ -55,4 +74,4 @@ export function TestimonialsSection() {
       </div>
     </section>
   );
-}
+});
