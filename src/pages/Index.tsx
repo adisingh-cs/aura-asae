@@ -56,6 +56,68 @@ const websiteSchema = {
   }
 };
 
+// Individual review schemas for rich snippets
+const reviewSchemas = testimonials.map((testimonial) => ({
+  "@context": "https://schema.org",
+  "@type": "Review",
+  "itemReviewed": {
+    "@type": "Product",
+    "name": testimonial.product,
+    "brand": {
+      "@type": "Brand",
+      "name": "Aura Cosmetics"
+    }
+  },
+  "reviewRating": {
+    "@type": "Rating",
+    "ratingValue": testimonial.rating,
+    "bestRating": 5,
+    "worstRating": 1
+  },
+  "author": {
+    "@type": "Person",
+    "name": testimonial.name
+  },
+  "reviewBody": testimonial.text,
+  "datePublished": "2025-01-01",
+  "publisher": {
+    "@type": "Organization",
+    "name": "Aura Cosmetics"
+  }
+}));
+
+// Aggregate review schema
+const aggregateReviewSchema = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "Aura Cosmetics Facewash Collection",
+  "brand": {
+    "@type": "Brand",
+    "name": "Aura Cosmetics"
+  },
+  "description": "100% organic, handcrafted facewash collection made in India",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "5",
+    "reviewCount": testimonials.length,
+    "bestRating": "5",
+    "worstRating": "1"
+  },
+  "review": testimonials.map((testimonial) => ({
+    "@type": "Review",
+    "reviewRating": {
+      "@type": "Rating",
+      "ratingValue": testimonial.rating,
+      "bestRating": 5
+    },
+    "author": {
+      "@type": "Person",
+      "name": testimonial.name
+    },
+    "reviewBody": testimonial.text
+  }))
+};
+
 const productListSchema = {
   "@context": "https://schema.org",
   "@type": "ItemList",
@@ -78,7 +140,7 @@ const productListSchema = {
         "price": product.price,
         "priceCurrency": "INR",
         "availability": "https://schema.org/InStock",
-        "priceValidUntil": "2025-12-31",
+        "priceValidUntil": "2026-12-31",
         "url": `https://auracosmetics.in/#products`
       },
       "aggregateRating": {
@@ -225,6 +287,16 @@ const Index = () => {
         <script type="application/ld+json">
           {JSON.stringify(breadcrumbSchema)}
         </script>
+        {/* Aggregate Review Schema for Rich Snippets */}
+        <script type="application/ld+json">
+          {JSON.stringify(aggregateReviewSchema)}
+        </script>
+        {/* Individual Review Schemas */}
+        {reviewSchemas.map((schema, index) => (
+          <script key={index} type="application/ld+json">
+            {JSON.stringify(schema)}
+          </script>
+        ))}
       </Helmet>
 
       <main className="min-h-screen">
