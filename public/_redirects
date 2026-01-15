@@ -1,0 +1,11 @@
+# SPA redirects for client-side routing
+# Country routes
+/us/*    /index.html   200
+/uk/*    /index.html   200
+/de/*    /index.html   200
+/fr/*    /index.html   200
+/es/*    /index.html   200
+/ae/*    /index.html   200
+
+# Fallback for all routes
+/*    /index.html   200
