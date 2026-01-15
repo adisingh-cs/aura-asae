@@ -246,7 +246,7 @@ const Index = () => {
     <>
       <Helmet>
         {/* Primary Meta Tags */}
-        <title>Aura Cosmetics | Organic Handcrafted Facewash - India</title>
+        <title>Aura | Glow with the flow ✨</title>
         <meta 
           name="description" 
           content="Shop Aura's 100% organic, handcrafted facewash collection. Vitamin C, Coffee, Rice Milk, Beetroot & Niacinamide formulas. Paraben-free skincare made in India. ₹349 for 100ml." 
@@ -254,7 +254,7 @@ const Index = () => {
         <meta name="keywords" content="organic facewash, natural skincare India, vitamin c facewash, niacinamide facewash, coffee facewash, rice milk facewash, beetroot facewash, handcrafted cosmetics, paraben free skincare, organic skincare India, Aura Cosmetics, best facewash India, affordable organic skincare" />
         
         {/* Open Graph */}
-        <meta property="og:title" content="Aura Cosmetics | Organic Handcrafted Facewash - India" />
+        <meta property="og:title" content="Aura | Glow with the flow ✨" />
         <meta property="og:description" content="Shop Aura's 100% organic, handcrafted facewash collection. Vitamin C, Coffee, Rice Milk, Beetroot & Niacinamide formulas. Paraben-free skincare made in India." />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://auracosmetics.in/" />
@@ -262,7 +262,7 @@ const Index = () => {
         <meta property="og:locale" content="en_IN" />
         
         {/* Twitter */}
-        <meta name="twitter:title" content="Aura Cosmetics | Organic Handcrafted Facewash" />
+        <meta name="twitter:title" content="Aura | Glow with the flow ✨" />
         <meta name="twitter:description" content="100% organic, handcrafted facewash collection. Vitamin C, Coffee, Rice Milk, Beetroot & Niacinamide. Made in India." />
         
         {/* Canonical */}
