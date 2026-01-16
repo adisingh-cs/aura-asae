@@ -1,12 +1,14 @@
-# Lovable/Netlify Headers for Caching and Performance
+# Lovable/Netlify Headers for Caching, Performance and SEO
 
-# Global headers for all pages
+# Global headers for all pages - Security and Performance
 /*
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
   Permissions-Policy: camera=(), microphone=(), geolocation=()
+  X-DNS-Prefetch-Control: on
+  Connection: keep-alive
 
 # Cache static assets aggressively (1 year)
 /assets/*
@@ -67,3 +69,30 @@
 
 /ae
   Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/in
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/ca
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/au
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+/sg
+  Cache-Control: public, max-age=3600, stale-while-revalidate=86400
+
+# Service Worker
+/sw.js
+  Cache-Control: public, max-age=0, must-revalidate
+
+# Manifest
+/manifest.json
+  Cache-Control: public, max-age=86400, stale-while-revalidate=604800
+
+# Sitemap and robots for SEO crawlers
+/sitemap.xml
+  Cache-Control: public, max-age=86400
+
+/robots.txt
+  Cache-Control: public, max-age=86400

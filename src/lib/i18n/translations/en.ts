@@ -173,11 +173,15 @@ export const en: Translations = {
       },
       {
         question: "What are Aura's payment options?",
-        answer: "We accept all major credit cards, debit cards, and digital payment methods. Payment is processed securely at checkout.",
+        answer: "We accept UPI-based payments only, including Google Pay (GPay), PhonePe, and QR code payments. Simply scan our QR code or use your preferred UPI app to complete your order securely.",
       },
       {
-        question: "What is Aura's shipping and return policy?",
-        answer: "We ship worldwide with tracking. If you receive a damaged product, please contact us within 24 hours with photos and we'll arrange a replacement.",
+        question: "What is Aura's shipping timeline?",
+        answer: "For orders within India, delivery takes 5-7 business days. For international orders, shipping may take a minimum of 15 days depending on your location. All orders include tracking information.",
+      },
+      {
+        question: "What is Aura's return policy?",
+        answer: "If you receive a damaged product, please contact us within 24 hours with photos and we'll arrange a replacement. Due to hygiene reasons, we cannot accept returns on opened products.",
       },
       {
         question: 'Why should I trust Aura Cosmetics?',

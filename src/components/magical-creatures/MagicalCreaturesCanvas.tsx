@@ -59,7 +59,7 @@ export function MagicalCreaturesCanvas() {
   if (!mounted || prefersReducedMotion) return null;
 
   return (
-    <div className="fixed inset-0 pointer-events-none z-30 overflow-hidden" aria-hidden="true">
+    <div className="fixed inset-0 pointer-events-none z-10 overflow-hidden" style={{ top: '120px' }} aria-hidden="true">
       {/* Cherry blossom petals */}
       {petals.map((petal) => (
         <SpringPetal

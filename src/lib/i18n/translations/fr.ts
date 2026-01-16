@@ -173,11 +173,15 @@ export const fr: Translations = {
       },
       {
         question: "Quelles sont les options de paiement d'Aura ?",
-        answer: 'Nous acceptons toutes les principales cartes de crédit, PayPal et les virements bancaires pour les commandes internationales.',
+        answer: 'Nous acceptons uniquement les paiements basés sur UPI, y compris Google Pay (GPay), PhonePe et les paiements par code QR. Scannez simplement notre code QR ou utilisez votre application UPI préférée.',
       },
       {
-        question: "Quelle est la politique de commande et de retour d'Aura ?",
-        answer: "Pour maintenir l'intégrité et l'hygiène des produits, nous n'acceptons pas les annulations après confirmation de commande, les retours ou les remboursements.",
+        question: "Quel est le délai de livraison d'Aura ?",
+        answer: "Pour les commandes en Inde, la livraison prend 5 à 7 jours ouvrables. Pour les commandes internationales, l'expédition peut prendre au minimum 15 jours selon votre localisation. Toutes les commandes incluent un suivi.",
+      },
+      {
+        question: "Quelle est la politique de retour d'Aura ?",
+        answer: "Si vous recevez un produit endommagé, veuillez nous contacter dans les 24 heures avec des photos et nous organiserons un remplacement. Pour des raisons d'hygiène, nous ne pouvons pas accepter les retours de produits ouverts.",
       },
       {
         question: 'Pourquoi devrais-je faire confiance à Aura Cosmetics ?',

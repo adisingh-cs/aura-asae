@@ -173,11 +173,15 @@ export const de: Translations = {
       },
       {
         question: 'Welche Zahlungsoptionen bietet Aura?',
-        answer: 'Wir akzeptieren alle gängigen Kreditkarten, PayPal und Banküberweisungen für internationale Bestellungen.',
+        answer: 'Wir akzeptieren nur UPI-basierte Zahlungen, einschließlich Google Pay (GPay), PhonePe und QR-Code-Zahlungen. Scannen Sie einfach unseren QR-Code oder verwenden Sie Ihre bevorzugte UPI-App.',
       },
       {
-        question: 'Was ist die Bestell- und Rückgaberichtlinie von Aura?',
-        answer: 'Um die Produktintegrität und Hygiene zu wahren, akzeptieren wir keine Stornierungen nach Auftragsbestätigung, Rücksendungen oder Rückerstattungen.',
+        question: 'Wie lange dauert der Versand bei Aura?',
+        answer: 'Für Bestellungen innerhalb Indiens dauert die Lieferung 5-7 Werktage. Für internationale Bestellungen kann der Versand je nach Standort mindestens 15 Tage dauern. Alle Bestellungen enthalten Tracking-Informationen.',
+      },
+      {
+        question: 'Was ist die Rückgaberichtlinie von Aura?',
+        answer: 'Wenn Sie ein beschädigtes Produkt erhalten, kontaktieren Sie uns bitte innerhalb von 24 Stunden mit Fotos und wir arrangieren einen Ersatz. Aus Hygienegründen können wir keine Rücksendungen von geöffneten Produkten akzeptieren.',
       },
       {
         question: 'Warum sollte ich Aura Cosmetics vertrauen?',
