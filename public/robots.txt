@@ -1,14 +1,53 @@
 # Robots.txt for Aura Cosmetics
 # https://auracosmetics.in
+# Organic Handcrafted Facewash - Made in India
 
+# Google
 User-agent: Googlebot
 Allow: /
 Crawl-delay: 1
 
+User-agent: Googlebot-Image
+Allow: /
+
+User-agent: Googlebot-News
+Allow: /
+
+# Bing
 User-agent: Bingbot
 Allow: /
 Crawl-delay: 1
 
+# Yahoo
+User-agent: Slurp
+Allow: /
+Crawl-delay: 1
+
+# DuckDuckGo
+User-agent: DuckDuckBot
+Allow: /
+
+# Yandex (Russia)
+User-agent: YandexBot
+Allow: /
+Crawl-delay: 2
+
+# Baidu (China)
+User-agent: Baiduspider
+Allow: /
+Crawl-delay: 2
+
+# Sogou (China)
+User-agent: Sogou
+Allow: /
+Crawl-delay: 2
+
+# Naver (Korea)
+User-agent: Yeti
+Allow: /
+Crawl-delay: 2
+
+# Social Media Bots
 User-agent: Twitterbot
 Allow: /
 
@@ -18,19 +57,26 @@ Allow: /
 User-agent: LinkedInBot
 Allow: /
 
-User-agent: Slurp
-Allow: /
-Crawl-delay: 1
-
-User-agent: DuckDuckBot
+User-agent: Pinterest
 Allow: /
 
+User-agent: WhatsApp
+Allow: /
+
+User-agent: TelegramBot
+Allow: /
+
+# All other bots
 User-agent: *
 Allow: /
 Crawl-delay: 2
 
-# Sitemap location
+# Sitemap locations
 Sitemap: https://auracosmetics.in/sitemap.xml
 
 # Host
 Host: https://auracosmetics.in
+
+# Disallow sensitive paths (none currently)
+# Disallow: /admin
+# Disallow: /private

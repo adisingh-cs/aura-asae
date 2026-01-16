@@ -184,6 +184,22 @@ const faqSchema = {
     },
     {
       "@type": "Question",
+      "name": "What is the shipping time for Aura products?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "For orders within India, delivery takes 5-7 business days. For international orders, shipping may take a minimum of 15 days depending on your location. All orders include tracking information."
+      }
+    },
+    {
+      "@type": "Question",
+      "name": "What payment methods does Aura accept?",
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": "We accept UPI-based payments only, including Google Pay (GPay), PhonePe, and QR code payments. Simply scan our QR code or use your preferred UPI app to complete your order securely."
+      }
+    },
+    {
+      "@type": "Question",
       "name": "Are Aura products safe for daily use?",
       "acceptedAnswer": {
         "@type": "Answer",
