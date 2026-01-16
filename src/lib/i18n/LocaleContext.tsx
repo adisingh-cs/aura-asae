@@ -14,7 +14,19 @@ interface LocaleContextValue {
   isLoading: boolean;
 }
 
-const LocaleContext = createContext<LocaleContextValue | undefined>(undefined);
+// Create context with a default value to avoid undefined during HMR
+const defaultLocale = locales[defaultCountry];
+const defaultTranslations = translations[defaultLocale.language];
+
+const LocaleContext = createContext<LocaleContextValue>({
+  currentLocale: defaultLocale,
+  t: defaultTranslations,
+  setCountry: () => {},
+  formatPrice: (price) => `${defaultLocale.symbol}${price ?? defaultLocale.productPrice}`,
+  isIndia: defaultCountry === 'IN',
+  isRTL: false,
+  isLoading: true,
+});
 
 const STORAGE_KEY = 'aura-country';
 const DETECTION_SHOWN_KEY = 'aura-detection-shown';
@@ -171,9 +183,6 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
 
 export function useLocale() {
   const context = useContext(LocaleContext);
-  if (context === undefined) {
-    throw new Error('useLocale must be used within a LocaleProvider');
-  }
   return context;
 }
 
