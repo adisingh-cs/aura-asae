@@ -65,6 +65,7 @@ export function HeroSection() {
                   className="w-full max-w-lg lg:max-w-xl animate-float-slow"
                   width={576}
                   height={686}
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 576px"
                   fetchPriority="high"
                   decoding="async"
                 />
