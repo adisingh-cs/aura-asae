@@ -23,6 +23,7 @@ export function AboutSection() {
                 className="relative w-64 md:w-80 lg:w-96 opacity-90"
                 width={384}
                 height={384}
+                sizes="(max-width: 768px) 256px, (max-width: 1024px) 320px, 384px"
                 loading="lazy"
                 decoding="async"
               />
