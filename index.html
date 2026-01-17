@@ -82,8 +82,8 @@
     <link rel="dns-prefetch" href="https://wa.me" />
     <link rel="dns-prefetch" href="https://instagram.com" />
     
-    <!-- Resource Hints for Critical Assets -->
-    <link rel="preload" as="image" href="/src/assets/hero-section.webp" fetchpriority="high" />
+    <!-- Resource Hints for Critical Assets - LCP optimization -->
+    <link rel="preload" as="image" href="/src/assets/hero-section.webp" fetchpriority="high" type="image/webp" imagesizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 576px" />
     
     <!-- Cache Control Headers via Meta (for browsers) -->
     <meta http-equiv="Cache-Control" content="public, max-age=31536000, immutable" />
