@@ -9,6 +9,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/sections/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
+import { SaleBanner } from '@/components/SaleBanner';
 import { Helmet } from 'react-helmet-async';
 import { products, testimonials, contactInfo } from '@/data/products';
 
@@ -257,6 +258,53 @@ const breadcrumbSchema = {
   ]
 };
 
+// Special Offer Schema for Valentine's Day Sale
+const saleEventSchema = {
+  "@context": "https://schema.org",
+  "@type": "SaleEvent",
+  "name": "Early Valentine's Day Sale",
+  "description": "Get 20% off on all Aura Cosmetics organic facewash products with code LOVE20",
+  "startDate": "2025-01-17",
+  "endDate": "2025-02-14",
+  "eventStatus": "https://schema.org/EventScheduled",
+  "eventAttendanceMode": "https://schema.org/OnlineEventAttendanceMode",
+  "location": {
+    "@type": "VirtualLocation",
+    "url": "https://auracosmetics.in"
+  },
+  "organizer": {
+    "@type": "Organization",
+    "name": "Aura Cosmetics",
+    "url": "https://auracosmetics.in"
+  },
+  "offers": {
+    "@type": "Offer",
+    "name": "20% Off Valentine's Day Discount",
+    "priceSpecification": {
+      "@type": "PriceSpecification",
+      "discount": "20%"
+    },
+    "validFrom": "2025-01-17",
+    "validThrough": "2025-02-14"
+  }
+};
+
+// Brand Schema for global recognition
+const brandSchema = {
+  "@context": "https://schema.org",
+  "@type": "Brand",
+  "name": "Aura Cosmetics",
+  "description": "100% organic, handcrafted skincare brand from India specializing in natural facewash products",
+  "logo": "https://auracosmetics.in/logo.webp",
+  "url": "https://auracosmetics.in",
+  "slogan": "Glow with the flow",
+  "foundingDate": "2025",
+  "foundingLocation": {
+    "@type": "Place",
+    "name": "India"
+  }
+};
+
 const Index = () => {
   return (
     <>
@@ -307,6 +355,14 @@ const Index = () => {
         <script type="application/ld+json">
           {JSON.stringify(aggregateReviewSchema)}
         </script>
+        {/* Sale Event Schema for Promotions */}
+        <script type="application/ld+json">
+          {JSON.stringify(saleEventSchema)}
+        </script>
+        {/* Brand Schema for Global Recognition */}
+        <script type="application/ld+json">
+          {JSON.stringify(brandSchema)}
+        </script>
         {/* Individual Review Schemas */}
         {reviewSchemas.map((schema, index) => (
           <script key={index} type="application/ld+json">
@@ -315,6 +371,7 @@ const Index = () => {
         ))}
       </Helmet>
 
+      <SaleBanner endDate={new Date('2025-02-14T23:59:59')} />
       <main className="min-h-screen">
         <Navbar />
         <HeroSection />
