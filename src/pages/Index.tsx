@@ -9,7 +9,7 @@ import FAQSection from '@/components/sections/FAQSection';
 import { ContactSection } from '@/components/sections/ContactSection';
 import { Footer } from '@/components/sections/Footer';
 import { WhatsAppButton } from '@/components/WhatsAppButton';
-import { SaleBanner } from '@/components/SaleBanner';
+import { ValentineButterfly } from '@/components/ValentineButterfly';
 import { Helmet } from 'react-helmet-async';
 import { products, testimonials, contactInfo } from '@/data/products';
 
@@ -371,7 +371,7 @@ const Index = () => {
         ))}
       </Helmet>
 
-      <SaleBanner endDate={new Date('2025-02-14T23:59:59')} />
+      <ValentineButterfly />
       <main className="min-h-screen">
         <Navbar />
         <HeroSection />
