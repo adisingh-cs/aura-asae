@@ -1,62 +1,131 @@
-import { useState, useEffect, useCallback } from 'react';
-import { X, Heart, Sparkles, Copy, Check } from 'lucide-react';
+import { useState, useEffect, useCallback, useRef } from 'react';
+import { Heart, Sparkles, Copy, Check } from 'lucide-react';
 import { Dialog, DialogContent } from '@/components/ui/dialog';
 import { toast } from 'sonner';
 
+interface SparkleType {
+  id: number;
+  x: number;
+  y: number;
+  opacity: number;
+  size: number;
+  rotation: number;
+}
+
 export function ValentineButterfly() {
-  const [position, setPosition] = useState({ x: 20, y: 30 });
+  const [position, setPosition] = useState({ x: 200, y: 200 });
   const [isFlying, setIsFlying] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
   const [copied, setCopied] = useState(false);
-  const [sparkles, setSparkles] = useState<{ id: number; x: number; y: number; opacity: number }[]>([]);
+  const [sparkles, setSparkles] = useState<SparkleType[]>([]);
+  
+  const animationRef = useRef<number | null>(null);
+  const timeRef = useRef(0);
+  const basePositionRef = useRef({ x: 200, y: 200 });
+  const targetRef = useRef({ x: 300, y: 300 });
+  const lastSparkleTimeRef = useRef(0);
 
-  // Generate random flight path
+  // Smooth Perlin-like movement using layered sine waves
   useEffect(() => {
-    if (!isFlying) return;
+    if (!isFlying) {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+      return;
+    }
 
-    const flyInterval = setInterval(() => {
-      setPosition(prev => {
-        const newX = prev.x + (Math.random() - 0.5) * 15;
-        const newY = prev.y + (Math.random() - 0.5) * 10;
+    const animate = (timestamp: number) => {
+      timeRef.current = timestamp * 0.0003; // Slow time progression
+      
+      const time = timeRef.current;
+      
+      // Layered sine waves for organic movement
+      const noiseX = 
+        Math.sin(time * 0.7) * 80 +
+        Math.sin(time * 1.3 + 0.5) * 40 +
+        Math.sin(time * 2.1 + 1.2) * 20;
+      
+      const noiseY = 
+        Math.cos(time * 0.5) * 60 +
+        Math.cos(time * 1.1 + 0.8) * 35 +
+        Math.sin(time * 1.7 + 2.1) * 18;
+      
+      // Slowly drifting base position
+      basePositionRef.current.x += (targetRef.current.x - basePositionRef.current.x) * 0.002;
+      basePositionRef.current.y += (targetRef.current.y - basePositionRef.current.y) * 0.002;
+      
+      // Change target occasionally
+      if (Math.random() < 0.003) {
+        const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1000;
+        const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+        targetRef.current = {
+          x: 100 + Math.random() * (viewportWidth - 200),
+          y: 100 + Math.random() * (viewportHeight - 300),
+        };
+      }
+      
+      // Calculate final position
+      let newX = basePositionRef.current.x + noiseX;
+      let newY = basePositionRef.current.y + noiseY;
+      
+      // Keep within bounds with soft bounce
+      const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1000;
+      const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+      
+      newX = Math.max(50, Math.min(viewportWidth - 80, newX));
+      newY = Math.max(80, Math.min(viewportHeight - 120, newY));
+      
+      setPosition({ x: newX, y: newY });
+      
+      // Add sparkles at intervals
+      if (timestamp - lastSparkleTimeRef.current > 80) {
+        lastSparkleTimeRef.current = timestamp;
         
-        // Keep butterfly within bounds
-        const boundedX = Math.max(5, Math.min(90, newX));
-        const boundedY = Math.max(10, Math.min(80, newY));
+        const newSparkle: SparkleType = {
+          id: timestamp,
+          x: newX + (Math.random() - 0.5) * 30,
+          y: newY + (Math.random() - 0.5) * 30 + 20,
+          opacity: 1,
+          size: 8 + Math.random() * 10,
+          rotation: Math.random() * 360,
+        };
         
-        return { x: boundedX, y: boundedY };
-      });
-    }, 2000);
+        setSparkles(prev => [...prev.slice(-20), newSparkle]);
+      }
+      
+      animationRef.current = requestAnimationFrame(animate);
+    };
 
-    return () => clearInterval(flyInterval);
+    // Initialize base position
+    const viewportWidth = typeof window !== 'undefined' ? window.innerWidth : 1000;
+    const viewportHeight = typeof window !== 'undefined' ? window.innerHeight : 800;
+    basePositionRef.current = { 
+      x: viewportWidth * 0.3, 
+      y: viewportHeight * 0.3 
+    };
+    targetRef.current = { 
+      x: viewportWidth * 0.6, 
+      y: viewportHeight * 0.4 
+    };
+    
+    animationRef.current = requestAnimationFrame(animate);
+    
+    return () => {
+      if (animationRef.current) {
+        cancelAnimationFrame(animationRef.current);
+      }
+    };
   }, [isFlying]);
-
-  // Create sparkle trail
-  useEffect(() => {
-    if (!isFlying) return;
-
-    const sparkleInterval = setInterval(() => {
-      const newSparkle = {
-        id: Date.now(),
-        x: position.x + (Math.random() - 0.5) * 5,
-        y: position.y + (Math.random() - 0.5) * 5,
-        opacity: 1,
-      };
-
-      setSparkles(prev => [...prev.slice(-15), newSparkle]);
-    }, 150);
-
-    return () => clearInterval(sparkleInterval);
-  }, [isFlying, position]);
 
   // Fade out sparkles
   useEffect(() => {
     const fadeInterval = setInterval(() => {
       setSparkles(prev => 
         prev
-          .map(s => ({ ...s, opacity: s.opacity - 0.1 }))
+          .map(s => ({ ...s, opacity: s.opacity - 0.04, rotation: s.rotation + 2 }))
           .filter(s => s.opacity > 0)
       );
-    }, 100);
+    }, 50);
 
     return () => clearInterval(fadeInterval);
   }, []);
@@ -94,25 +163,37 @@ export function ValentineButterfly() {
 
   return (
     <>
-      {/* Sparkle Trail */}
+      {/* Golden Sparkle Trail */}
       {sparkles.map(sparkle => (
         <div
           key={sparkle.id}
           className="fixed pointer-events-none z-40"
           style={{
-            left: `${sparkle.x}%`,
-            top: `${sparkle.y}%`,
+            left: sparkle.x,
+            top: sparkle.y,
             opacity: sparkle.opacity,
-            transform: 'translate(-50%, -50%)',
+            transform: `translate(-50%, -50%) rotate(${sparkle.rotation}deg)`,
           }}
         >
-          <Sparkles 
-            className="w-3 h-3 text-yellow-400 drop-shadow-[0_0_6px_rgba(251,191,36,0.8)]" 
-            style={{ 
-              filter: 'drop-shadow(0 0 4px gold)',
-              animation: 'pulse 0.5s ease-in-out infinite'
-            }}
-          />
+          <svg 
+            width={sparkle.size} 
+            height={sparkle.size} 
+            viewBox="0 0 24 24"
+            style={{ filter: 'drop-shadow(0 0 6px rgba(251, 191, 36, 0.9))' }}
+          >
+            <defs>
+              <radialGradient id={`sparkleGrad-${sparkle.id}`} cx="50%" cy="50%">
+                <stop offset="0%" stopColor="#fef08a" />
+                <stop offset="50%" stopColor="#fbbf24" />
+                <stop offset="100%" stopColor="#d97706" />
+              </radialGradient>
+            </defs>
+            {/* 4-pointed star */}
+            <path 
+              d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z"
+              fill={`url(#sparkleGrad-${sparkle.id})`}
+            />
+          </svg>
         </div>
       ))}
 
@@ -120,85 +201,162 @@ export function ValentineButterfly() {
       {isFlying && (
         <button
           onClick={handleButterflyClick}
-          className="fixed z-50 cursor-pointer transition-all duration-[2000ms] ease-in-out hover:scale-125"
+          className="fixed z-[45] cursor-pointer hover:scale-110 transition-transform duration-300"
           style={{
-            left: `${position.x}%`,
-            top: `${position.y}%`,
+            left: position.x,
+            top: position.y,
             transform: 'translate(-50%, -50%)',
           }}
           aria-label="Click for a special surprise"
         >
-          <div className="relative animate-bounce">
-            {/* Butterfly Body */}
+          <div className="relative">
+            {/* Glow aura */}
+            <div 
+              className="absolute inset-0 rounded-full blur-2xl animate-pulse"
+              style={{
+                background: 'radial-gradient(circle, rgba(239, 68, 68, 0.4) 0%, transparent 70%)',
+                width: '80px',
+                height: '80px',
+                left: '-16px',
+                top: '-16px',
+              }}
+            />
+            
+            {/* Main Butterfly SVG */}
             <svg 
-              width="48" 
-              height="48" 
-              viewBox="0 0 48 48" 
-              className="drop-shadow-[0_0_10px_rgba(239,68,68,0.6)]"
+              width="56" 
+              height="56" 
+              viewBox="0 0 56 56" 
+              className="drop-shadow-[0_0_15px_rgba(239,68,68,0.7)]"
+              style={{ filter: 'drop-shadow(0 0 10px rgba(239, 68, 68, 0.5))' }}
             >
-              {/* Left Wing */}
+              <defs>
+                {/* Wing gradient */}
+                <radialGradient id="wingGradient" cx="50%" cy="50%" r="70%">
+                  <stop offset="0%" stopColor="#fca5a5" />
+                  <stop offset="40%" stopColor="#ef4444" />
+                  <stop offset="80%" stopColor="#b91c1c" />
+                  <stop offset="100%" stopColor="#7f1d1d" />
+                </radialGradient>
+                
+                {/* Inner wing glow */}
+                <radialGradient id="innerGlow" cx="50%" cy="50%">
+                  <stop offset="0%" stopColor="rgba(255,255,255,0.6)" />
+                  <stop offset="100%" stopColor="transparent" />
+                </radialGradient>
+                
+                {/* Shimmer effect */}
+                <linearGradient id="shimmer" x1="0%" y1="0%" x2="100%" y2="100%">
+                  <stop offset="0%" stopColor="rgba(255,255,255,0)" />
+                  <stop offset="50%" stopColor="rgba(255,255,255,0.4)" />
+                  <stop offset="100%" stopColor="rgba(255,255,255,0)" />
+                </linearGradient>
+              </defs>
+              
+              {/* Left Upper Wing */}
+              <ellipse 
+                cx="15" 
+                cy="22" 
+                rx="13" 
+                ry="18" 
+                fill="url(#wingGradient)"
+                className="origin-[28px_28px]"
+                style={{ animation: 'wingFlap 0.25s ease-in-out infinite' }}
+              />
+              
+              {/* Left Lower Wing */}
               <ellipse 
                 cx="14" 
-                cy="24" 
-                rx="12" 
-                ry="16" 
-                fill="url(#redGradient)"
-                className="origin-right animate-[wingFlap_0.3s_ease-in-out_infinite]"
+                cy="36" 
+                rx="10" 
+                ry="12" 
+                fill="url(#wingGradient)"
+                className="origin-[28px_28px]"
+                style={{ animation: 'wingFlap 0.25s ease-in-out infinite' }}
               />
-              {/* Right Wing */}
+              
+              {/* Right Upper Wing */}
               <ellipse 
-                cx="34" 
-                cy="24" 
-                rx="12" 
-                ry="16" 
-                fill="url(#redGradient)"
-                className="origin-left animate-[wingFlap_0.3s_ease-in-out_infinite_reverse]"
+                cx="41" 
+                cy="22" 
+                rx="13" 
+                ry="18" 
+                fill="url(#wingGradient)"
+                className="origin-[28px_28px]"
+                style={{ animation: 'wingFlapReverse 0.25s ease-in-out infinite' }}
               />
-              {/* Wing Decorations */}
-              <circle cx="10" cy="20" r="3" fill="rgba(255,255,255,0.4)" />
-              <circle cx="38" cy="20" r="3" fill="rgba(255,255,255,0.4)" />
-              <circle cx="12" cy="28" r="2" fill="rgba(255,255,255,0.3)" />
-              <circle cx="36" cy="28" r="2" fill="rgba(255,255,255,0.3)" />
+              
+              {/* Right Lower Wing */}
+              <ellipse 
+                cx="42" 
+                cy="36" 
+                rx="10" 
+                ry="12" 
+                fill="url(#wingGradient)"
+                className="origin-[28px_28px]"
+                style={{ animation: 'wingFlapReverse 0.25s ease-in-out infinite' }}
+              />
+              
+              {/* Wing decorative patterns */}
+              <circle cx="12" cy="18" r="4" fill="rgba(255,255,255,0.35)" />
+              <circle cx="44" cy="18" r="4" fill="rgba(255,255,255,0.35)" />
+              <circle cx="10" cy="26" r="2.5" fill="rgba(255,255,255,0.25)" />
+              <circle cx="46" cy="26" r="2.5" fill="rgba(255,255,255,0.25)" />
+              <circle cx="14" cy="32" r="2" fill="rgba(255,200,200,0.4)" />
+              <circle cx="42" cy="32" r="2" fill="rgba(255,200,200,0.4)" />
+              <circle cx="12" cy="38" r="1.5" fill="rgba(255,255,255,0.3)" />
+              <circle cx="44" cy="38" r="1.5" fill="rgba(255,255,255,0.3)" />
+              
+              {/* Wing veins */}
+              <path d="M28 28 Q18 20 8 20" stroke="rgba(127,29,29,0.3)" strokeWidth="0.8" fill="none" />
+              <path d="M28 28 Q38 20 48 20" stroke="rgba(127,29,29,0.3)" strokeWidth="0.8" fill="none" />
+              <path d="M28 28 Q16 32 10 40" stroke="rgba(127,29,29,0.3)" strokeWidth="0.6" fill="none" />
+              <path d="M28 28 Q40 32 46 40" stroke="rgba(127,29,29,0.3)" strokeWidth="0.6" fill="none" />
+              
               {/* Body */}
-              <ellipse cx="24" cy="24" rx="3" ry="12" fill="#7f1d1d" />
+              <ellipse cx="28" cy="28" rx="3.5" ry="14" fill="#4c0519" />
+              <ellipse cx="28" cy="28" rx="2.5" ry="12" fill="#7f1d1d" />
+              
+              {/* Body segments */}
+              <circle cx="28" cy="18" r="1.5" fill="#4c0519" />
+              <circle cx="28" cy="22" r="1.2" fill="#4c0519" />
+              <circle cx="28" cy="26" r="1.2" fill="#4c0519" />
+              <circle cx="28" cy="30" r="1.2" fill="#4c0519" />
+              <circle cx="28" cy="34" r="1.2" fill="#4c0519" />
+              <circle cx="28" cy="38" r="1" fill="#4c0519" />
+              
               {/* Antennae */}
-              <line x1="24" y1="12" x2="20" y2="6" stroke="#7f1d1d" strokeWidth="1.5" />
-              <line x1="24" y1="12" x2="28" y2="6" stroke="#7f1d1d" strokeWidth="1.5" />
-              <circle cx="20" cy="5" r="1.5" fill="#7f1d1d" />
-              <circle cx="28" cy="5" r="1.5" fill="#7f1d1d" />
-              {/* Gradient Definition */}
-              <defs>
-                <radialGradient id="redGradient" cx="50%" cy="50%">
-                  <stop offset="0%" stopColor="#f87171" />
-                  <stop offset="50%" stopColor="#ef4444" />
-                  <stop offset="100%" stopColor="#b91c1c" />
-                </radialGradient>
-              </defs>
+              <path d="M28 14 Q24 8 22 4" stroke="#4c0519" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+              <path d="M28 14 Q32 8 34 4" stroke="#4c0519" strokeWidth="1.5" fill="none" strokeLinecap="round" />
+              <circle cx="22" cy="4" r="2" fill="#b91c1c" />
+              <circle cx="34" cy="4" r="2" fill="#b91c1c" />
+              
+              {/* Shimmer overlay */}
+              <ellipse cx="12" cy="20" rx="6" ry="10" fill="url(#shimmer)" opacity="0.5" />
+              <ellipse cx="44" cy="20" rx="6" ry="10" fill="url(#shimmer)" opacity="0.5" />
             </svg>
-            {/* Glow effect */}
-            <div className="absolute inset-0 bg-red-500/20 rounded-full blur-xl animate-pulse" />
           </div>
         </button>
       )}
 
       {/* Special Offer Popup */}
       <Dialog open={showPopup} onOpenChange={handleClosePopup}>
-        <DialogContent className="sm:max-w-md bg-gradient-to-br from-rose-50 via-pink-50 to-red-50 border-2 border-rose-200">
+        <DialogContent className="sm:max-w-md bg-gradient-to-br from-rose-50 via-pink-50 to-red-50 border-2 border-rose-200 z-[60]">
           <div className="relative text-center py-4">
             {/* Decorative hearts */}
             <div className="absolute -top-2 left-4 animate-bounce">
               <Heart className="w-6 h-6 text-rose-400 fill-rose-400" />
             </div>
-            <div className="absolute -top-1 right-6 animate-bounce animation-delay-200">
+            <div className="absolute -top-1 right-6 animate-bounce" style={{ animationDelay: '0.2s' }}>
               <Heart className="w-4 h-4 text-pink-400 fill-pink-400" />
             </div>
-            <div className="absolute top-8 -right-1 animate-bounce animation-delay-400">
+            <div className="absolute top-8 -right-1 animate-bounce" style={{ animationDelay: '0.4s' }}>
               <Heart className="w-5 h-5 text-red-400 fill-red-400" />
             </div>
 
             {/* Sparkle decorations */}
             <Sparkles className="absolute top-2 left-1/4 w-4 h-4 text-yellow-400 animate-pulse" />
-            <Sparkles className="absolute bottom-4 right-1/4 w-5 h-5 text-yellow-500 animate-pulse animation-delay-300" />
+            <Sparkles className="absolute bottom-4 right-1/4 w-5 h-5 text-yellow-500 animate-pulse" style={{ animationDelay: '0.3s' }} />
 
             <div className="space-y-4">
               <div className="flex justify-center">
@@ -239,8 +397,12 @@ export function ValentineButterfly() {
       {/* Custom animation styles */}
       <style>{`
         @keyframes wingFlap {
-          0%, 100% { transform: scaleX(1); }
-          50% { transform: scaleX(0.7); }
+          0%, 100% { transform: scaleX(1) rotateY(0deg); }
+          50% { transform: scaleX(0.6) rotateY(20deg); }
+        }
+        @keyframes wingFlapReverse {
+          0%, 100% { transform: scaleX(1) rotateY(0deg); }
+          50% { transform: scaleX(0.6) rotateY(-20deg); }
         }
       `}</style>
     </>
