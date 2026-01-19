@@ -12,18 +12,93 @@ interface SparkleType {
   rotation: number;
 }
 
+interface ConfettiParticle {
+  id: number;
+  x: number;
+  y: number;
+  vx: number;
+  vy: number;
+  rotation: number;
+  rotationSpeed: number;
+  opacity: number;
+  size: number;
+  type: 'heart' | 'sparkle' | 'star';
+  color: string;
+}
+
 export function ValentineButterfly() {
   const [position, setPosition] = useState({ x: 200, y: 200 });
   const [isFlying, setIsFlying] = useState(true);
   const [showPopup, setShowPopup] = useState(false);
   const [copied, setCopied] = useState(false);
   const [sparkles, setSparkles] = useState<SparkleType[]>([]);
+  const [confetti, setConfetti] = useState<ConfettiParticle[]>([]);
   
   const animationRef = useRef<number | null>(null);
+  const confettiRef = useRef<number | null>(null);
   const timeRef = useRef(0);
   const basePositionRef = useRef({ x: 200, y: 200 });
   const targetRef = useRef({ x: 300, y: 300 });
   const lastSparkleTimeRef = useRef(0);
+
+  // Confetti burst effect
+  const triggerConfetti = useCallback((originX: number, originY: number) => {
+    const particles: ConfettiParticle[] = [];
+    const colors = ['#ef4444', '#f43f5e', '#ec4899', '#fbbf24', '#f59e0b', '#fcd34d'];
+    const types: ('heart' | 'sparkle' | 'star')[] = ['heart', 'sparkle', 'star'];
+    
+    for (let i = 0; i < 50; i++) {
+      const angle = (Math.PI * 2 * i) / 50 + Math.random() * 0.5;
+      const velocity = 8 + Math.random() * 12;
+      
+      particles.push({
+        id: Date.now() + i,
+        x: originX,
+        y: originY,
+        vx: Math.cos(angle) * velocity,
+        vy: Math.sin(angle) * velocity - 5,
+        rotation: Math.random() * 360,
+        rotationSpeed: (Math.random() - 0.5) * 20,
+        opacity: 1,
+        size: 12 + Math.random() * 16,
+        type: types[Math.floor(Math.random() * types.length)],
+        color: colors[Math.floor(Math.random() * colors.length)],
+      });
+    }
+    
+    setConfetti(particles);
+  }, []);
+
+  // Animate confetti
+  useEffect(() => {
+    if (confetti.length === 0) return;
+
+    const animateConfetti = () => {
+      setConfetti(prev => 
+        prev
+          .map(p => ({
+            ...p,
+            x: p.x + p.vx,
+            y: p.y + p.vy,
+            vy: p.vy + 0.4, // gravity
+            vx: p.vx * 0.99, // air resistance
+            rotation: p.rotation + p.rotationSpeed,
+            opacity: p.opacity - 0.015,
+          }))
+          .filter(p => p.opacity > 0 && p.y < window.innerHeight + 100)
+      );
+      
+      confettiRef.current = requestAnimationFrame(animateConfetti);
+    };
+
+    confettiRef.current = requestAnimationFrame(animateConfetti);
+
+    return () => {
+      if (confettiRef.current) {
+        cancelAnimationFrame(confettiRef.current);
+      }
+    };
+  }, [confetti.length > 0]);
 
   // Smooth Perlin-like movement using layered sine waves
   useEffect(() => {
@@ -131,6 +206,8 @@ export function ValentineButterfly() {
   }, []);
 
   const handleButterflyClick = () => {
+    // Trigger confetti burst at butterfly position
+    triggerConfetti(position.x, position.y);
     setIsFlying(false);
     setShowPopup(true);
   };
@@ -161,8 +238,47 @@ export function ValentineButterfly() {
     setIsFlying(true);
   };
 
+  // Render confetti particle based on type
+  const renderConfettiParticle = (particle: ConfettiParticle) => {
+    if (particle.type === 'heart') {
+      return (
+        <svg width={particle.size} height={particle.size} viewBox="0 0 24 24" fill={particle.color}>
+          <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z" />
+        </svg>
+      );
+    } else if (particle.type === 'star') {
+      return (
+        <svg width={particle.size} height={particle.size} viewBox="0 0 24 24" fill={particle.color}>
+          <path d="M12 0 L14 10 L24 12 L14 14 L12 24 L10 14 L0 12 L10 10 Z" />
+        </svg>
+      );
+    } else {
+      return (
+        <svg width={particle.size} height={particle.size} viewBox="0 0 24 24" fill={particle.color}>
+          <circle cx="12" cy="12" r="10" />
+        </svg>
+      );
+    }
+  };
+
   return (
     <>
+      {/* Confetti Burst */}
+      {confetti.map(particle => (
+        <div
+          key={particle.id}
+          className="fixed pointer-events-none z-[55]"
+          style={{
+            left: particle.x,
+            top: particle.y,
+            opacity: particle.opacity,
+            transform: `translate(-50%, -50%) rotate(${particle.rotation}deg)`,
+          }}
+        >
+          {renderConfettiParticle(particle)}
+        </div>
+      ))}
+
       {/* Golden Sparkle Trail */}
       {sparkles.map(sparkle => (
         <div

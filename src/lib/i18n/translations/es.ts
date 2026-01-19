@@ -219,6 +219,7 @@ export const es: Translations = {
   promo: {
     freeDelivery: '🚚 ENVÍO GRATIS en pedidos superiores a ₹500',
     limitedOffer: '🔥 OFERTA LIMITADA: ¡2 limpiadores por solo ₹500!',
+    freebie: '🎁 ¡Recibe un REGALO GRATIS en cada pedido de {threshold} o más!',
   },
   international: {
     shippingAvailable: '🌍 Envío internacional disponible',

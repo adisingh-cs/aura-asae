@@ -219,6 +219,7 @@ export const de: Translations = {
   promo: {
     freeDelivery: '🚚 KOSTENLOSE LIEFERUNG bei Bestellungen über ₹500',
     limitedOffer: '🔥 ZEITLICH BEGRENZT: 2 Gesichtswaschmittel für nur ₹500!',
+    freebie: '🎁 Erhalte ein GRATIS Geschenk bei jeder Bestellung ab {threshold}!',
   },
   international: {
     shippingAvailable: '🌍 Internationaler Versand verfügbar',
