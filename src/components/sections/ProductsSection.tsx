@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { Gift } from 'lucide-react';
 import { products } from '@/data/products';
 import { ProductCard } from '@/components/ProductCard';
 import { ProductModal } from '@/components/ProductModal';
@@ -13,6 +14,10 @@ export function ProductsSection() {
   const priceNote = isIndia 
     ? t.products.priceNote.replace('{price}', formatPrice())
     : `${t.products.priceNote.replace('{price}', formatPrice())} + ${t.international.shippingCost.replace('{price}', formatPrice(currentLocale.shippingCost))}`;
+
+  // Freebie threshold - use locale-specific or default to equivalent of ₹100
+  const freebieThreshold = currentLocale.freebieThreshold || Math.ceil(100 * currentLocale.productPrice / 349);
+  const freebieMessage = t.promo.freebie.replace('{threshold}', `${currentLocale.symbol}${freebieThreshold}`);
 
   return (
     <section id="products" className="section-padding bg-secondary/30">
@@ -35,6 +40,16 @@ export function ProductsSection() {
             <p className="text-body-lg text-muted-foreground max-w-2xl mx-auto">
               {t.products.subtitle}
             </p>
+          </AnimatedSection>
+
+          {/* Freebie Promo Banner */}
+          <AnimatedSection animation="fade-in" delay={300}>
+            <div className="mt-6 inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-full px-6 py-3">
+              <Gift className="w-5 h-5 text-primary animate-bounce" />
+              <span className="text-sm font-medium text-primary">
+                {freebieMessage}
+              </span>
+            </div>
           </AnimatedSection>
         </div>
 

@@ -12,6 +12,7 @@ export const locales: Record<CountryCode, LocaleConfig> = {
     productPrice: 349,
     shippingCost: 0,
     freeShippingThreshold: 500,
+    freebieThreshold: 100,
     comboPrice: 500,
     hasOffers: true,
   },

@@ -25,6 +25,7 @@ export interface LocaleConfig {
   productPrice: number;
   shippingCost: number;
   freeShippingThreshold?: number;
+  freebieThreshold?: number;
   comboPrice?: number;
   hasOffers: boolean;
   isRTL?: boolean;
@@ -147,6 +148,7 @@ export interface Translations {
   promo: {
     freeDelivery: string;
     limitedOffer: string;
+    freebie: string;
   };
   
   // International Banner

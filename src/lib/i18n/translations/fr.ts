@@ -219,6 +219,7 @@ export const fr: Translations = {
   promo: {
     freeDelivery: '🚚 LIVRAISON GRATUITE pour les commandes supérieures à ₹500',
     limitedOffer: '🔥 OFFRE LIMITÉE : 2 nettoyants pour seulement ₹500 !',
+    freebie: '🎁 Recevez un CADEAU GRATUIT pour toute commande de {threshold} ou plus !',
   },
   international: {
     shippingAvailable: '🌍 Livraison internationale disponible',

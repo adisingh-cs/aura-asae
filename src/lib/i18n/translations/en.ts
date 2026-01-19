@@ -219,6 +219,7 @@ export const en: Translations = {
   promo: {
     freeDelivery: '🚚 FREE DELIVERY on orders above ₹500',
     limitedOffer: '🔥 LIMITED TIME: Get 2 Facewash for just ₹500!',
+    freebie: '🎁 Get a FREE gift on every order worth {threshold} or more!',
   },
   international: {
     shippingAvailable: '🌍 International shipping available',
