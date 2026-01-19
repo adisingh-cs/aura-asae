@@ -15,9 +15,7 @@ export function ProductsSection() {
     ? t.products.priceNote.replace('{price}', formatPrice())
     : `${t.products.priceNote.replace('{price}', formatPrice())} + ${t.international.shippingCost.replace('{price}', formatPrice(currentLocale.shippingCost))}`;
 
-  // Freebie threshold - use locale-specific or default to equivalent of ₹100
-  const freebieThreshold = currentLocale.freebieThreshold || Math.ceil(100 * currentLocale.productPrice / 349);
-  const freebieMessage = t.promo.freebie.replace('{threshold}', `${currentLocale.symbol}${freebieThreshold}`);
+  const freebieMessage = 'Get a FREE gift on every order worth ₹100 or more!';
 
   return (
     <section id="products" className="section-padding bg-secondary/30">

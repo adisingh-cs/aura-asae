@@ -1,4 +1,4 @@
-import { ArrowDown } from 'lucide-react';
+import { ArrowDown, Gift } from 'lucide-react';
 import heroImage from '@/assets/hero-section.webp';
 import { AnimatedSection } from '@/components/AnimatedSection';
 import { useLocale } from '@/lib/i18n/LocaleContext';
@@ -34,9 +34,19 @@ export function HeroSection() {
             </AnimatedSection>
 
             <AnimatedSection animation="fade-in-left" delay={300}>
-              <p className="text-body-lg text-muted-foreground mb-8 max-w-xl mx-auto lg:mx-0">
+              <p className="text-body-lg text-muted-foreground mb-6 max-w-xl mx-auto lg:mx-0">
                 {t.hero.tagline}
               </p>
+            </AnimatedSection>
+
+            {/* Freebie Promo Banner */}
+            <AnimatedSection animation="fade-in-left" delay={350}>
+              <div className="inline-flex items-center gap-2 bg-gradient-to-r from-primary/10 via-primary/5 to-primary/10 border border-primary/20 rounded-full px-5 py-2.5 mb-8">
+                <Gift className="w-4 h-4 text-primary animate-bounce" />
+                <span className="text-sm font-medium text-primary">
+                  Get a FREE gift on every order worth ₹100 or more!
+                </span>
+              </div>
             </AnimatedSection>
 
             <AnimatedSection animation="fade-in-left" delay={400}>
