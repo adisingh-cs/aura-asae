@@ -1,17 +1,20 @@
+import { lazy, Suspense } from 'react';
 import { Navbar } from '@/components/sections/Navbar';
 import { HeroSection } from '@/components/sections/HeroSection';
-import { AboutSection } from '@/components/sections/AboutSection';
-import { ProductsSection } from '@/components/sections/ProductsSection';
-import { TrustSection } from '@/components/sections/TrustSection';
-import { IngredientsSection } from '@/components/sections/IngredientsSection';
-import { TestimonialsSection } from '@/components/sections/TestimonialsSection';
-import FAQSection from '@/components/sections/FAQSection';
-import { ContactSection } from '@/components/sections/ContactSection';
-import { Footer } from '@/components/sections/Footer';
-import { WhatsAppButton } from '@/components/WhatsAppButton';
-import { ValentineButterfly } from '@/components/ValentineButterfly';
 import { Helmet } from 'react-helmet-async';
 import { products, testimonials, contactInfo } from '@/data/products';
+
+// Lazy load below-the-fold components for better performance
+const AboutSection = lazy(() => import('@/components/sections/AboutSection').then(m => ({ default: m.AboutSection })));
+const ProductsSection = lazy(() => import('@/components/sections/ProductsSection').then(m => ({ default: m.ProductsSection })));
+const TrustSection = lazy(() => import('@/components/sections/TrustSection').then(m => ({ default: m.TrustSection })));
+const IngredientsSection = lazy(() => import('@/components/sections/IngredientsSection').then(m => ({ default: m.IngredientsSection })));
+const TestimonialsSection = lazy(() => import('@/components/sections/TestimonialsSection').then(m => ({ default: m.TestimonialsSection })));
+const FAQSection = lazy(() => import('@/components/sections/FAQSection'));
+const ContactSection = lazy(() => import('@/components/sections/ContactSection').then(m => ({ default: m.ContactSection })));
+const Footer = lazy(() => import('@/components/sections/Footer').then(m => ({ default: m.Footer })));
+const WhatsAppButton = lazy(() => import('@/components/WhatsAppButton').then(m => ({ default: m.WhatsAppButton })));
+const ValentineButterfly = lazy(() => import('@/components/ValentineButterfly').then(m => ({ default: m.ValentineButterfly })));
 
 // Generate JSON-LD structured data for SEO
 const organizationSchema = {
@@ -371,19 +374,39 @@ const Index = () => {
         ))}
       </Helmet>
 
-      <ValentineButterfly />
+      <Suspense fallback={null}>
+        <ValentineButterfly />
+      </Suspense>
       <main className="min-h-screen">
         <Navbar />
         <HeroSection />
-        <AboutSection />
-        <ProductsSection />
-        <TrustSection />
-        <IngredientsSection />
-        <TestimonialsSection />
-        <FAQSection />
-        <ContactSection />
-        <Footer />
-        <WhatsAppButton />
+        <Suspense fallback={<div className="min-h-[200px]" />}>
+          <AboutSection />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-[400px]" />}>
+          <ProductsSection />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-[200px]" />}>
+          <TrustSection />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-[300px]" />}>
+          <IngredientsSection />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-[400px]" />}>
+          <TestimonialsSection />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-[300px]" />}>
+          <FAQSection />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-[200px]" />}>
+          <ContactSection />
+        </Suspense>
+        <Suspense fallback={<div className="min-h-[100px]" />}>
+          <Footer />
+        </Suspense>
+        <Suspense fallback={null}>
+          <WhatsAppButton />
+        </Suspense>
       </main>
     </>
   );
