@@ -15,7 +15,7 @@ export function HeroSection() {
         <div className="absolute top-1/2 left-1/3 w-24 h-24 rounded-full bg-primary/5 blur-2xl animate-float animation-delay-400" />
       </div>
 
-      <div className="container mx-auto px-4 pt-20 md:pt-24">
+      <div className="container mx-auto px-4 pt-28 md:pt-32">
         <div className="grid lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Text Content */}
           <div className="text-center lg:text-left order-2 lg:order-1">

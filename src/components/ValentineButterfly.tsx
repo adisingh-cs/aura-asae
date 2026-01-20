@@ -214,7 +214,7 @@ export function ValentineButterfly() {
 
   const handleCopyCode = useCallback(async () => {
     try {
-      await navigator.clipboard.writeText('YOURAURA++');
+      await navigator.clipboard.writeText('AURA++');
       setCopied(true);
       toast.success('Code copied to clipboard!');
       
@@ -493,7 +493,7 @@ export function ValentineButterfly() {
                 onClick={handleCopyCode}
                 className="group relative mx-auto flex items-center gap-2 bg-gradient-to-r from-rose-500 via-red-500 to-pink-500 text-white px-6 py-3 rounded-xl font-mono text-xl font-bold shadow-lg hover:shadow-xl hover:scale-105 transition-all duration-300"
               >
-                <span className="tracking-wider">YOURAURA++</span>
+                <span className="tracking-wider">AURA++</span>
                 {copied ? (
                   <Check className="w-5 h-5" />
                 ) : (
