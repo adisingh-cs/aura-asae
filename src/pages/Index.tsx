@@ -312,25 +312,25 @@ const Index = () => {
   return (
     <>
       <Helmet>
-        {/* Primary Meta Tags */}
-        <title>Aura Cosmetics | Organic Handcrafted Facewash - India</title>
+        {/* Primary Meta Tags - Optimized for CTR */}
+        <title>Aura Cosmetics | 100% Organic Facewash ₹349 | Free Delivery India</title>
         <meta 
           name="description" 
-          content="Shop Aura's 100% organic, handcrafted facewash collection. Vitamin C, Coffee, Rice Milk, Beetroot & Niacinamide formulas. Paraben-free skincare made in India. ₹349 for 100ml." 
+          content="★★★★★ 5-Star Rated Organic Facewash. Vitamin C, Coffee, Rice Milk, Beetroot & Niacinamide formulas. Paraben-free, handcrafted in India. ₹349/100ml. Free delivery on ₹500+. Shop now!" 
         />
-        <meta name="keywords" content="organic facewash, natural skincare India, vitamin c facewash, niacinamide facewash, coffee facewash, rice milk facewash, beetroot facewash, handcrafted cosmetics, paraben free skincare, organic skincare India, Aura Cosmetics, best facewash India, affordable organic skincare" />
+        <meta name="keywords" content="organic facewash india, natural facewash, vitamin c facewash, niacinamide facewash, coffee facewash, rice milk facewash, beetroot facewash, handcrafted cosmetics india, paraben free facewash, sulphate free facewash, best facewash india 2025, affordable organic skincare, aura cosmetics, face wash for oily skin, face wash for dry skin, face wash for acne, face wash for glowing skin, brightening facewash, anti acne facewash" />
         
-        {/* Open Graph */}
-        <meta property="og:title" content="Aura Cosmetics | Organic Handcrafted Facewash - India" />
-        <meta property="og:description" content="Shop Aura's 100% organic, handcrafted facewash collection. Vitamin C, Coffee, Rice Milk, Beetroot & Niacinamide formulas. Paraben-free skincare made in India." />
+        {/* Open Graph - Enhanced for engagement */}
+        <meta property="og:title" content="Aura Cosmetics | 100% Organic Facewash ₹349 | Free Delivery" />
+        <meta property="og:description" content="★★★★★ 5-Star Rated! Shop India's favorite organic facewash collection. Vitamin C, Coffee, Rice Milk & more. Handcrafted, paraben-free. Free delivery on ₹500+!" />
         <meta property="og:type" content="website" />
         <meta property="og:url" content="https://auracosmetics.in/" />
         <meta property="og:site_name" content="Aura Cosmetics" />
         <meta property="og:locale" content="en_IN" />
         
-        {/* Twitter */}
-        <meta name="twitter:title" content="Aura Cosmetics | Organic Handcrafted Facewash" />
-        <meta name="twitter:description" content="100% organic, handcrafted facewash collection. Vitamin C, Coffee, Rice Milk, Beetroot & Niacinamide. Made in India." />
+        {/* Twitter - Enhanced for clicks */}
+        <meta name="twitter:title" content="Aura Cosmetics | 100% Organic Facewash ₹349" />
+        <meta name="twitter:description" content="★★★★★ 5-Star Rated! India's favorite organic facewash. Vitamin C, Coffee, Rice Milk & more. Handcrafted, paraben-free. Shop now!" />
         
         {/* Canonical */}
         <link rel="canonical" href="https://auracosmetics.in/" />
@@ -377,31 +377,33 @@ const Index = () => {
       <Suspense fallback={null}>
         <ValentineButterfly />
       </Suspense>
-      <main className="min-h-screen">
+      <main id="main-content" className="min-h-screen" role="main" itemScope itemType="https://schema.org/WebPage">
         <Navbar />
-        <HeroSection />
-        <Suspense fallback={<div className="min-h-[200px]" />}>
+        <article itemScope itemType="https://schema.org/Product">
+          <HeroSection />
+        </article>
+        <Suspense fallback={<div className="min-h-[200px]" aria-label="Loading about section" />}>
           <AboutSection />
         </Suspense>
-        <Suspense fallback={<div className="min-h-[400px]" />}>
+        <Suspense fallback={<div className="min-h-[400px]" aria-label="Loading products" />}>
           <ProductsSection />
         </Suspense>
-        <Suspense fallback={<div className="min-h-[200px]" />}>
+        <Suspense fallback={<div className="min-h-[200px]" aria-label="Loading trust badges" />}>
           <TrustSection />
         </Suspense>
-        <Suspense fallback={<div className="min-h-[300px]" />}>
+        <Suspense fallback={<div className="min-h-[300px]" aria-label="Loading ingredients" />}>
           <IngredientsSection />
         </Suspense>
-        <Suspense fallback={<div className="min-h-[400px]" />}>
+        <Suspense fallback={<div className="min-h-[400px]" aria-label="Loading testimonials" />}>
           <TestimonialsSection />
         </Suspense>
-        <Suspense fallback={<div className="min-h-[300px]" />}>
+        <Suspense fallback={<div className="min-h-[300px]" aria-label="Loading FAQ" />}>
           <FAQSection />
         </Suspense>
-        <Suspense fallback={<div className="min-h-[200px]" />}>
+        <Suspense fallback={<div className="min-h-[200px]" aria-label="Loading contact" />}>
           <ContactSection />
         </Suspense>
-        <Suspense fallback={<div className="min-h-[100px]" />}>
+        <Suspense fallback={<div className="min-h-[100px]" aria-label="Loading footer" />}>
           <Footer />
         </Suspense>
         <Suspense fallback={null}>
