@@ -31,19 +31,7 @@ const LocaleContext = createContext<LocaleContextValue>({
 const STORAGE_KEY = 'aura-country';
 const DETECTION_SHOWN_KEY = 'aura-detection-shown';
 
-// Map IP API country codes to our supported countries
-const mapCountryCode = (code: string): CountryCode => {
-  const upperCode = code.toUpperCase();
-  if (upperCode in locales) {
-    return upperCode as CountryCode;
-  }
-  // Map EU countries to appropriate locales
-  const euCountries = ['AT', 'BE', 'BG', 'HR', 'CY', 'CZ', 'DK', 'EE', 'FI', 'GR', 'HU', 'IE', 'IT', 'LV', 'LT', 'LU', 'MT', 'NL', 'PL', 'PT', 'RO', 'SK', 'SI', 'SE'];
-  if (euCountries.includes(upperCode)) {
-    return 'DE'; // Use Germany/EUR as default for EU
-  }
-  return defaultCountry;
-};
+// Get language from browser - privacy-friendly approach that doesn't send data to third parties
 
 // Get language from browser
 const getBrowserLanguage = (): CountryCode | null => {
@@ -62,9 +50,9 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
   const [isLoading, setIsLoading] = useState(true);
   const hasShownToast = useRef(false);
 
-  // Detect country on mount
+  // Detect country on mount using privacy-friendly browser language detection
   useEffect(() => {
-    const detectCountry = async () => {
+    const detectCountry = () => {
       // First check localStorage
       const savedCountry = localStorage.getItem(STORAGE_KEY);
       if (savedCountry && savedCountry in locales) {
@@ -78,23 +66,11 @@ export function LocaleProvider({ children }: { children: React.ReactNode }) {
       let detectedCountry: CountryCode = defaultCountry;
       let wasAutoDetected = false;
 
-      // Try IP-based detection
-      try {
-        const response = await fetch('https://ipapi.co/json/', { 
-          signal: AbortSignal.timeout(3000) 
-        });
-        if (response.ok) {
-          const data = await response.json();
-          detectedCountry = mapCountryCode(data.country_code);
-          wasAutoDetected = detectedCountry !== defaultCountry;
-        }
-      } catch (error) {
-        // Fallback to browser language
-        const browserCountry = getBrowserLanguage();
-        if (browserCountry) {
-          detectedCountry = browserCountry;
-          wasAutoDetected = true;
-        }
+      // Use privacy-friendly browser language detection (no third-party API calls)
+      const browserCountry = getBrowserLanguage();
+      if (browserCountry) {
+        detectedCountry = browserCountry;
+        wasAutoDetected = true;
       }
 
       setCountryCode(detectedCountry);
